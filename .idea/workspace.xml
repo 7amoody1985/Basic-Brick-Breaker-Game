@@ -4,28 +4,52 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="" />
+    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="Changed fps from 15 to 60 for smoother gameplay">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/BlockSerializable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/BlockSerializable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Bonus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Bonus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/GameEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/LoadSave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/LoadSave.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Score.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Score.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/sample.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2XDZZdVXp5vwESR69uLEXjr8LNm" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/moham/IdeaProjects/CWGame&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -34,11 +58,56 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1698165668168</updated>
-      <workItem from="1698165669223" duration="91000" />
+      <workItem from="1698165669223" duration="403000" />
+      <workItem from="1698584475698" duration="848000" />
+      <workItem from="1698586779033" duration="2350000" />
     </task>
+    <task id="LOCAL-00001" summary="Initial commit">
+      <option name="closed" value="true" />
+      <created>1698165908705</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1698165908705</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Changed fps from 15 to 60 for smoother gameplay">
+      <option name="closed" value="true" />
+      <created>1698165974204</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1698165974204</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial commit" />
+    <MESSAGE value="Changed fps from 15 to 60 for smoother gameplay" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed fps from 15 to 60 for smoother gameplay" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.IndexOutOfBoundsException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
