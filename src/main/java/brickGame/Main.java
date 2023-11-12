@@ -28,7 +28,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     private static final int LEFT = 1;
     private static final int RIGHT = 2;
     public static String savePath = "D:/save/save.mdds";
-    public static String savePathDir = "D:/save/";
+//    public static String savePathDir = "D:/save/";      // TODO: delete this line (redundant)
     private final int breakWidth = 130;
     private final int breakHeight = 30;
     private final int halfBreakWidth = breakWidth / 2;
@@ -219,7 +219,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                 move(RIGHT);
                 break;
             case DOWN:
-                //setPhysicsToBall();
+//                setPhysicsToBall();               ????????????????????????
                 break;
             case S:
                 saveGame();
@@ -330,7 +330,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         }
 
         if (yBall >= yBreak - ballRadius) {
-            //System.out.println("Collide1");
+            System.out.println("Collide1");
             if (xBall >= xBreak && xBall <= xBreak + breakWidth) {
                 resetCollideFlags();
                 collideToBreak = true;
@@ -350,7 +350,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                 }
 
                 collideToBreakAndMoveToRight = xBall - centerBreakX > 0;
-                //System.out.println("Collide2");
+                System.out.println("Collide2");
             }
         }
 
@@ -405,7 +405,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     private void checkDestroyedCount() {
         if (destroyedBlockCount == blocks.size()) {
             //TODO win level todo...
-            //System.out.println("You Win");
+            System.out.println("You Win");
 
             nextLevel();
         }
@@ -413,7 +413,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
     private void saveGame() {
         new Thread(() -> {
-            new File(savePathDir).mkdirs();
+//            new File(savePathDir);        TODO: delete this line (redundant)
             File file = new File(savePath);
             ObjectOutputStream outputStream = null;
             try {

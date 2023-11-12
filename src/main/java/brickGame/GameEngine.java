@@ -40,17 +40,17 @@ public class GameEngine {
         onAction.onInit();
     }
 
-    private synchronized void PhysicsCalculation() {
-        physicsThread = new Thread(() -> {
-            while (!physicsThread.isInterrupted()) {
-                try {
-                    onAction.onPhysicsUpdate();
-                    Thread.sleep(fps);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+        private synchronized void PhysicsCalculation() {
+            physicsThread = new Thread(() -> {
+                while (!physicsThread.isInterrupted()) {
+                    try {
+                        onAction.onPhysicsUpdate();
+                        Thread.sleep(fps);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
-            }
-        });
+            });
 
         physicsThread.start();
 
