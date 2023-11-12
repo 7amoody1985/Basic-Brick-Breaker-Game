@@ -1,0 +1,6 @@
+BUGS FOUND:
+- Red box sometimes goes beyond the screen border (right side)
+- Ball sometimes freezes on screen but game engine still reports collisions
+
+BUG OR FEATURE?:
+- When 2 bricks are hit at the same time you win the level

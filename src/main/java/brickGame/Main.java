@@ -20,6 +20,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Random;
 
 public class Main extends Application implements EventHandler<KeyEvent>, GameEngine.OnAction {
@@ -330,27 +331,14 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         }
 
         if (yBall >= yBreak - ballRadius) {
-            System.out.println("Collide1");
+            System.out.println("Collide1");         // prints when ball reaches the break area
             if (xBall >= xBreak && xBall <= xBreak + breakWidth) {
                 resetCollideFlags();
                 collideToBreak = true;
                 goDownBall = false;
 
-                double relation = (xBall - centerBreakX) / ((double) breakWidth / 2);
-
-                if (Math.abs(relation) <= 0.3) {
-                    //vX = 0;
-                    vX = Math.abs(relation);
-                } else if (Math.abs(relation) > 0.3 && Math.abs(relation) <= 0.7) {
-                    vX = (Math.abs(relation) * 1.5) + (level / 3.500);
-                    //System.out.println("vX " + vX);
-                } else {
-                    vX = (Math.abs(relation) * 2) + (level / 3.500);
-                    //System.out.println("vX " + vX);
-                }
-
                 collideToBreakAndMoveToRight = xBall - centerBreakX > 0;
-                System.out.println("Collide2");
+                System.out.println("Collide2");    // prints when ball collides with the break
             }
         }
 
@@ -599,7 +587,9 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
 
         if (yBall >= Block.getPaddingTop() && yBall <= (Block.getHeight() * (level + 1)) + Block.getPaddingTop()) {
-            for (final Block block : blocks) {
+            Iterator<Block> blockIterator = blocks.iterator();
+            while (blockIterator.hasNext()) {
+                Block block = blockIterator.next();
                 int hitCode = block.checkHitToBlock(xBall, yBall);
                 if (hitCode != Block.NO_HIT) {
                     score += 1;
@@ -641,7 +631,9 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                         collideToTopBlock = true;
                     }
 
+                    blockIterator.remove();
                 }
+
 
                 //TODO hit to break and some work here....
                 //System.out.println("Break in row:" + block.row + " and column:" + block.column + " hit");
