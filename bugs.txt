@@ -1,6 +1,8 @@
 BUGS FOUND:
 - Red box sometimes goes beyond the screen border (right side)
 - Ball sometimes freezes on screen but game engine still reports collisions
+- If ball doesn't hit paddle first, bricks have no hitbox ??
+- ALl bricks gone but doesnt go to next level
 
 BUG OR FEATURE?:
 - When 2 bricks are hit at the same time you win the level
