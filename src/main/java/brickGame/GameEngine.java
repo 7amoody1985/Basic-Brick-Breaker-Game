@@ -5,11 +5,8 @@ public class GameEngine {
 
     public boolean isStopped = true;
     private OnAction onAction;
-    private int fps = 60;
-    private Thread updateThread;
-    private Thread physicsThread;
+    private int fps;
     private long time = 0;
-    private Thread timeThread;
 
     public void setOnAction(OnAction onAction) {
         this.onAction = onAction;
@@ -19,75 +16,53 @@ public class GameEngine {
      * @param fps set fps and we convert it to millisecond
      */
     public void setFps(int fps) {
-        this.fps = 1000 / fps;
+        this.fps = fps;
     }
 
-    private synchronized void Update() {
-        updateThread = new Thread(() -> {
-            while (!updateThread.isInterrupted()) {
-                try {
-                    onAction.onUpdate();
-                    Thread.sleep(fps);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        updateThread.start();
+
+    public int getFps() {
+        return fps;
     }
 
-    private void Initialize() {
-        onAction.onInit();
-    }
-
-        private synchronized void PhysicsCalculation() {
-            physicsThread = new Thread(() -> {
-                while (!physicsThread.isInterrupted()) {
-                    try {
-                        onAction.onPhysicsUpdate();
-                        Thread.sleep(fps);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            });
-
-        physicsThread.start();
-
-    }
 
     public void start() {
-        time = 0;
-        Initialize();
-        Update();
-        PhysicsCalculation();
-        TimeStart();
         isStopped = false;
+        new Thread(this::gameLoop).start();
     }
+
+
+
+    private void gameLoop() {
+        while (!isStopped) {
+            long startTime = System.currentTimeMillis();
+
+            onAction.onInit();
+            onAction.onUpdate();
+            onAction.onPhysicsUpdate();
+            onAction.onTime(time++);
+
+            long endTime = System.currentTimeMillis();
+            long deltaTime = endTime - startTime;
+
+            if (deltaTime < 1000 / fps) {
+                try {
+                    //noinspection BusyWait
+                    Thread.sleep(1000 / fps - deltaTime);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+    }
+
+
 
     public void stop() {
         if (!isStopped) {
             isStopped = true;
-            updateThread.stop();
-            physicsThread.stop();
-            timeThread.stop();
         }
     }
 
-    private void TimeStart() {
-        timeThread = new Thread(() -> {
-            try {
-                while (true) {
-                    time++;
-                    onAction.onTime(time);
-                    Thread.sleep(1);
-                }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        });
-        timeThread.start();
-    }
 
 
     public interface OnAction {

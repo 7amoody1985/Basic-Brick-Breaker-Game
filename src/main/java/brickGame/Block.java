@@ -9,7 +9,7 @@ import javafx.scene.shape.Rectangle;
 import java.io.Serializable;
 
 public class Block implements Serializable {
-    private static final Block block = new Block(-1, -1, Color.TRANSPARENT, 99);
+    private static final Block block = new Block(-1, -1, Color.TRANSPARENT, 99); // color ???
     public static int NO_HIT = -1;
     public static int HIT_RIGHT = 0;
     public static int HIT_BOTTOM = 1;
@@ -42,13 +42,9 @@ public class Block implements Serializable {
         draw();
     }
 
-    public static int getPaddingTop() {
-        return block.paddingTop;
-    }
+    public static int getPaddingTop() {  return block.paddingTop;  }
 
-    public static int getPaddingH() {
-        return block.paddingH;
-    }
+    public static int getPaddingH() {  return block.paddingH;  }
 
     public static int getHeight() {
         return block.height;

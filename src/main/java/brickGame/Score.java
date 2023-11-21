@@ -27,7 +27,7 @@ public class Score {
                     label.setOpacity((20 - i) / 20.0);
                     Thread.sleep(15);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    throw new RuntimeException(e);
                 }
             }
         }).start();
@@ -48,7 +48,7 @@ public class Score {
                     label.setOpacity((20 - i) / 20.0);
                     Thread.sleep(15);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    throw new RuntimeException(e);
                 }
             }
         }).start();

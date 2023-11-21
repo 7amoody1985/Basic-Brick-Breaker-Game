@@ -183,11 +183,8 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
     private void initBoard() {
         for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < level + 1; j++) {
+            for (int j = 0; j < level; j++) {
                 int r = new Random().nextInt(500);
-                if (r % 5 == 0) {
-                    continue;
-                }
                 int type;
                 if (r % 10 == 1) {
                     type = Block.BLOCK_CHOCO;
@@ -230,7 +227,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
     private void move(final int direction) {
         new Thread(() -> {
-            int sleepTime = 4;
+            int fps = engine.getFps();
             for (int i = 0; i < 30; i++) {
                 if (xBreak == (sceneWidth - breakWidth) && direction == RIGHT) {
                     return;
@@ -239,18 +236,15 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                     return;
                 }
                 if (direction == RIGHT) {
-                    xBreak++;
+                    xBreak+=0.5;
                 } else {
-                    xBreak--;
+                    xBreak-=0.5;
                 }
                 centerBreakX = xBreak + halfBreakWidth;
                 try {
-                    Thread.sleep(sleepTime);
+                    Thread.sleep(1000/fps);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                if (i >= 20) {
-                    sleepTime = i;
+                    throw new RuntimeException(e);
                 }
             }
         }).start();
@@ -336,6 +330,19 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                 resetCollideFlags();
                 collideToBreak = true;
                 goDownBall = false;
+
+                double relation = (xBall - centerBreakX) / ((double) breakWidth / 2);
+
+                if (Math.abs(relation) <= 0.2) {
+                    //vX = 0;
+                    vX = Math.abs(relation);
+                } else if (Math.abs(relation) > 0.3 && Math.abs(relation) <= 0.7) {
+                    vX = (Math.abs(relation) * 1.5) + (level / 3.500);
+                    //System.out.println("vX " + vX);
+                } else {
+                    vX = (Math.abs(relation) * 2) + (level / 3.500);
+                    //System.out.println("vX " + vX);
+                }
 
                 collideToBreakAndMoveToRight = xBall - centerBreakX > 0;
                 System.out.println("Collide2");    // prints when ball collides with the break
@@ -450,14 +457,15 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
 
             } catch (IOException e) {
-                e.printStackTrace();
+                throw new RuntimeException(e);
             } finally {
                 try {
                     assert outputStream != null;
                     outputStream.flush();
                     outputStream.close();
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    //noinspection ThrowFromFinallyBlock
+                    throw new RuntimeException(e);
                 }
             }
         }).start();
@@ -508,7 +516,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
             loadFromSave = true;
             start(primaryStage);
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
 
 
@@ -537,7 +545,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                 start(primaryStage);
 
             } catch (Exception e) {
-                e.printStackTrace();
+                throw new RuntimeException(e);
             }
         });
     }
@@ -563,7 +571,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
             start(primaryStage);
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
@@ -587,56 +595,58 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
 
         if (yBall >= Block.getPaddingTop() && yBall <= (Block.getHeight() * (level + 1)) + Block.getPaddingTop()) {
-            Iterator<Block> blockIterator = blocks.iterator();
-            while (blockIterator.hasNext()) {
-                Block block = blockIterator.next();
-                int hitCode = block.checkHitToBlock(xBall, yBall);
-                if (hitCode != Block.NO_HIT) {
-                    score += 1;
+            synchronized (blocks) {
+                Iterator<Block> blockIterator = blocks.iterator();
+                while (blockIterator.hasNext()) {
+                    Block block = blockIterator.next();
+                    int hitCode = block.checkHitToBlock(xBall, yBall);
+                    if (hitCode != Block.NO_HIT) {
+                        score += 1;
 
-                    new Score().show(block.x, block.y, 1, this);
+                        new Score().show(block.x, block.y, 1, this);
 
-                    block.rect.setVisible(false);
-                    block.isDestroyed = true;
-                    destroyedBlockCount++;
-                    //System.out.println("size is " + blocks.size());
-                    resetCollideFlags();
+                        block.rect.setVisible(false);
+                        block.isDestroyed = true;
+                        destroyedBlockCount++;
+                        //System.out.println("size is " + blocks.size());
+                        resetCollideFlags();
 
-                    if (block.type == Block.BLOCK_CHOCO) {
-                        final Bonus choco = new Bonus(block.row, block.column);
-                        choco.timeCreated = time;
-                        Platform.runLater(() -> root.getChildren().add(choco.choco));
-                        chocos.add(choco);
+                        if (block.type == Block.BLOCK_CHOCO) {
+                            final Bonus choco = new Bonus(block.row, block.column);
+                            choco.timeCreated = time;
+                            Platform.runLater(() -> root.getChildren().add(choco.choco));
+                            chocos.add(choco);
+                        }
+
+                        if (block.type == Block.BLOCK_STAR) {
+                            goldTime = time;
+                            ball.setFill(new ImagePattern(new Image("goldball.png")));
+                            System.out.println("gold ball");
+                            root.getStyleClass().add("goldRoot");
+                            isGoldStatus = true;
+                        }
+
+                        if (block.type == Block.BLOCK_HEART) {
+                            heart++;
+                        }
+
+                        if (hitCode == Block.HIT_RIGHT) {
+                            collideToRightBlock = true;
+                        } else if (hitCode == Block.HIT_BOTTOM) {
+                            collideToBottomBlock = true;
+                        } else if (hitCode == Block.HIT_LEFT) {
+                            collideToLeftBlock = true;
+                        } else if (hitCode == Block.HIT_TOP) {
+                            collideToTopBlock = true;
+                        }
+
+                        blockIterator.remove();
                     }
 
-                    if (block.type == Block.BLOCK_STAR) {
-                        goldTime = time;
-                        ball.setFill(new ImagePattern(new Image("goldball.png")));
-                        System.out.println("gold ball");
-                        root.getStyleClass().add("goldRoot");
-                        isGoldStatus = true;
-                    }
 
-                    if (block.type == Block.BLOCK_HEART) {
-                        heart++;
-                    }
-
-                    if (hitCode == Block.HIT_RIGHT) {
-                        collideToRightBlock = true;
-                    } else if (hitCode == Block.HIT_BOTTOM) {
-                        collideToBottomBlock = true;
-                    } else if (hitCode == Block.HIT_LEFT) {
-                        collideToLeftBlock = true;
-                    } else if (hitCode == Block.HIT_TOP) {
-                        collideToTopBlock = true;
-                    }
-
-                    blockIterator.remove();
+                    //to do hit to break and some work here....
+                    //System.out.println("Break in row:" + block.row + " and column:" + block.column + " hit");
                 }
-
-
-                //TODO hit to break and some work here....
-                //System.out.println("Break in row:" + block.row + " and column:" + block.column + " hit");
             }
         }
     }

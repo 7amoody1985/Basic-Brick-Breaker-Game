@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="Some modifications for debugging">
-      <change afterPath="$PROJECT_DIR$/List of bugs.txt" afterDir="false" />
+    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- Noted more bugs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bugs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bugs.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/GameEngine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Score.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Score.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,23 +34,44 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/moham/IdeaProjects/CWGame",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/moham/IdeaProjects/CWGame&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="brickGame.Main" />
+      <module name="CWGame" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="brickGame.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -65,7 +89,13 @@
       <workItem from="1699774658117" duration="9526000" />
       <workItem from="1699791388467" duration="52000" />
       <workItem from="1699791484362" duration="33000" />
-      <workItem from="1699791524030" duration="5029000" />
+      <workItem from="1699791524030" duration="6027000" />
+      <workItem from="1699968365908" duration="6685000" />
+      <workItem from="1700400901077" duration="7000" />
+      <workItem from="1700405637292" duration="5746000" />
+      <workItem from="1700568779781" duration="69000" />
+      <workItem from="1700568859348" duration="232000" />
+      <workItem from="1700569100215" duration="13849000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -99,7 +129,23 @@
       <option name="project" value="LOCAL" />
       <updated>1699789650620</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="- Fixed bug where game crashes if ball hits 2 bricks at once&#10;- Fixed ball different speed everytime ball hits break&#10;- Added text file to keep track of bugs">
+      <option name="closed" value="true" />
+      <created>1699799259348</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1699799259348</updated>
+    </task>
+    <task id="LOCAL-00006" summary="- Noted more bugs">
+      <option name="closed" value="true" />
+      <created>1700414118720</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1700414118720</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -122,7 +168,9 @@
     <MESSAGE value="Changed fps from 15 to 60 for smoother gameplay" />
     <MESSAGE value="Code formatting and clean up, fixed typos, changed some visibilities." />
     <MESSAGE value="Some modifications for debugging" />
-    <option name="LAST_COMMIT_MESSAGE" value="Some modifications for debugging" />
+    <MESSAGE value="- Fixed bug where game crashes if ball hits 2 bricks at once&#10;- Fixed ball different speed everytime ball hits break&#10;- Added text file to keep track of bugs" />
+    <MESSAGE value="- Noted more bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Noted more bugs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
