@@ -1,5 +1,3 @@
 BUGS FOUND:
 - Red box sometimes goes beyond the screen border (right side)
 - Ball sometimes freezes on screen but game engine still reports collisions
-- ALl bricks gone but doesnt go to next level
-- Sometimes hitting block(s) from top it jumps to next level / Random next level

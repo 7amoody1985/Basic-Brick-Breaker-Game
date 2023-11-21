@@ -20,7 +20,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Random;
 
 public class Main extends Application implements EventHandler<KeyEvent>, GameEngine.OnAction {
@@ -29,7 +28,6 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     private static final int LEFT = 1;
     private static final int RIGHT = 2;
     public static String savePath = "D:/save/save.mdds";
-//    public static String savePathDir = "D:/save/";      // TODO: delete this line (redundant)
     private final int breakWidth = 130;
     private final int breakHeight = 30;
     private final int halfBreakWidth = breakWidth / 2;
@@ -69,7 +67,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     private boolean isExistHeartBlock = false;
     private Rectangle rect;
     private int destroyedBlockCount = 0;
-    private int heart = 3;
+    private int heart = 300;  // TEMPORARY FOR DEBUGGING
     private int score = 0;
     private long time = 0;
     private long goldTime = 0;
@@ -236,13 +234,13 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                     return;
                 }
                 if (direction == RIGHT) {
-                    xBreak+=0.5;
+                    xBreak += 0.5;
                 } else {
-                    xBreak-=0.5;
+                    xBreak -= 0.5;
                 }
                 centerBreakX = xBreak + halfBreakWidth;
                 try {
-                    Thread.sleep(1000/fps);
+                    Thread.sleep(1000 / fps);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
@@ -325,7 +323,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         }
 
         if (yBall >= yBreak - ballRadius) {
-            System.out.println("Collide1");         // prints when ball reaches the break area
+//            System.out.println("Collide1");         // prints when ball reaches the break area
             if (xBall >= xBreak && xBall <= xBreak + breakWidth) {
                 resetCollideFlags();
                 collideToBreak = true;
@@ -345,7 +343,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                 }
 
                 collideToBreakAndMoveToRight = xBall - centerBreakX > 0;
-                System.out.println("Collide2");    // prints when ball collides with the break
+//                System.out.println("Collide2");    // prints when ball collides with the break
             }
         }
 
@@ -596,9 +594,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
         if (yBall >= Block.getPaddingTop() && yBall <= (Block.getHeight() * (level + 1)) + Block.getPaddingTop()) {
             synchronized (blocks) {
-                Iterator<Block> blockIterator = blocks.iterator();
-                while (blockIterator.hasNext()) {
-                    Block block = blockIterator.next();
+                for (Block block : blocks) {
                     int hitCode = block.checkHitToBlock(xBall, yBall);
                     if (hitCode != Block.NO_HIT) {
                         score += 1;
@@ -608,7 +604,8 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                         block.rect.setVisible(false);
                         block.isDestroyed = true;
                         destroyedBlockCount++;
-                        //System.out.println("size is " + blocks.size());
+                        System.out.println("destroyedBlockCount is " + destroyedBlockCount);
+                        System.out.println("size is " + blocks.size());
                         resetCollideFlags();
 
                         if (block.type == Block.BLOCK_CHOCO) {
@@ -639,13 +636,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                         } else if (hitCode == Block.HIT_TOP) {
                             collideToTopBlock = true;
                         }
-
-                        blockIterator.remove();
                     }
-
-
-                    //to do hit to break and some work here....
-                    //System.out.println("Break in row:" + block.row + " and column:" + block.column + " hit");
                 }
             }
         }
