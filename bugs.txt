@@ -1,3 +1,5 @@
 BUGS FOUND:
 - Red box sometimes goes beyond the screen border (right side)
 - Ball sometimes freezes on screen but game engine still reports collisions
+- Game crashes when ball hits 2+ blocks at once SOMETIMES
+- Ball sometimes goes through block and bounces on the 2nd one (but hit still detected)

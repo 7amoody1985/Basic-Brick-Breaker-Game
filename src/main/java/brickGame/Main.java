@@ -181,7 +181,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
     private void initBoard() {
         for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < level; j++) {
+            for (int j = 0; j < level+1; j++) {             // Changing initial number of block rows for debugging purposes
                 int r = new Random().nextInt(500);
                 int type;
                 if (r % 10 == 1) {
@@ -289,15 +289,15 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
         double vY = 1.000;
         if (goDownBall) {
-            yBall += vY;
+            yBall += vY *3;         // Changed speed for debugging purpose
         } else {
-            yBall -= vY;
+            yBall -= vY *3;         // Changed speed for debugging purpose
         }
 
         if (goRightBall) {
-            xBall += vX;
+            xBall += vX*3;         // Changed speed for debugging purpose
         } else {
-            xBall -= vX;
+            xBall -= vX*3;         // Changed speed for debugging purpose
         }
 
         if (yBall <= 0) {
@@ -595,7 +595,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         if (yBall >= Block.getPaddingTop() && yBall <= (Block.getHeight() * (level + 1)) + Block.getPaddingTop()) {
             synchronized (blocks) {
                 for (Block block : blocks) {
-                    int hitCode = block.checkHitToBlock(xBall, yBall);
+                    int hitCode = block.checkHitToBlock(xBall, yBall, ballRadius);
                     if (hitCode != Block.NO_HIT) {
                         score += 1;
 

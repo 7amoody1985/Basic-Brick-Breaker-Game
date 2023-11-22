@@ -1,6 +1,7 @@
 package brickGame;
 
 
+import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
@@ -42,9 +43,13 @@ public class Block implements Serializable {
         draw();
     }
 
-    public static int getPaddingTop() {  return block.paddingTop;  }
+    public static int getPaddingTop() {
+        return block.paddingTop;
+    }
 
-    public static int getPaddingH() {  return block.paddingH;  }
+    public static int getPaddingH() {
+        return block.paddingH;
+    }
 
     public static int getHeight() {
         return block.height;
@@ -82,29 +87,27 @@ public class Block implements Serializable {
 
     }
 
-    public int checkHitToBlock(double xBall, double yBall) {
-
+    public int checkHitToBlock(double xBall, double yBall, double ballRadius) {
         if (isDestroyed) {
             return NO_HIT;
         }
 
-        if (xBall >= x && xBall <= x + width && yBall == y + height) {
-            return HIT_BOTTOM;
-        }
+        Rectangle2D blockBounds = new Rectangle2D(x, y, width, height);
+        Rectangle2D ballBounds = new Rectangle2D(xBall - ballRadius, yBall - ballRadius, 2 * ballRadius, 2 * ballRadius);
 
-        if (xBall >= x && xBall <= x + width && yBall == y) {
-            return HIT_TOP;
-        }
-
-        if (yBall >= y && yBall <= y + height && xBall == x + width) {
-            return HIT_RIGHT;
-        }
-
-        if (yBall >= y && yBall <= y + height && xBall == x) {
-            return HIT_LEFT;
+        if (blockBounds.intersects(ballBounds)) {
+            // Check for specific direction of collision
+            if (xBall + ballRadius >= x + width && xBall - ballRadius <= x + width) {
+                return HIT_RIGHT;
+            } else if (xBall - ballRadius <= x && xBall + ballRadius >= x) {
+                return HIT_LEFT;
+            } else if (yBall + ballRadius >= y + height && yBall - ballRadius <= y + height) {
+                return HIT_BOTTOM;
+            } else if (yBall - ballRadius <= y && yBall + ballRadius >= y) {
+                return HIT_TOP;
+            }
         }
 
         return NO_HIT;
     }
-
 }

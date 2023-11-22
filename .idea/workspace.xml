@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- Fixed if ball doesn't hit paddle first, bricks have no hit box&#10;- Reverted back ball different speed everytime ball hits break for debugging purposes&#10;- Changed paddle/break behaviour and made movement smoother&#10;- Changed exception handling&#10;- Changed block spawning behaviour, now level 1 starts with 1 row of blocks instead of 2&#10;- Fixed rows not getting filled with blocks&#10;- Add some thread synchronization&#10;- Improved GameEngine reliability">
+    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- Fixed issues moving to next level at incorrect times">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bugs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bugs.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Block.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -91,7 +93,8 @@
       <workItem from="1700405637292" duration="5746000" />
       <workItem from="1700568779781" duration="69000" />
       <workItem from="1700568859348" duration="232000" />
-      <workItem from="1700569100215" duration="17621000" />
+      <workItem from="1700569100215" duration="18131000" />
+      <workItem from="1700653961025" duration="4772000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -149,7 +152,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700586926240</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="- Fixed issues moving to next level at incorrect times">
+      <option name="closed" value="true" />
+      <created>1700590309085</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1700590309085</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,7 +186,8 @@
     <MESSAGE value="- Fixed bug where game crashes if ball hits 2 bricks at once&#10;- Fixed ball different speed everytime ball hits break&#10;- Added text file to keep track of bugs" />
     <MESSAGE value="- Noted more bugs" />
     <MESSAGE value="- Fixed if ball doesn't hit paddle first, bricks have no hit box&#10;- Reverted back ball different speed everytime ball hits break for debugging purposes&#10;- Changed paddle/break behaviour and made movement smoother&#10;- Changed exception handling&#10;- Changed block spawning behaviour, now level 1 starts with 1 row of blocks instead of 2&#10;- Fixed rows not getting filled with blocks&#10;- Add some thread synchronization&#10;- Improved GameEngine reliability" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Fixed if ball doesn't hit paddle first, bricks have no hit box&#10;- Reverted back ball different speed everytime ball hits break for debugging purposes&#10;- Changed paddle/break behaviour and made movement smoother&#10;- Changed exception handling&#10;- Changed block spawning behaviour, now level 1 starts with 1 row of blocks instead of 2&#10;- Fixed rows not getting filled with blocks&#10;- Add some thread synchronization&#10;- Improved GameEngine reliability" />
+    <MESSAGE value="- Fixed issues moving to next level at incorrect times" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Fixed issues moving to next level at incorrect times" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
