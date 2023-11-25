@@ -21,10 +21,13 @@ public class Score {
 
         new Thread(() -> {
             for (int i = 0; i < 21; i++) {
+                final int scale = i;
                 try {
-                    label.setScaleX(i);
-                    label.setScaleY(i);
-                    label.setOpacity((20 - i) / 20.0);
+                    Platform.runLater(() -> {
+                        label.setScaleX(scale);
+                        label.setScaleY(scale);
+                        label.setOpacity((20 - scale) / 20.0);
+                    });
                     Thread.sleep(15);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);

@@ -181,7 +181,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
     private void initBoard() {
         for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < level+1; j++) {             // Changing initial number of block rows for debugging purposes
+            for (int j = 0; j < level + 1; j++) {             // Changing initial number of block rows for debugging purposes
                 int r = new Random().nextInt(500);
                 int type;
                 if (r % 10 == 1) {
@@ -289,15 +289,15 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
         double vY = 1.000;
         if (goDownBall) {
-            yBall += vY *3;         // Changed speed for debugging purpose
+            yBall += vY * 3;         // Changed speed for debugging purpose
         } else {
-            yBall -= vY *3;         // Changed speed for debugging purpose
+            yBall -= vY * 3;         // Changed speed for debugging purpose
         }
 
         if (goRightBall) {
-            xBall += vX*3;         // Changed speed for debugging purpose
+            xBall += vX * 3;         // Changed speed for debugging purpose
         } else {
-            xBall -= vX*3;         // Changed speed for debugging purpose
+            xBall -= vX * 3;         // Changed speed for debugging purpose
         }
 
         if (yBall <= 0) {
@@ -599,9 +599,11 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                     if (hitCode != Block.NO_HIT) {
                         score += 1;
 
-                        new Score().show(block.x, block.y, 1, this);
+                        Platform.runLater(() -> {
+                            new Score().show(block.x, block.y, 1, this);
+                            block.rect.setVisible(false);
+                        });
 
-                        block.rect.setVisible(false);
                         block.isDestroyed = true;
                         destroyedBlockCount++;
                         System.out.println("destroyedBlockCount is " + destroyedBlockCount);
@@ -619,7 +621,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                             goldTime = time;
                             ball.setFill(new ImagePattern(new Image("goldball.png")));
                             System.out.println("gold ball");
-                            root.getStyleClass().add("goldRoot");
+                            Platform.runLater(() -> root.getStyleClass().add("goldRoot"));
                             isGoldStatus = true;
                         }
 
