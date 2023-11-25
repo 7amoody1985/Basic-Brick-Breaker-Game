@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- Fixed crash when 2+ blocks get destroyed at once&#10;- Fixed glitches with &quot;+1&quot; score graphics (sometimes gets stuck on screen)">
+    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- Optimized scene thread further for better reliability">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/LoadSave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/LoadSave.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Score.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Score.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +96,7 @@
       <workItem from="1700653961025" duration="5417000" />
       <workItem from="1700909978129" duration="58000" />
       <workItem from="1700910046662" duration="113000" />
-      <workItem from="1700910170128" duration="5596000" />
+      <workItem from="1700910170128" duration="17844000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -178,7 +178,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700918651657</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="- Optimized scene thread further for better reliability">
+      <option name="closed" value="true" />
+      <created>1700919635598</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1700919635598</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -207,7 +215,8 @@
     <MESSAGE value="- Fixed issues moving to next level at incorrect times" />
     <MESSAGE value="- Fixed block hit detection where sometimes it doesn't register, especially when ball speed is high" />
     <MESSAGE value="- Fixed crash when 2+ blocks get destroyed at once&#10;- Fixed glitches with &quot;+1&quot; score graphics (sometimes gets stuck on screen)" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Fixed crash when 2+ blocks get destroyed at once&#10;- Fixed glitches with &quot;+1&quot; score graphics (sometimes gets stuck on screen)" />
+    <MESSAGE value="- Optimized scene thread further for better reliability" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Optimized scene thread further for better reliability" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

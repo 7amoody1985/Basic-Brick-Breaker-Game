@@ -9,9 +9,9 @@ public class LoadSave {
     public boolean isExistHeartBlock;
     public boolean isGoldStatus;
     public boolean goDownBall;
+    public boolean goUpBall;
+    public boolean goLeftBall;
     public boolean goRightBall;
-    public boolean collideToBreak;
-    public boolean collideToBreakAndMoveToRight;
     public boolean collideToRightWall;
     public boolean collideToLeftWall;
     public boolean collideToRightBlock;
@@ -60,8 +60,6 @@ public class LoadSave {
             isGoldStatus = inputStream.readBoolean();
             goDownBall = inputStream.readBoolean();
             goRightBall = inputStream.readBoolean();
-            collideToBreak = inputStream.readBoolean();
-            collideToBreakAndMoveToRight = inputStream.readBoolean();
             collideToRightWall = inputStream.readBoolean();
             collideToLeftWall = inputStream.readBoolean();
             collideToRightBlock = inputStream.readBoolean();
@@ -73,11 +71,11 @@ public class LoadSave {
             try {
                 blocks = (ArrayList<BlockSerializable>) inputStream.readObject();
             } catch (ClassNotFoundException e) {
-                e.printStackTrace();
+                throw new RuntimeException(e);
             }
 
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
 
     }
