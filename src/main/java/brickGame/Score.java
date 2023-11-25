@@ -45,10 +45,13 @@ public class Score {
 
         new Thread(() -> {
             for (int i = 0; i < 21; i++) {
+                final int scale = i;
                 try {
-                    label.setScaleX(Math.abs(i - 10));
-                    label.setScaleY(Math.abs(i - 10));
-                    label.setOpacity((20 - i) / 20.0);
+                    Platform.runLater(() -> {
+                        label.setScaleX(Math.abs(scale - 10));
+                        label.setScaleY(Math.abs(scale - 10));
+                        label.setOpacity((20 - scale) / 20.0);
+                    });
                     Thread.sleep(15);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);

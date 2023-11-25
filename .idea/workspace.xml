@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- Fixed block hit detection where sometimes it doesn't register, especially when ball speed is high">
+    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- Fixed crash when 2+ blocks get destroyed at once&#10;- Fixed glitches with &quot;+1&quot; score graphics (sometimes gets stuck on screen)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Score.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Score.java" afterDir="false" />
@@ -96,7 +96,7 @@
       <workItem from="1700653961025" duration="5417000" />
       <workItem from="1700909978129" duration="58000" />
       <workItem from="1700910046662" duration="113000" />
-      <workItem from="1700910170128" duration="4587000" />
+      <workItem from="1700910170128" duration="5596000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -170,7 +170,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700665985574</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="- Fixed crash when 2+ blocks get destroyed at once&#10;- Fixed glitches with &quot;+1&quot; score graphics (sometimes gets stuck on screen)">
+      <option name="closed" value="true" />
+      <created>1700918651657</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1700918651657</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -198,7 +206,8 @@
     <MESSAGE value="- Fixed if ball doesn't hit paddle first, bricks have no hit box&#10;- Reverted back ball different speed everytime ball hits break for debugging purposes&#10;- Changed paddle/break behaviour and made movement smoother&#10;- Changed exception handling&#10;- Changed block spawning behaviour, now level 1 starts with 1 row of blocks instead of 2&#10;- Fixed rows not getting filled with blocks&#10;- Add some thread synchronization&#10;- Improved GameEngine reliability" />
     <MESSAGE value="- Fixed issues moving to next level at incorrect times" />
     <MESSAGE value="- Fixed block hit detection where sometimes it doesn't register, especially when ball speed is high" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Fixed block hit detection where sometimes it doesn't register, especially when ball speed is high" />
+    <MESSAGE value="- Fixed crash when 2+ blocks get destroyed at once&#10;- Fixed glitches with &quot;+1&quot; score graphics (sometimes gets stuck on screen)" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Fixed crash when 2+ blocks get destroyed at once&#10;- Fixed glitches with &quot;+1&quot; score graphics (sometimes gets stuck on screen)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

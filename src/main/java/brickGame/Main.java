@@ -549,28 +549,29 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     }
 
     public void restartGame() {
+        Platform.runLater(() -> {
+            try {
+                level = 0;
+                heart = 3;
+                score = 0;
+                vX = 1.000;
+                destroyedBlockCount = 0;
+                resetCollideFlags();
+                goDownBall = true;
 
-        try {
-            level = 0;
-            heart = 3;
-            score = 0;
-            vX = 1.000;
-            destroyedBlockCount = 0;
-            resetCollideFlags();
-            goDownBall = true;
+                isGoldStatus = false;
+                isExistHeartBlock = false;
+                time = 0;
+                goldTime = 0;
 
-            isGoldStatus = false;
-            isExistHeartBlock = false;
-            time = 0;
-            goldTime = 0;
+                blocks.clear();
+                chocos.clear();
 
-            blocks.clear();
-            chocos.clear();
-
-            start(primaryStage);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+                start(primaryStage);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
 
