@@ -85,7 +85,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     private boolean collideToBottomBlock = false;
     private boolean collideToLeftBlock = false;
     private boolean collideToTopBlock = false;
-    private double speed = 1.000;
+    private double speed = 1.500;
     private double vX = speed;
     private double vY = speed;
 
@@ -183,7 +183,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
     private void initBoard() {
         for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < level + 1; j++) {             // Changing initial number of block rows for debugging purposes
+            for (int j = 0; j < level; j++) {
                 int r = new Random().nextInt(500);
                 int type;
                 if (r % 10 == 1) {
@@ -229,10 +229,10 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         new Thread(() -> {
             int fps = engine.getFps();
             for (int i = 0; i < 30; i++) {
-                if (xBreak == (sceneWidth - breakWidth) && direction == RIGHT) {
+                if (xBreak >= (sceneWidth - breakWidth) && direction == RIGHT) {
                     return;
                 }
-                if (xBreak == 0 && direction == LEFT) {
+                if (xBreak <= 0 && direction == LEFT) {
                     return;
                 }
                 if (direction == RIGHT) {
@@ -309,14 +309,14 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
             vY = desired_speed * Math.sin(angle);
         }
 
-        if (yBall <= 0) {
+        if (yBall <= ballRadius) {
             //vX = 1.000;
             resetCollideFlags();
             goUpBall = false;
             goDownBall = true;
             return;
         }
-        if (yBall >= sceneHeight) {
+        if (yBall >= sceneHeight - ballRadius) {
             goDownBall = false;
             goUpBall = true;
             if (!isGoldStatus) {
@@ -359,13 +359,13 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
             }
         }
 
-        if (xBall >= sceneWidth) {
+        if (xBall >= sceneWidth - ballRadius) {
             resetCollideFlags();
             //vX = 1.000;
             collideToRightWall = true;
         }
 
-        if (xBall <= 0) {
+        if (xBall <= ballRadius) {
             resetCollideFlags();
             //vX = 1.000;
             collideToLeftWall = true;
@@ -526,10 +526,6 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     private void nextLevel() {
         Platform.runLater(() -> {
             try {
-                speed = speed + (level / 3.5);
-                vX = speed;
-                vY = speed;
-
                 engine.stop();
                 resetCollideFlags();
                 goUpBall = false;
@@ -546,6 +542,9 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                 blocks.clear();
                 chocos.clear();
                 destroyedBlockCount = 0;
+                speed = speed + (level / 3.5);
+                vX = speed;
+                vY = speed;
                 start(primaryStage);
 
             } catch (Exception e) {
@@ -560,6 +559,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                 level = 0;
                 heart = 3;
                 score = 0;
+                speed = 1.500;
                 vX = speed;
                 vY = speed;
                 destroyedBlockCount = 0;
@@ -601,7 +601,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         });
 
 
-        if (yBall >= Block.getPaddingTop() && yBall <= (Block.getHeight() * (level + 1)) + Block.getPaddingTop()) {
+        if (yBall >= Block.getPaddingTop() - ballRadius && yBall <= (Block.getHeight() * (level + 1)) + Block.getPaddingTop() - ballRadius) {
             synchronized (blocks) {
                 for (Block block : blocks) {
                     int hitCode = block.checkHitToBlock(xBall, yBall, ballRadius);
@@ -615,8 +615,8 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
                         block.isDestroyed = true;
                         destroyedBlockCount++;
-                        System.out.println("destroyedBlockCount is " + destroyedBlockCount);
-                        System.out.println("size is " + blocks.size());
+//                        System.out.println("destroyedBlockCount is " + destroyedBlockCount);
+//                        System.out.println("size is " + blocks.size());
                         resetCollideFlags();
 
                         if (block.type == Block.BLOCK_CHOCO) {

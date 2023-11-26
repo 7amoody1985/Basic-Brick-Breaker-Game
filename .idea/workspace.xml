@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- Optimized scene thread further for better reliability">
+    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- Fixed heart counter position&#10;- Changed window title&#10;- Made ball always spawn in the middle of the screen instead of randomly&#10;- Reworked ball physics, now ball always has the same speed no matter than angle after hitting breaker&#10;- Added speed variable to easily adjust starting ball speed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/LoadSave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/LoadSave.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bugs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bugs.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -96,7 +96,8 @@
       <workItem from="1700653961025" duration="5417000" />
       <workItem from="1700909978129" duration="58000" />
       <workItem from="1700910046662" duration="113000" />
-      <workItem from="1700910170128" duration="17844000" />
+      <workItem from="1700910170128" duration="18174000" />
+      <workItem from="1700971595186" duration="5785000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -186,7 +187,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700919635598</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="- Fixed heart counter position&#10;- Changed window title&#10;- Made ball always spawn in the middle of the screen instead of randomly&#10;- Reworked ball physics, now ball always has the same speed no matter than angle after hitting breaker&#10;- Added speed variable to easily adjust starting ball speed">
+      <option name="closed" value="true" />
+      <created>1700933306568</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1700933306568</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -216,7 +225,8 @@
     <MESSAGE value="- Fixed block hit detection where sometimes it doesn't register, especially when ball speed is high" />
     <MESSAGE value="- Fixed crash when 2+ blocks get destroyed at once&#10;- Fixed glitches with &quot;+1&quot; score graphics (sometimes gets stuck on screen)" />
     <MESSAGE value="- Optimized scene thread further for better reliability" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Optimized scene thread further for better reliability" />
+    <MESSAGE value="- Fixed heart counter position&#10;- Changed window title&#10;- Made ball always spawn in the middle of the screen instead of randomly&#10;- Reworked ball physics, now ball always has the same speed no matter than angle after hitting breaker&#10;- Added speed variable to easily adjust starting ball speed" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Fixed heart counter position&#10;- Changed window title&#10;- Made ball always spawn in the middle of the screen instead of randomly&#10;- Reworked ball physics, now ball always has the same speed no matter than angle after hitting breaker&#10;- Added speed variable to easily adjust starting ball speed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
