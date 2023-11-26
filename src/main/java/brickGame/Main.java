@@ -308,6 +308,10 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
             vX = desired_speed * Math.cos(angle);
             vY = desired_speed * Math.sin(angle);
         }
+        else {
+            vX = speed;
+            vY = speed;
+        }
 
         if (yBall <= ballRadius) {
             //vX = 1.000;
@@ -542,7 +546,8 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                 blocks.clear();
                 chocos.clear();
                 destroyedBlockCount = 0;
-                speed = speed + (level / 3.5);
+                speed += 0.400;
+                System.out.println("speed is " + speed);
                 vX = speed;
                 vY = speed;
                 start(primaryStage);
