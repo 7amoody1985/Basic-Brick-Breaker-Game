@@ -23,15 +23,12 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Main extends Application implements EventHandler<KeyEvent>, GameEngine.OnAction {
-
-
     private static final int LEFT = 1;
     private static final int RIGHT = 2;
     public static String savePath = "D:/save/save.mdds";
     private final int breakWidth = 130;
     private final int breakHeight = 30;
     private final int halfBreakWidth = breakWidth / 2;
-
     private final int sceneWidth = 500;
     private final int sceneHeight = 700;
     private final int ballRadius = 10;
@@ -264,6 +261,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         rect = new Rectangle();
         rect.setWidth(breakWidth);
         rect.setHeight(breakHeight);
+        xBreak = (double) sceneWidth / 2 - halfBreakWidth;
         rect.setX(xBreak);
         rect.setY(yBreak);
 
@@ -338,8 +336,8 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         }
 
         if (yBall >= yBreak - ballRadius) {
-            double leftZone = xBreak + breakWidth * 0.33;
-            double rightZone = xBreak + breakWidth * 0.66;
+            double leftZone = (xBreak + breakWidth * 0.33) - ballRadius;
+            double rightZone = (xBreak + breakWidth * 0.66) - ballRadius;
 
             if (xBall >= xBreak && xBall <= leftZone) {
                 resetCollideFlags();
@@ -537,7 +535,6 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
                 isGoldStatus = false;
                 isExistHeartBlock = false;
-
 
                 time = 0;
                 goldTime = 0;

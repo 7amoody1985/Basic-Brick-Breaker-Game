@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- Fixed breaker sometimes goes beyond scene border&#10;- Changed starting ball speed&#10;- Improved ball hit detection&#10;- Fixed Ball sometimes goes through block&#10;- Some changed in attempt to fix game freeze">
+    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- Fixed inconsistent breaker bounce speed fix&#10;- Changed ball speed level increment">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Main.java" afterDir="false" />
     </list>
@@ -97,7 +97,11 @@
       <workItem from="1700910046662" duration="113000" />
       <workItem from="1700910170128" duration="18174000" />
       <workItem from="1700971595186" duration="5833000" />
-      <workItem from="1700992461219" duration="2147000" />
+      <workItem from="1700992461219" duration="2164000" />
+      <workItem from="1701073277620" duration="339000" />
+      <workItem from="1701090448540" duration="70000" />
+      <workItem from="1701098774989" duration="446000" />
+      <workItem from="1701157109258" duration="4621000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -203,7 +207,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700977763172</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="- Fixed inconsistent breaker bounce speed fix&#10;- Changed ball speed level increment">
+      <option name="closed" value="true" />
+      <created>1700994793771</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1700994793771</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -235,7 +247,8 @@
     <MESSAGE value="- Optimized scene thread further for better reliability" />
     <MESSAGE value="- Fixed heart counter position&#10;- Changed window title&#10;- Made ball always spawn in the middle of the screen instead of randomly&#10;- Reworked ball physics, now ball always has the same speed no matter than angle after hitting breaker&#10;- Added speed variable to easily adjust starting ball speed" />
     <MESSAGE value="- Fixed breaker sometimes goes beyond scene border&#10;- Changed starting ball speed&#10;- Improved ball hit detection&#10;- Fixed Ball sometimes goes through block&#10;- Some changed in attempt to fix game freeze" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Fixed breaker sometimes goes beyond scene border&#10;- Changed starting ball speed&#10;- Improved ball hit detection&#10;- Fixed Ball sometimes goes through block&#10;- Some changed in attempt to fix game freeze" />
+    <MESSAGE value="- Fixed inconsistent breaker bounce speed fix&#10;- Changed ball speed level increment" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Fixed inconsistent breaker bounce speed fix&#10;- Changed ball speed level increment" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
