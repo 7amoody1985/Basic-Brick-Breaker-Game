@@ -532,6 +532,8 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                 resetCollideFlags();
                 goUpBall = false;
                 goDownBall = true;
+                goLeftBall = false;
+                goRightBall = false;
 
                 isGoldStatus = false;
                 isExistHeartBlock = false;
