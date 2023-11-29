@@ -23,8 +23,9 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Main extends Application implements EventHandler<KeyEvent>, GameEngine.OnAction {
-    private static final int LEFT = 1;
-    private static final int RIGHT = 2;
+    public enum Move {
+        LEFT, RIGHT
+    }
     public static String savePath = "D:/save/save.mdds";
     private final int BREAK_WIDTH = 130;
     private final int BREAK_HEIGHT = 30;
@@ -32,6 +33,8 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     private static final int SCENE_WIDTH = 500;
     private static final int SCENE_HEIGHT = 700;
     private static final int BALL_RADIUS = 10;
+    private static final int MOVE_STEPS = 30;
+    private static final double MOVE_DISTANCE = 0.5;
     private final ArrayList<Block> blocks = new ArrayList<>();
     private final ArrayList<Bonus> chocos = new ArrayList<>();
     private final Color[] colors = new Color[]{
@@ -182,18 +185,18 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                 int r = new Random().nextInt(500);
                 int type;
                 if (r % 10 == 1) {
-                    type = Block.BLOCK_CHOCO;
+                    type = Block.Type.CHOCO.ordinal();
                 } else if (r % 10 == 2) {
                     if (!isExistHeartBlock) {
-                        type = Block.BLOCK_HEART;
+                        type = Block.Type.HEART.ordinal();
                         isExistHeartBlock = true;
                     } else {
-                        type = Block.BLOCK_NORMAL;
+                        type = Block.Type.NORMAL.ordinal();
                     }
                 } else if (r % 10 == 3) {
-                    type = Block.BLOCK_STAR;
+                    type = Block.Type.STAR.ordinal();
                 } else {
-                    type = Block.BLOCK_NORMAL;
+                    type = Block.Type.NORMAL.ordinal();
                 }
                 blocks.add(new Block(j, i, colors[r % (colors.length)], type));
             }
@@ -204,10 +207,10 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     public void handle(KeyEvent event) {
         switch (event.getCode()) {
             case LEFT:
-                move(LEFT);
+                move(Move.LEFT);
                 break;
             case RIGHT:
-                move(RIGHT);
+                move(Move.RIGHT);
                 break;
             case S:
                 saveGame();
@@ -215,20 +218,20 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         }
     }
 
-    private void move(final int direction) {
+    private void move(Move move) {
         new Thread(() -> {
             int fps = engine.getFps();
-            for (int i = 0; i < 30; i++) {
-                if (xBreak >= (SCENE_WIDTH - BREAK_WIDTH) && direction == RIGHT) {
+            for (int i = 0; i < MOVE_STEPS; i++) {
+                if (xBreak >= (SCENE_WIDTH - BREAK_WIDTH) && move == Move.RIGHT) {
                     return;
                 }
-                if (xBreak <= 0 && direction == LEFT) {
+                if (xBreak <= 0 && move == Move.LEFT) {
                     return;
                 }
-                if (direction == RIGHT) {
-                    xBreak += 0.5;
+                if (move == Move.RIGHT) {
+                    xBreak += MOVE_DISTANCE;
                 } else {
-                    xBreak -= 0.5;
+                    xBreak -= MOVE_DISTANCE;
                 }
                 centerBreakX = xBreak + HALF_BREAK_WIDTH;
                 try {
@@ -238,8 +241,6 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                 }
             }
         }).start();
-
-
     }
 
     private void initBall() {
@@ -586,20 +587,20 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                         destroyedBlockCount++;
                         resetCollideFlags();
 
-                        if (block.type == Block.BLOCK_CHOCO) {
+                        if (block.type == Block.Type.CHOCO.ordinal()) {
                             final Bonus choco = new Bonus(block.row, block.column);
                             choco.timeCreated = time;
                             Platform.runLater(() -> root.getChildren().add(choco.choco));
                             chocos.add(choco);
                         }
-                        if (block.type == Block.BLOCK_STAR) {
+                        if (block.type == Block.Type.STAR.ordinal()) {
                             goldTime = time;
                             ball.setFill(new ImagePattern(new Image("goldball.png")));
                             System.out.println("gold ball");
                             Platform.runLater(() -> root.getStyleClass().add("goldRoot"));
                             isGoldStatus = true;
                         }
-                        if (block.type == Block.BLOCK_HEART) {
+                        if (block.type == Block.Type.HEART.ordinal()) {
                             heart++;
                         }
 

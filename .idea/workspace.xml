@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- Adjusted angle when ball hits either side of breaker&#10;- Code clean up">
+    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- Refactoring">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Block.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Main.java" afterDir="false" />
@@ -112,7 +112,7 @@
       <workItem from="1701157109258" duration="5332000" />
       <workItem from="1701192691810" duration="1645000" />
       <workItem from="1701237396084" duration="5000" />
-      <workItem from="1701245326301" duration="8668000" />
+      <workItem from="1701245326301" duration="12185000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -250,7 +250,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701261959586</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="- Refactoring">
+      <option name="closed" value="true" />
+      <created>1701265786158</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1701265786158</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -286,7 +294,8 @@
     <MESSAGE value="- Break now is initialized in the middle of the screen&#10;- Fixed breaker and ball collision edge detection" />
     <MESSAGE value="- Ball now spawns in the middle of the screen going straight down even after each level" />
     <MESSAGE value="- Adjusted angle when ball hits either side of breaker&#10;- Code clean up" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Adjusted angle when ball hits either side of breaker&#10;- Code clean up" />
+    <MESSAGE value="- Refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Refactoring" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

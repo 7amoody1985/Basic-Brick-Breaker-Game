@@ -16,10 +16,9 @@ public class Block implements Serializable {
     public static int HIT_BOTTOM = 1;
     public static int HIT_LEFT = 2;
     public static int HIT_TOP = 3;
-    public static int BLOCK_NORMAL = 99;
-    public static int BLOCK_CHOCO = 100;
-    public static int BLOCK_STAR = 101;
-    public static int BLOCK_HEART = 102;
+    public enum Type {
+        NORMAL, CHOCO, STAR, HEART
+    }
     private final Color color;
     private final int WIDTH = 100;
     private final int HEIGHT = 30;
@@ -69,15 +68,15 @@ public class Block implements Serializable {
         rect.setX(x);
         rect.setY(y);
 
-        if (type == BLOCK_CHOCO) {
+        if (type == Type.CHOCO.ordinal()) {
             Image image = new Image("choco.jpg");
             ImagePattern pattern = new ImagePattern(image);
             rect.setFill(pattern);
-        } else if (type == BLOCK_HEART) {
+        } else if (type == Type.HEART.ordinal()) {
             Image image = new Image("heart.jpg");
             ImagePattern pattern = new ImagePattern(image);
             rect.setFill(pattern);
-        } else if (type == BLOCK_STAR) {
+        } else if (type == Type.STAR.ordinal()) {
             Image image = new Image("star.jpg");
             ImagePattern pattern = new ImagePattern(image);
             rect.setFill(pattern);
