@@ -21,10 +21,10 @@ public class Block implements Serializable {
     public static int BLOCK_STAR = 101;
     public static int BLOCK_HEART = 102;
     private final Color color;
-    private final int width = 100;
-    private final int height = 30;
-    private final int paddingTop = height * 2;
-    private final int paddingH = 50;
+    private final int WIDTH = 100;
+    private final int HEIGHT = 30;
+    private final int PADDING_TOP = HEIGHT * 2;
+    private final int PADDING_HORIZONTAL = 50;
     public int row;
     public int column;
     public boolean isDestroyed = false;
@@ -44,28 +44,28 @@ public class Block implements Serializable {
     }
 
     public static int getPaddingTop() {
-        return block.paddingTop;
+        return block.PADDING_TOP;
     }
 
     public static int getPaddingH() {
-        return block.paddingH;
+        return block.PADDING_HORIZONTAL;
     }
 
     public static int getHeight() {
-        return block.height;
+        return block.HEIGHT;
     }
 
     public static int getWidth() {
-        return block.width;
+        return block.WIDTH;
     }
 
     private void draw() {
-        x = (column * width) + paddingH;
-        y = (row * height) + paddingTop;
+        x = (column * WIDTH) + PADDING_HORIZONTAL;
+        y = (row * HEIGHT) + PADDING_TOP;
 
         rect = new Rectangle();
-        rect.setWidth(width);
-        rect.setHeight(height);
+        rect.setWidth(WIDTH);
+        rect.setHeight(HEIGHT);
         rect.setX(x);
         rect.setY(y);
 
@@ -92,16 +92,16 @@ public class Block implements Serializable {
             return NO_HIT;
         }
 
-        Rectangle2D blockBounds = new Rectangle2D(x, y, width, height);
+        Rectangle2D blockBounds = new Rectangle2D(x, y, WIDTH, HEIGHT);
         Rectangle2D ballBounds = new Rectangle2D(xBall - ballRadius, yBall - ballRadius, 2 * ballRadius, 2 * ballRadius);
 
         if (blockBounds.intersects(ballBounds)) {
             // Check for specific direction of collision
-            if (xBall + ballRadius >= x + width && xBall - ballRadius <= x + width) {
+            if (xBall + ballRadius >= x + WIDTH && xBall - ballRadius <= x + WIDTH) {
                 return HIT_RIGHT;
             } else if (xBall - ballRadius <= x && xBall + ballRadius >= x) {
                 return HIT_LEFT;
-            } else if (yBall + ballRadius >= y + height && yBall - ballRadius <= y + height) {
+            } else if (yBall + ballRadius >= y + HEIGHT && yBall - ballRadius <= y + HEIGHT) {
                 return HIT_BOTTOM;
             } else if (yBall - ballRadius <= y && yBall + ballRadius >= y) {
                 return HIT_TOP;
