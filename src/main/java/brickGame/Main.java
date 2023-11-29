@@ -174,8 +174,6 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
             engine.start();
             loadFromSave = false;
         }
-
-
     }
 
     private void initBoard() {
@@ -198,7 +196,6 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                     type = Block.BLOCK_NORMAL;
                 }
                 blocks.add(new Block(j, i, colors[r % (colors.length)], type));
-                //System.out.println("colors " + r % (colors.length));
             }
         }
     }
@@ -210,11 +207,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                 move(LEFT);
                 break;
             case RIGHT:
-
                 move(RIGHT);
-                break;
-            case DOWN:
-//                setPhysicsToBall();               ????????????????????????
                 break;
             case S:
                 saveGame();
@@ -282,7 +275,6 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     }
 
     private void setPhysicsToBall() {
-        //v = ((time - hitTime) / 1000.000) + 1.000;
 
         if (goDownBall) {
             yBall += vY;
@@ -299,14 +291,12 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         }
 
         if (goRightBall || goLeftBall) {
-            double desired_speed = speed; // Set this to the desired speed
+            double desired_speed = speed;
 
-            // Adjust the angle of the ball
-            double angle = Math.toRadians(30); // Set this to the desired angle
+            double angle = Math.toRadians(60);
             vX = desired_speed * Math.cos(angle);
             vY = desired_speed * Math.sin(angle);
-        }
-        else {
+        } else {
             vX = speed;
             vY = speed;
         }
@@ -330,9 +320,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                     new Score().showGameOver(this);
                     engine.stop();
                 }
-
             }
-            //return;
         }
 
         if (yBall >= yBreak - ballRadius) {
@@ -369,49 +357,37 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
         if (xBall <= ballRadius) {
             resetCollideFlags();
-            //vX = 1.000;
             collideToLeftWall = true;
         }
-
-        //Wall Collide
 
         if (collideToRightWall || collideToLeftBlock) {
             goRightBall = false;
             goLeftBall = true;
         }
-
         if (collideToLeftWall || collideToRightBlock) {
             goLeftBall = false;
             goRightBall = true;
         }
-
-        //Block Collide
-
         if (collideToTopBlock) {
             goDownBall = false;
             goUpBall = true;
         }
-
         if (collideToBottomBlock) {
             goUpBall = false;
             goDownBall = true;
         }
-
     }
-
 
     private void checkDestroyedCount() {
         if (destroyedBlockCount == blocks.size()) {
             //TODO win level todo...
             System.out.println("You Win");
-
             nextLevel();
         }
     }
 
     private void saveGame() {
         new Thread(() -> {
-//            new File(savePathDir);        TODO: delete this line (redundant)
             File file = new File(savePath);
             ObjectOutputStream outputStream = null;
             try {
@@ -422,7 +398,6 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                 outputStream.writeInt(heart);
                 outputStream.writeInt(destroyedBlockCount);
 
-
                 outputStream.writeDouble(xBall);
                 outputStream.writeDouble(yBall);
                 outputStream.writeDouble(xBreak);
@@ -431,7 +406,6 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                 outputStream.writeLong(time);
                 outputStream.writeLong(goldTime);
                 outputStream.writeDouble(vX);
-
 
                 outputStream.writeBoolean(isExistHeartBlock);
                 outputStream.writeBoolean(isGoldStatus);
@@ -453,11 +427,9 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                     }
                     blockSerializable.add(new BlockSerializable(block.row, block.column, block.type));
                 }
-
                 outputStream.writeObject(blockSerializable);
 
                 new Score().showMessage("Game Saved", Main.this);
-
 
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -472,14 +444,11 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                 }
             }
         }).start();
-
     }
 
     private void loadGame() {
-
         LoadSave loadSave = new LoadSave();
         loadSave.read();
-
 
         isExistHeartBlock = loadSave.isExistHeartBlock;
         isGoldStatus = loadSave.isGoldStatus;
@@ -513,16 +482,12 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
             int r = new Random().nextInt(200);
             blocks.add(new Block(ser.row, ser.j, colors[r % colors.length], ser.type));
         }
-
-
         try {
             loadFromSave = true;
             start(primaryStage);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
-
     }
 
     private void nextLevel() {
@@ -546,7 +511,6 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                 chocos.clear();
                 destroyedBlockCount = 0;
                 speed += 0.400;
-                System.out.println("speed is " + speed);
                 vX = speed;
                 vY = speed;
                 start(primaryStage);
@@ -586,11 +550,9 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         });
     }
 
-
     @Override
     public void onUpdate() {
         Platform.runLater(() -> {
-
             scoreLabel.setText("Score: " + score);
             heartLabel.setText("Heart : " + heart);
 
@@ -603,7 +565,6 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                 choco.choco.setY(choco.y);
             }
         });
-
 
         if (yBall >= Block.getPaddingTop() - ballRadius && yBall <= (Block.getHeight() * (level + 1)) + Block.getPaddingTop() - ballRadius) {
             synchronized (blocks) {
@@ -619,8 +580,6 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
                         block.isDestroyed = true;
                         destroyedBlockCount++;
-//                        System.out.println("destroyedBlockCount is " + destroyedBlockCount);
-//                        System.out.println("size is " + blocks.size());
                         resetCollideFlags();
 
                         if (block.type == Block.BLOCK_CHOCO) {
@@ -629,7 +588,6 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                             Platform.runLater(() -> root.getChildren().add(choco.choco));
                             chocos.add(choco);
                         }
-
                         if (block.type == Block.BLOCK_STAR) {
                             goldTime = time;
                             ball.setFill(new ImagePattern(new Image("goldball.png")));
@@ -637,7 +595,6 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                             Platform.runLater(() -> root.getStyleClass().add("goldRoot"));
                             isGoldStatus = true;
                         }
-
                         if (block.type == Block.BLOCK_HEART) {
                             heart++;
                         }
@@ -657,18 +614,13 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         }
     }
 
-
     @Override
-    public void onInit() {
-
-    }
+    public void onInit() {}
 
     @Override
     public void onPhysicsUpdate() {
         checkDestroyedCount();
         setPhysicsToBall();
-
-
         if (time - goldTime > 5000) {
             ball.setFill(new ImagePattern(new Image("ball.png")));
             root.getStyleClass().remove("goldRoot");
@@ -676,9 +628,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         }
 
         for (Bonus choco : chocos) {
-            if (choco.y > sceneHeight || choco.taken) {
-                continue;
-            }
+            if (choco.y > sceneHeight || choco.taken) { continue; }
             if (choco.y >= yBreak && choco.y <= yBreak + breakHeight && choco.x >= xBreak && choco.x <= xBreak + breakWidth) {
                 System.out.println("You Got it and +3 score for you");
                 choco.taken = true;
@@ -688,11 +638,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
             }
             choco.y += ((time - choco.timeCreated) / 1000.000) + 1.000;
         }
-
-        //System.out.println("time is:" + time + " goldTime is " + goldTime);
-
     }
-
 
     @Override
     public void onTime(long time) {
