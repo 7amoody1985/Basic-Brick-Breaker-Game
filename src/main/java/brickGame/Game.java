@@ -573,7 +573,7 @@ public class Game implements GameEngine.OnAction {
             synchronized (blocks) {
                 for (Block block : blocks) {
                     int hitCode = block.checkHitToBlock(xBall, yBall, BALL_RADIUS);
-                    if (hitCode != Block.NO_HIT) {
+                    if (hitCode != Block.HitDirection.NO_HIT.ordinal()) {
                         score += 1;
 
                         Platform.runLater(() -> {
@@ -602,13 +602,13 @@ public class Game implements GameEngine.OnAction {
                             heart++;
                         }
 
-                        if (hitCode == Block.HIT_RIGHT) {
+                        if (hitCode == Block.HitDirection.RIGHT.ordinal()) {
                             collideToRightBlock = true;
-                        } else if (hitCode == Block.HIT_BOTTOM) {
+                        } else if (hitCode == Block.HitDirection.BOTTOM.ordinal()) {
                             collideToBottomBlock = true;
-                        } else if (hitCode == Block.HIT_LEFT) {
+                        } else if (hitCode == Block.HitDirection.LEFT.ordinal()) {
                             collideToLeftBlock = true;
-                        } else if (hitCode == Block.HIT_TOP) {
+                        } else if (hitCode == Block.HitDirection.TOP.ordinal()) {
                             collideToTopBlock = true;
                         }
                     }

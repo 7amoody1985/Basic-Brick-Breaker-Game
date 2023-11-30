@@ -11,11 +11,9 @@ import java.io.Serializable;
 
 public class Block implements Serializable {
     private static final Block block = new Block(-1, -1, Color.TRANSPARENT, 99); // color ???
-    public static int NO_HIT = -1;
-    public static int HIT_RIGHT = 0;
-    public static int HIT_BOTTOM = 1;
-    public static int HIT_LEFT = 2;
-    public static int HIT_TOP = 3;
+    public enum HitDirection {
+        RIGHT, BOTTOM, LEFT, TOP, NO_HIT
+    }
     public enum Type {
         NORMAL, CHOCO, STAR, HEART
     }
@@ -88,7 +86,7 @@ public class Block implements Serializable {
 
     public int checkHitToBlock(double xBall, double yBall, double ballRadius) {
         if (isDestroyed) {
-            return NO_HIT;
+            return HitDirection.NO_HIT.ordinal();
         }
 
         Rectangle2D blockBounds = new Rectangle2D(x, y, WIDTH, HEIGHT);
@@ -97,16 +95,16 @@ public class Block implements Serializable {
         if (blockBounds.intersects(ballBounds)) {
             // Check for specific direction of collision
             if (xBall + ballRadius >= x + WIDTH && xBall - ballRadius <= x + WIDTH) {
-                return HIT_RIGHT;
+                return HitDirection.RIGHT.ordinal();
             } else if (xBall - ballRadius <= x && xBall + ballRadius >= x) {
-                return HIT_LEFT;
+                return HitDirection.LEFT.ordinal();
             } else if (yBall + ballRadius >= y + HEIGHT && yBall - ballRadius <= y + HEIGHT) {
-                return HIT_BOTTOM;
+                return HitDirection.BOTTOM.ordinal();
             } else if (yBall - ballRadius <= y && yBall + ballRadius >= y) {
-                return HIT_TOP;
+                return HitDirection.TOP.ordinal();
             }
         }
 
-        return NO_HIT;
+        return HitDirection.NO_HIT.ordinal();
     }
 }

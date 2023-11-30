@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- Refactoring">
-      <change afterPath="$PROJECT_DIR$/src/main/java/brickGame/Game.java" afterDir="false" />
+    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- Moved all code in main to new Game class">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/LoadSave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/LoadSave.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Score.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Score.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Game.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +129,7 @@
       <workItem from="1701237396084" duration="5000" />
       <workItem from="1701245326301" duration="13082000" />
       <workItem from="1701344815410" duration="13542000" />
-      <workItem from="1701368350421" duration="919000" />
+      <workItem from="1701368350421" duration="1907000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -309,7 +307,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701362566191</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="- Moved all code in main to new Game class">
+      <option name="closed" value="true" />
+      <created>1701369827424</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1701369827424</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -348,7 +354,8 @@
     <MESSAGE value="Idk this thing randomly appeared" />
     <MESSAGE value="- Fixed breaker zones not equal&#10;- Refactoring" />
     <MESSAGE value="- Refactoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Refactoring" />
+    <MESSAGE value="- Moved all code in main to new Game class" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Moved all code in main to new Game class" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
