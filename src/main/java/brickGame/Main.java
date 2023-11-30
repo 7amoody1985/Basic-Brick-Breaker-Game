@@ -23,18 +23,15 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Main extends Application implements EventHandler<KeyEvent>, GameEngine.OnAction {
-    public enum Move {
-        LEFT, RIGHT
-    }
-    public static String savePath = "D:/save/save.mdds";
-    private final int BREAK_WIDTH = 130;
-    private final int BREAK_HEIGHT = 30;
-    private final int HALF_BREAK_WIDTH = BREAK_WIDTH / 2;
     private static final int SCENE_WIDTH = 500;
     private static final int SCENE_HEIGHT = 700;
     private static final int BALL_RADIUS = 10;
     private static final int MOVE_STEPS = 30;
     private static final double MOVE_DISTANCE = 0.5;
+    public static String savePath = "D:/save/save.mdds";
+    private final int BREAK_WIDTH = 130;
+    private final int BREAK_HEIGHT = 30;
+    private final int HALF_BREAK_WIDTH = BREAK_WIDTH / 2;
     private final ArrayList<Block> blocks = new ArrayList<>();
     private final ArrayList<Bonus> chocos = new ArrayList<>();
     private final Color[] colors = new Color[]{
@@ -88,15 +85,44 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     private double speed = 1.500;
     private double vX = speed;
     private double vY = speed;
-    private boolean BreakerRightZone(double rightZone) { return xBall >= rightZone && xBall <= xBreak + BREAK_WIDTH; }
-    private boolean BreakerMiddleZone(double leftZone, double rightZone) { return xBall > leftZone && xBall < rightZone; }
-    private boolean BreakerLeftZone(double leftZone) { return xBall >= xBreak && xBall <= leftZone; }
-    private boolean BallCollideTopWall() { return yBall <= BALL_RADIUS; }
-    private boolean BallCollideBottomWall() { return yBall >= SCENE_HEIGHT - BALL_RADIUS; }
-    private boolean BallCollideWithBreaker() { return yBall >= yBreak - BALL_RADIUS; }
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    private boolean BreakerRightZone(double rightZone) {
+        return xBall >= rightZone && xBall <= xBreak + BREAK_WIDTH;
+    }
+
+    private boolean BreakerMiddleZone(double leftZone, double rightZone) {
+        return xBall > leftZone && xBall < rightZone;
+    }
+
+    private boolean BreakerLeftZone(double leftZone) {
+        return xBall >= xBreak && xBall <= leftZone;
+    }
+
+    private boolean BallCollideTopWall() {
+        return yBall <= BALL_RADIUS;
+    }
+
+    private boolean BallCollideBottomWall() {
+        return yBall >= SCENE_HEIGHT - BALL_RADIUS;
+    }
+
+    private boolean BallCollideWithBreaker() {
+        return yBall >= yBreak - BALL_RADIUS;
+    }
+
+    private void setBallImagePattern(String imageName) {
+        ball.setFill(new ImagePattern(new Image(imageName)));
+    }
+
+    private GameEngine createGameEngine() {
+        GameEngine engine = new GameEngine();
+        engine.setOnAction(this);
+        engine.setFps(120);
+        return engine;
     }
 
     @Override
@@ -154,9 +180,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
             if (level > 1 && level < 18) {
                 load.setVisible(false);
                 newGame.setVisible(false);
-                engine = new GameEngine();
-                engine.setOnAction(this);
-                engine.setFps(120);
+                engine = createGameEngine();
                 engine.start();
             }
 
@@ -168,18 +192,14 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
             });
 
             newGame.setOnAction(event -> {
-                engine = new GameEngine();
-                engine.setOnAction(Main.this);
-                engine.setFps(120);
+                engine = createGameEngine();
                 engine.start();
 
                 load.setVisible(false);
                 newGame.setVisible(false);
             });
         } else {
-            engine = new GameEngine();
-            engine.setOnAction(this);
-            engine.setFps(120);
+            engine = createGameEngine();
             engine.start();
             loadFromSave = false;
         }
@@ -254,7 +274,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         yBall = (double) SCENE_WIDTH / 2 + ((level + 1) * Block.getHeight()) + 15;
         ball = new Circle();
         ball.setRadius(BALL_RADIUS);
-        ball.setFill(new ImagePattern(new Image("ball.png")));
+        setBallImagePattern("ball.png");
     }
 
     private void initBreak() {
@@ -601,7 +621,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
                         }
                         if (block.type == Block.Type.STAR.ordinal()) {
                             goldTime = time;
-                            ball.setFill(new ImagePattern(new Image("goldball.png")));
+                            setBallImagePattern("goldball.png");
                             System.out.println("gold ball");
                             Platform.runLater(() -> root.getStyleClass().add("goldRoot"));
                             isGoldStatus = true;
@@ -626,20 +646,23 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     }
 
     @Override
-    public void onInit() {}
+    public void onInit() {
+    }
 
     @Override
     public void onPhysicsUpdate() {
         checkDestroyedCount();
         setPhysicsToBall();
         if (time - goldTime > 5000) {
-            ball.setFill(new ImagePattern(new Image("ball.png")));
+            setBallImagePattern("ball.png");
             root.getStyleClass().remove("goldRoot");
             isGoldStatus = false;
         }
 
         for (Bonus choco : chocos) {
-            if (choco.y > SCENE_HEIGHT || choco.taken) { continue; }
+            if (choco.y > SCENE_HEIGHT || choco.taken) {
+                continue;
+            }
             if (choco.y >= yBreak && choco.y <= yBreak + BREAK_HEIGHT && choco.x >= xBreak && choco.x <= xBreak + BREAK_WIDTH) {
                 System.out.println("You Got it and +3 score for you");
                 choco.taken = true;
@@ -654,5 +677,9 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     @Override
     public void onTime(long time) {
         this.time = time;
+    }
+
+    public enum Move {
+        LEFT, RIGHT
     }
 }
