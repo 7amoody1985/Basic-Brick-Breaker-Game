@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- Refactoring">
+    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Block.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,6 +42,7 @@
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
@@ -112,7 +112,8 @@
       <workItem from="1701157109258" duration="5332000" />
       <workItem from="1701192691810" duration="1645000" />
       <workItem from="1701237396084" duration="5000" />
-      <workItem from="1701245326301" duration="12185000" />
+      <workItem from="1701245326301" duration="13082000" />
+      <workItem from="1701344815410" duration="8111000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -258,7 +259,23 @@
       <option name="project" value="LOCAL" />
       <updated>1701265786158</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="- Refactoring">
+      <option name="closed" value="true" />
+      <created>1701269423921</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1701269423921</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Idk this thing randomly appeared">
+      <option name="closed" value="true" />
+      <created>1701269548799</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1701269548799</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -295,7 +312,8 @@
     <MESSAGE value="- Ball now spawns in the middle of the screen going straight down even after each level" />
     <MESSAGE value="- Adjusted angle when ball hits either side of breaker&#10;- Code clean up" />
     <MESSAGE value="- Refactoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Refactoring" />
+    <MESSAGE value="Idk this thing randomly appeared" />
+    <option name="LAST_COMMIT_MESSAGE" value="Idk this thing randomly appeared" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -88,6 +88,12 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
     private double speed = 1.500;
     private double vX = speed;
     private double vY = speed;
+    private boolean BreakerRightZone(double rightZone) { return xBall >= rightZone && xBall <= xBreak + BREAK_WIDTH; }
+    private boolean BreakerMiddleZone(double leftZone, double rightZone) { return xBall > leftZone && xBall < rightZone; }
+    private boolean BreakerLeftZone(double leftZone) { return xBall >= xBreak && xBall <= leftZone; }
+    private boolean BallCollideTopWall() { return yBall <= BALL_RADIUS; }
+    private boolean BallCollideBottomWall() { return yBall >= SCENE_HEIGHT - BALL_RADIUS; }
+    private boolean BallCollideWithBreaker() { return yBall >= yBreak - BALL_RADIUS; }
 
     public static void main(String[] args) {
         launch(args);
@@ -255,7 +261,7 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
         rect = new Rectangle();
         rect.setWidth(BREAK_WIDTH);
         rect.setHeight(BREAK_HEIGHT);
-        xBreak = (double) SCENE_WIDTH / 2 - HALF_BREAK_WIDTH;
+        xBreak = (double) (SCENE_WIDTH / 2) - HALF_BREAK_WIDTH;
         rect.setX(xBreak);
         rect.setY(yBreak);
 
@@ -279,13 +285,13 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
         moveBall();
 
-        if (yBall <= BALL_RADIUS) {
+        if (BallCollideTopWall()) {
             resetCollideFlags();
             goUpBall = false;
             goDownBall = true;
             return;
         }
-        if (yBall >= SCENE_HEIGHT - BALL_RADIUS) {
+        if (BallCollideBottomWall()) {
             resetCollideFlags();
             goDownBall = false;
             goUpBall = true;
@@ -301,24 +307,25 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
             }
         }
 
-        if (yBall >= yBreak - BALL_RADIUS) {
-            double leftZone = (xBreak + BREAK_WIDTH * 0.33) - BALL_RADIUS;
-            double rightZone = (xBreak + BREAK_WIDTH * 0.66) - BALL_RADIUS;
+        if (BallCollideWithBreaker()) {
+            double zoneWidth = BREAK_WIDTH / 3.0;
+            double leftZone = xBreak + zoneWidth;
+            double rightZone = xBreak + 2 * zoneWidth;
 
-            if (xBall >= xBreak && xBall <= leftZone) {
+            if (BreakerLeftZone(leftZone)) {
                 resetCollideFlags();
                 goDownBall = false;
                 goUpBall = true;
                 goRightBall = false;
                 goLeftBall = true;
-            } else if (xBall > leftZone && xBall < rightZone) {
+            } else if (BreakerMiddleZone(leftZone, rightZone)) {
                 resetCollideFlags();
                 goDownBall = false;
                 goUpBall = true;
                 // Make the ball go straight up
                 goLeftBall = false;
                 goRightBall = false;
-            } else if (xBall >= rightZone && xBall <= xBreak + BREAK_WIDTH) {
+            } else if (BreakerRightZone(rightZone)) {
                 resetCollideFlags();
                 goDownBall = false;
                 goUpBall = true;
@@ -329,7 +336,6 @@ public class Main extends Application implements EventHandler<KeyEvent>, GameEng
 
         if (xBall >= SCENE_WIDTH - BALL_RADIUS) {
             resetCollideFlags();
-            //vX = 1.000;
             collideToRightWall = true;
         }
 
