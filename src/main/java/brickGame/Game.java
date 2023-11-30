@@ -24,7 +24,7 @@ public class Game implements GameEngine.OnAction {
     private static final int SCENE_WIDTH = 500;
     private static final int SCENE_HEIGHT = 700;
     private static final int BALL_RADIUS = 10;
-    private static final int MOVE_STEPS = 30;
+    private static final int MOVE_STEPS = 5;
     private static final double MOVE_DISTANCE = 0.5;
     public static String savePath = "D:/save/save.mdds";
     private final int BREAK_WIDTH = 130;
@@ -69,6 +69,8 @@ public class Game implements GameEngine.OnAction {
     private double speed = 1.500;
     private double vX = speed;
     private double vY = speed;
+    private boolean isLeftPressed = false;
+    private boolean isRightPressed = false;
 
     private boolean BreakerRightZone(double rightZone) {
         return xBall >= rightZone && xBall <= xBreak + BREAK_WIDTH;
@@ -145,6 +147,7 @@ public class Game implements GameEngine.OnAction {
         Scene scene = new Scene(root, SCENE_WIDTH, SCENE_HEIGHT);
         scene.getStylesheets().add("style.css");
         scene.setOnKeyPressed(Game.this::handle);
+        scene.setOnKeyReleased(Game.this::handleReleased);
 
         primaryStage.setTitle("Brick Game");
         primaryStage.setScene(scene);
@@ -206,13 +209,24 @@ public class Game implements GameEngine.OnAction {
     public void handle(KeyEvent event) {
         switch (event.getCode()) {
             case LEFT:
-                move(Move.LEFT);
+                isLeftPressed = true;
                 break;
             case RIGHT:
-                move(Move.RIGHT);
+                isRightPressed = true;
                 break;
             case S:
                 saveGame();
+                break;
+        }
+    }
+
+    public void handleReleased(KeyEvent event) {
+        switch (event.getCode()) {
+            case LEFT:
+                isLeftPressed = false;
+                break;
+            case RIGHT:
+                isRightPressed = false;
                 break;
         }
     }
@@ -569,11 +583,18 @@ public class Game implements GameEngine.OnAction {
             }
         });
 
+        if (isLeftPressed) {
+            move(Move.LEFT);
+        }
+        if (isRightPressed) {
+            move(Move.RIGHT);
+        }
+
         if (yBall >= Block.getPaddingTop() - BALL_RADIUS && yBall <= (Block.getHeight() * (level + 1)) + Block.getPaddingTop() - BALL_RADIUS) {
             synchronized (blocks) {
                 for (Block block : blocks) {
                     int hitCode = block.checkHitToBlock(xBall, yBall, BALL_RADIUS);
-                    if (hitCode != Block.NO_HIT) {
+                    if (hitCode != Block.HitDirection.NO_HIT.ordinal()) {
                         score += 1;
 
                         Platform.runLater(() -> {
@@ -602,13 +623,13 @@ public class Game implements GameEngine.OnAction {
                             heart++;
                         }
 
-                        if (hitCode == Block.HIT_RIGHT) {
+                        if (hitCode == Block.HitDirection.RIGHT.ordinal()) {
                             collideToRightBlock = true;
-                        } else if (hitCode == Block.HIT_BOTTOM) {
+                        } else if (hitCode == Block.HitDirection.BOTTOM.ordinal()) {
                             collideToBottomBlock = true;
-                        } else if (hitCode == Block.HIT_LEFT) {
+                        } else if (hitCode == Block.HitDirection.LEFT.ordinal()) {
                             collideToLeftBlock = true;
-                        } else if (hitCode == Block.HIT_TOP) {
+                        } else if (hitCode == Block.HitDirection.TOP.ordinal()) {
                             collideToTopBlock = true;
                         }
                     }
