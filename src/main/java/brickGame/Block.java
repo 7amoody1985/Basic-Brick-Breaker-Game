@@ -6,9 +6,12 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
+
+import java.util.ArrayList;
 import java.util.EnumMap;
 
 import java.io.Serializable;
+import java.util.Random;
 
 public class Block implements Serializable {
 
@@ -20,10 +23,15 @@ public class Block implements Serializable {
     public int row;
     public int column;
     public boolean isDestroyed = false;
+    public boolean isExistHeartBlock = false;
     public int type;
     public int x;
     public int y;
+    public int destroyedBlockCount = 0;
+    public final ArrayList<Block> blocks = new ArrayList<>();
+    public final Color[] colors = new Color[]{Color.MAGENTA, Color.RED, Color.GOLD, Color.CORAL, Color.AQUA, Color.VIOLET, Color.GREENYELLOW, Color.ORANGE, Color.PINK, Color.SLATEGREY, Color.YELLOW, Color.TOMATO, Color.TAN,};
     public Rectangle rect;
+    private Game game;
     public Block(int row, int column, Color color, int type) {
         this.row = row;
         this.column = column;
@@ -75,6 +83,38 @@ public class Block implements Serializable {
             rect.setFill(color);
         }
 
+    }
+
+    public void initBoard() {
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < game.level; j++) {
+                int r = new Random().nextInt(500);
+                int type;
+                if (r % 10 == 1) {
+                    type = Block.Type.CHOCO.ordinal();
+                } else if (r % 10 == 2) {
+                    if (!isExistHeartBlock) {
+                        type = Block.Type.HEART.ordinal();
+                        isExistHeartBlock = true;
+                    } else {
+                        type = Block.Type.NORMAL.ordinal();
+                    }
+                } else if (r % 10 == 3) {
+                    type = Block.Type.STAR.ordinal();
+                } else {
+                    type = Block.Type.NORMAL.ordinal();
+                }
+                blocks.add(new Block(j, i, colors[r % (colors.length)], type));
+            }
+        }
+    }
+
+    public void checkDestroyedCount() {
+        if (destroyedBlockCount == blocks.size()) {
+            //TODO win level todo...
+            System.out.println("You Win");
+            game.nextLevel();
+        }
     }
 
     public int checkHitToBlock(double xBall, double yBall, double ballRadius) {
