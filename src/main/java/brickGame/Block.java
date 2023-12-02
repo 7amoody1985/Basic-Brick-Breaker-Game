@@ -6,22 +6,17 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
+import java.util.EnumMap;
 
 import java.io.Serializable;
 
 public class Block implements Serializable {
-    private static final Block block = new Block(-1, -1, Color.TRANSPARENT, 99); // color ???
-    public enum HitDirection {
-        RIGHT, BOTTOM, LEFT, TOP, NO_HIT
-    }
-    public enum Type {
-        NORMAL, CHOCO, STAR, HEART
-    }
+
+    private static final int WIDTH = 100;
+    private static final int HEIGHT = 30;
+    private static final int PADDING_TOP = HEIGHT * 2;
+    private static final int PADDING_HORIZONTAL = 50;
     private final Color color;
-    private final int WIDTH = 100;
-    private final int HEIGHT = 30;
-    private final int PADDING_TOP = HEIGHT * 2;
-    private final int PADDING_HORIZONTAL = 50;
     public int row;
     public int column;
     public boolean isDestroyed = false;
@@ -29,8 +24,6 @@ public class Block implements Serializable {
     public int x;
     public int y;
     public Rectangle rect;
-
-
     public Block(int row, int column, Color color, int type) {
         this.row = row;
         this.column = column;
@@ -41,19 +34,19 @@ public class Block implements Serializable {
     }
 
     public static int getPaddingTop() {
-        return block.PADDING_TOP;
+        return PADDING_TOP;
     }
 
     public static int getPaddingH() {
-        return block.PADDING_HORIZONTAL;
+        return PADDING_HORIZONTAL;
     }
 
     public static int getHeight() {
-        return block.HEIGHT;
+        return HEIGHT;
     }
 
     public static int getWidth() {
-        return block.WIDTH;
+        return WIDTH;
     }
 
     private void draw() {
@@ -66,16 +59,16 @@ public class Block implements Serializable {
         rect.setX(x);
         rect.setY(y);
 
-        if (type == Type.CHOCO.ordinal()) {
-            Image image = new Image("choco.jpg");
-            ImagePattern pattern = new ImagePattern(image);
-            rect.setFill(pattern);
-        } else if (type == Type.HEART.ordinal()) {
-            Image image = new Image("heart.jpg");
-            ImagePattern pattern = new ImagePattern(image);
-            rect.setFill(pattern);
-        } else if (type == Type.STAR.ordinal()) {
-            Image image = new Image("star.jpg");
+        // EnumMap
+        EnumMap<Type, String> typeToImageFile = new EnumMap<>(Type.class);
+        typeToImageFile.put(Type.CHOCO, "choco.jpg");
+        typeToImageFile.put(Type.HEART, "heart.jpg");
+        typeToImageFile.put(Type.STAR, "star.jpg");
+
+        String imageFile = typeToImageFile.get(Type.values()[type]);
+
+        if (imageFile != null) {
+            Image image = new Image(imageFile);
             ImagePattern pattern = new ImagePattern(image);
             rect.setFill(pattern);
         } else {
@@ -106,5 +99,13 @@ public class Block implements Serializable {
         }
 
         return HitDirection.NO_HIT.ordinal();
+    }
+
+    public enum HitDirection {
+        RIGHT, BOTTOM, LEFT, TOP, NO_HIT
+    }
+
+    public enum Type {
+        NORMAL, CHOCO, STAR, HEART
     }
 }

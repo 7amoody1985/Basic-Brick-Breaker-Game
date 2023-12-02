@@ -1,11 +1,16 @@
 package brickGame;
 
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+
 
 public class GameEngine {
 
-    public boolean isStopped = true;
+    private final BooleanProperty isStopped = new SimpleBooleanProperty(true);
     private OnAction onAction;
-    private int fps;
+    private final IntegerProperty fps = new SimpleIntegerProperty();
     private long time = 0;
 
     public void setOnAction(OnAction onAction) {
@@ -15,25 +20,30 @@ public class GameEngine {
     /**
      * @param fps set fps and we convert it to millisecond
      */
+
     public void setFps(int fps) {
-        this.fps = fps;
+        this.fps.set(fps);
     }
 
 
     public int getFps() {
-        return fps;
+        return fps.get();
     }
 
 
     public void start() {
-        isStopped = false;
+        isStopped.set(false);
         new Thread(this::gameLoop).start();
     }
 
-
+    public void stop() {
+        if (!isStopped.get()) {
+            isStopped.set(true);
+        }
+    }
 
     private void gameLoop() {
-        while (!isStopped) {
+        while (!isStopped.get()) {
             long startTime = System.currentTimeMillis();
 
             onAction.onInit();
@@ -44,26 +54,17 @@ public class GameEngine {
             long endTime = System.currentTimeMillis();
             long deltaTime = endTime - startTime;
 
-            if (deltaTime < 1000 / fps) {
+            if (deltaTime < 1000 / fps.get()) {
                 try {
                     //noinspection BusyWait
-                    Thread.sleep(1000 / fps - deltaTime);
+                    Thread.sleep(1000 / fps.get() - deltaTime);
                 } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
                     throw new RuntimeException(e);
                 }
             }
         }
     }
-
-
-
-    public void stop() {
-        if (!isStopped) {
-            isStopped = true;
-        }
-    }
-
-
 
     public interface OnAction {
         void onUpdate();
