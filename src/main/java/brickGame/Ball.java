@@ -8,17 +8,14 @@ public class Ball {
     public static final int BALL_RADIUS = 10;
     public double xBall;
     public double yBall;
-    private boolean goDownBall = true;
-    private boolean goUpBall = false;
-    private boolean goRightBall = false;
-    private boolean goLeftBall = false;
     public double speed = 1.500;
     public double vX = speed;
     public double vY = speed;
     Circle ball;
-    public void setBallImagePattern(String imageName) {
-        ball.setFill(new ImagePattern(new Image(imageName)));
-    }
+    private boolean goDownBall = true;
+    private boolean goUpBall = false;
+    private boolean goRightBall = false;
+    private boolean goLeftBall = false;
 
     public Ball(Game game) {
         xBall = (double) Game.SCENE_WIDTH / 2;
@@ -26,6 +23,10 @@ public class Ball {
         ball = new Circle();
         ball.setRadius(BALL_RADIUS);
         setBallImagePattern("ball.png");
+    }
+
+    public void setBallImagePattern(String imageName) {
+        ball.setFill(new ImagePattern(new Image(imageName)));
     }
 
     // getters and setters for x, y, and radius
@@ -57,7 +58,7 @@ public class Ball {
         }
     }
 
-    public void ballBounce( BounceDirection bounce) {
+    public void ballBounce(BounceDirection bounce) {
         if (bounce == BounceDirection.LEFT) {
             goRightBall = false;
             goLeftBall = true;
@@ -88,7 +89,4 @@ public class Ball {
         goLeftBall = false;
         goRightBall = false;
     }
-
-
-    // other methods related to ball's movement and collision detection
 }

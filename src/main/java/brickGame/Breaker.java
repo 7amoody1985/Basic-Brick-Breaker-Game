@@ -1,22 +1,22 @@
 package brickGame;
 
+import javafx.application.Platform;
 import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
-import javafx.application.Platform;
 
 public class Breaker {
-    private final GameEngine engine;
-    public double xBreak;
-    public double yBreak = 640.0f;
-    public double centerBreakX;
     private static final int MOVE_STEPS = 5;
     private static final double MOVE_DISTANCE = 0.5;
     public final int BREAK_HEIGHT = 30;
-    private final int HALF_BREAK_WIDTH = 65;
     public final int BREAK_WIDTH = 130;
+    private final GameEngine engine;
+    private final int HALF_BREAK_WIDTH = 65;
+    public double xBreak;
+    public double yBreak = 640.0f;
+    public double centerBreakX;
     public Rectangle rect;
-    
+
     public Breaker(GameEngine engine) {
         if (engine == null) {
             throw new IllegalArgumentException("Engine cannot be null");
@@ -59,12 +59,4 @@ public class Breaker {
             }
         }).start();
     }
-
-    // getters and setters for x, y, width, and height
-
-
-
-
-
-    // other methods related to breaker's movement and collision detection
 }

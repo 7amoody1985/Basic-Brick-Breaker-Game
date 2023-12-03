@@ -5,9 +5,17 @@ import javafx.application.Platform;
 public class CollisionManager {
     private final Game game;
     private final BlockManager manager;
-    private BonusManager bonuses;
     private final Ball ball;
     private final Breaker breaker;
+    private BonusManager bonuses;
+
+    public CollisionManager(Game game, Ball ball, Breaker breaker, BlockManager blockManager) {
+        this.game = game;
+        this.ball = ball;
+        this.breaker = breaker;
+        this.manager = blockManager;
+    }
+
     private boolean BallCollideTopWall() {
         return ball.yBall <= Ball.BALL_RADIUS;
     }
@@ -23,16 +31,13 @@ public class CollisionManager {
     private boolean BreakerRightZone(double rightZone) {
         return ball.xBall >= rightZone && ball.xBall <= breaker.xBreak + breaker.BREAK_WIDTH;
     }
-    private boolean BreakerMiddleZone(double leftZone, double rightZone) { return ball.xBall > leftZone && ball.xBall < rightZone; }
-    private boolean BreakerLeftZone(double leftZone) {
-        return ball.xBall >= breaker.xBreak && ball.xBall <= leftZone;
+
+    private boolean BreakerMiddleZone(double leftZone, double rightZone) {
+        return ball.xBall > leftZone && ball.xBall < rightZone;
     }
 
-    public CollisionManager(Game game, Ball ball, Breaker breaker, BlockManager blockManager) {
-        this.game = game;
-        this.ball = ball;
-        this.breaker = breaker;
-        this.manager = blockManager;
+    private boolean BreakerLeftZone(double leftZone) {
+        return ball.xBall >= breaker.xBreak && ball.xBall <= leftZone;
     }
 
     public void setBonuses(BonusManager bonuses) {
@@ -59,7 +64,6 @@ public class CollisionManager {
 
                         block.isDestroyed = true;
                         manager.destroyedBlockCount++;
-//                        ball.resetCollideFlags();
 
                         if (block.type == Block.Type.CHOCO.ordinal()) {
                             final Bonus choco = new Bonus(block.row, block.column);
@@ -101,7 +105,6 @@ public class CollisionManager {
     }
 
 
-
     private void checkBreakerCollision() {
         if (BallCollideWithBreaker()) {
             double zoneWidth = breaker.BREAK_WIDTH / 3.0;
@@ -125,12 +128,10 @@ public class CollisionManager {
 
     private void checkWallCollision() {
         if (BallCollideTopWall()) {
-//            ball.resetCollideFlags();
             ball.ballBounce(BounceDirection.DOWN);
             return;
         }
         if (BallCollideBottomWall()) {
-//            ball.resetCollideFlags();
             ball.ballBounce(BounceDirection.UP);
             if (!bonuses.isGoldStatus) {
                 //TODO game over
@@ -144,12 +145,10 @@ public class CollisionManager {
             }
         }
         if (ball.xBall >= Game.SCENE_WIDTH - Ball.BALL_RADIUS) { // right wall
-//            ball.resetCollideFlags();
             ball.ballBounce(BounceDirection.LEFT);
         }
 
         if (ball.xBall <= Ball.BALL_RADIUS) { // left wall
-//            ball.resetCollideFlags();
             ball.ballBounce(BounceDirection.RIGHT);
         }
     }

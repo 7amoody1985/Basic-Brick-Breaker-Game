@@ -4,8 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- Fixed engine stop">
+    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- Clean up">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Ball.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/BonusManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/BonusManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Breaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Breaker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/CollisionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/CollisionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/GameEngine.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +135,7 @@
       <workItem from="1701344815410" duration="13542000" />
       <workItem from="1701368350421" duration="2636000" />
       <workItem from="1701517601411" duration="2449000" />
-      <workItem from="1701520061955" duration="35503000" />
+      <workItem from="1701520061955" duration="35750000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -380,7 +385,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701602966384</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="- Clean up">
+      <option name="closed" value="true" />
+      <created>1701603079201</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1701603079201</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -422,9 +435,9 @@
     <MESSAGE value="- Split game class into different classes (code not working)" />
     <MESSAGE value="- Code working, with exception of bonus drops&#10;- Looking for further bugs caused by new classes" />
     <MESSAGE value="FULLY WORKING LIKE BEFORE NEW CLASSES&#10;- Fixed bonus collision with ball&#10;- Fixed Ball speed not increasing each level&#10;- Fixed crash when switching ball pattern after gold ball finishes" />
-    <MESSAGE value="- Clean up" />
     <MESSAGE value="- Fixed engine stop" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Fixed engine stop" />
+    <MESSAGE value="- Clean up" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Clean up" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

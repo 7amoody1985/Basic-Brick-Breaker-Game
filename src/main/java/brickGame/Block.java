@@ -24,6 +24,7 @@ public class Block implements Serializable {
     public int x;
     public int y;
     public Rectangle rect;
+
     public Block(int row, int column, Color color, int type) {
         this.row = row;
         this.column = column;

@@ -9,12 +9,16 @@ import javafx.beans.property.SimpleIntegerProperty;
 public class GameEngine {
 
     private final BooleanProperty isStopped = new SimpleBooleanProperty(true);
-    private OnAction onAction;
     private final IntegerProperty fps = new SimpleIntegerProperty();
+    private OnAction onAction;
     private long time = 0;
 
     public void setOnAction(OnAction onAction) {
         this.onAction = onAction;
+    }
+
+    public int getFps() {
+        return fps.get();
     }
 
     /**
@@ -24,12 +28,6 @@ public class GameEngine {
     public void setFps(int fps) {
         this.fps.set(fps);
     }
-
-
-    public int getFps() {
-        return fps.get();
-    }
-
 
     public void start() {
         isStopped.set(false);

@@ -5,12 +5,12 @@ import javafx.application.Platform;
 import java.util.ArrayList;
 
 public class BonusManager {
-    public boolean isGoldStatus = false;
-    public long goldTime = 0;
     public final ArrayList<Bonus> chocos = new ArrayList<>();
-    private CollisionManager collision;
     private final Game game;
     private final Ball ball;
+    public boolean isGoldStatus = false;
+    public long goldTime = 0;
+    private CollisionManager collision;
 
     public BonusManager(Game game, Ball ball) {
         this.game = game;
@@ -38,6 +38,7 @@ public class BonusManager {
         game.score += 3;
         new Score().show(choco.x, choco.y, 3, game);
     }
+
     public void goldBall() {
         if (game.time - goldTime > 5000) {
             ball.setBallImagePattern("ball.png");
