@@ -3,6 +3,7 @@ package brickGame;
 import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
+import javafx.application.Platform;
 
 public class Breaker {
     private GameEngine engine;
@@ -24,7 +25,12 @@ public class Breaker {
 //        this.height = height;
 //    }
 
-    public void initBreak() {
+    public Breaker(GameEngine engine) {
+        if (engine == null) {
+            throw new IllegalArgumentException("Engine cannot be null");
+        }
+        this.engine = engine;
+
         rect = new Rectangle();
         rect.setWidth(BREAK_WIDTH);
         rect.setHeight(BREAK_HEIGHT);
@@ -33,7 +39,6 @@ public class Breaker {
         rect.setY(yBreak);
 
         ImagePattern pattern = new ImagePattern(new Image("block.jpg"));
-
         rect.setFill(pattern);
     }
 
@@ -53,6 +58,9 @@ public class Breaker {
                     xBreak -= MOVE_DISTANCE;
                 }
                 centerBreakX = xBreak + HALF_BREAK_WIDTH;
+                Platform.runLater(() -> {
+                    rect.setX(xBreak);
+                });
                 try {
                     Thread.sleep(1000 / fps);
                 } catch (InterruptedException e) {

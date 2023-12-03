@@ -34,11 +34,12 @@ public class Game implements GameEngine.OnAction {
 
 
 
-//    private Circle ball;
+    private Circle ball;
 //    private double xBall;
 //    private double yBall;
 
     private Rectangle rect;
+
 
     public int heart = 300;  // TEMPORARY FOR DEBUGGING
     public int score = 0;
@@ -64,8 +65,14 @@ public class Game implements GameEngine.OnAction {
     private Breaker breaker;
     private CollisionManager collision;
     private Bonus bonus;
-    private Block block;
+    private BlockManager manager;
+    private BonusManager bonuses;
     private BounceDirection bounce;
+
+    public Game() {
+        this.rect = new Rectangle();
+        this.bonuses = new BonusManager(this);
+    }
 
 
 
@@ -90,9 +97,11 @@ public class Game implements GameEngine.OnAction {
                 return;
             }
 
-            Ball.initBall();
-            breaker.initBreak();
-            block.initBoard();
+            Ball = new Ball(this);
+            engine = createGameEngine();
+            breaker = new Breaker(engine);
+            manager = new BlockManager(this);
+            collision = new CollisionManager(this, Ball, breaker, manager, bonus, bonuses);
 
             load = new Button("Load Game");
             newGame = new Button("Start New Game");
@@ -109,11 +118,11 @@ public class Game implements GameEngine.OnAction {
         heartLabel = new Label("Heart : " + heart);
         heartLabel.setTranslateX(SCENE_WIDTH - 80);
         if (!loadFromSave) {
-            root.getChildren().addAll(rect, Ball.ball, scoreLabel, heartLabel, levelLabel, newGame);
+            root.getChildren().addAll(breaker.rect, Ball.ball, scoreLabel, heartLabel, levelLabel, newGame);
         } else {
-            root.getChildren().addAll(rect, Ball.ball, scoreLabel, heartLabel, levelLabel);
+            root.getChildren().addAll(rect, ball, scoreLabel, heartLabel, levelLabel);
         }
-        for (Block block : block.blocks) {
+        for (Block block : manager.getBlocks()) {
             root.getChildren().add(block.rect);
         }
         Scene scene = new Scene(root, SCENE_WIDTH, SCENE_HEIGHT);
@@ -301,16 +310,16 @@ public class Game implements GameEngine.OnAction {
                 Ball.resetCollideFlags();
                 Ball.ballBounce(BounceDirection.DOWN);
 
-                bonus.isGoldStatus = false;
-                block.isExistHeartBlock = false;
+                bonuses.isGoldStatus = false;
+                manager.isExistHeartBlock = false;
 
                 time = 0;
-                bonus.goldTime = 0;
+                bonuses.goldTime = 0;
 
                 engine.stop();
-                block.blocks.clear();
-                bonus.chocos.clear();
-                block.destroyedBlockCount = 0;
+                manager.clearBlocks();
+                bonuses.chocos.clear();
+                manager.destroyedBlockCount = 0;
                 Ball.speed += 0.400;
                 Ball.vX = Ball.speed;
                 Ball.vY = Ball.speed;
@@ -331,17 +340,17 @@ public class Game implements GameEngine.OnAction {
                 Ball.speed = 1.500;
                 Ball.vX = Ball.speed;
                 Ball.vY = Ball.speed;
-                block.destroyedBlockCount = 0;
+                manager.destroyedBlockCount = 0;
                 Ball.resetCollideFlags();
                 Ball.ballBounce(BounceDirection.DOWN);
 
-                bonus.isGoldStatus = false;
-                block.isExistHeartBlock = false;
+                bonuses.isGoldStatus = false;
+                manager.isExistHeartBlock = false;
                 time = 0;
-                bonus.goldTime = 0;
+                bonuses.goldTime = 0;
 
-                block.blocks.clear();
-                bonus.chocos.clear();
+                manager.clearBlocks();
+                bonuses.chocos.clear();
 
                 start(primaryStage);
             } catch (Exception e) {
@@ -361,7 +370,7 @@ public class Game implements GameEngine.OnAction {
             Ball.ball.setCenterX(Ball.xBall);
             Ball.ball.setCenterY(Ball.yBall);
 
-            for (Bonus choco : bonus.chocos) {
+            for (Bonus choco : bonuses.chocos) {
                 choco.choco.setY(choco.y);
             }
         });
@@ -382,13 +391,13 @@ public class Game implements GameEngine.OnAction {
 
     @Override
     public void onPhysicsUpdate() {
-        block.checkDestroyedCount();
+        manager.checkDestroyedCount();
 
         Ball.moveBall();
         collision.checkCollisions();
 
-        bonus.goldBall();
-        bonus.bonusFall();
+        bonuses.goldBall();
+        bonuses.bonusFall();
     }
 
     @Override

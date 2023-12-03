@@ -27,7 +27,8 @@ public class Ball {
 //        this.radius = radius;
 //    }
 
-    public void initBall() {
+    public Ball(Game game) {
+        this.game = game;
         xBall = (double) Game.SCENE_WIDTH / 2;
         yBall = (double) Game.SCENE_WIDTH / 2 + ((game.level + 1) * Block.getHeight()) + 15;
         ball = new Circle();

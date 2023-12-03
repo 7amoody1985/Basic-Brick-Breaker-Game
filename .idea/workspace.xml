@@ -4,14 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- Refactoring">
-      <change afterPath="$PROJECT_DIR$/src/main/java/brickGame/Ball.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/brickGame/BounceDirection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/brickGame/Breaker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/brickGame/CollisionManager.java" afterDir="false" />
+    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- Split game class into different classes (code not working)">
+      <change afterPath="$PROJECT_DIR$/src/main/java/brickGame/BlockManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/brickGame/BonusManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Ball.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Block.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Bonus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Bonus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Breaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Breaker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/CollisionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/CollisionManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Game.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,15 +23,15 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="After-Class-Refactoring" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -56,7 +57,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "ClassES",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/moham/IdeaProjects/CWGame",
     "node.js.detected.package.eslint": "true",
@@ -137,7 +138,7 @@
       <workItem from="1701344815410" duration="13542000" />
       <workItem from="1701368350421" duration="2636000" />
       <workItem from="1701517601411" duration="2449000" />
-      <workItem from="1701520061955" duration="20172000" />
+      <workItem from="1701520061955" duration="28080000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -347,7 +348,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701519754509</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="- Split game class into different classes (code not working)">
+      <option name="closed" value="true" />
+      <created>1701543196399</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1701543196399</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -388,7 +397,8 @@
     <MESSAGE value="- Moved all code in main to new Game class" />
     <MESSAGE value="?" />
     <MESSAGE value="- Refactoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Refactoring" />
+    <MESSAGE value="- Split game class into different classes (code not working)" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Split game class into different classes (code not working)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
