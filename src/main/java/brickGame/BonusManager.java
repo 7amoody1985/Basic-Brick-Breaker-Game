@@ -14,9 +14,14 @@ public class BonusManager {
     private Game game;
     private Ball ball;
 
-    public BonusManager(Game game) {
+    public BonusManager(Game game, Ball ball) {
         this.game = game;
+        this.ball = ball;
         this.bonuses = new ArrayList<>();
+    }
+
+    public void setCollision(CollisionManager collision) {
+        this.collision = collision;
     }
 
     public void addBonus(Bonus bonus) {

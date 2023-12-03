@@ -71,7 +71,6 @@ public class Game implements GameEngine.OnAction {
 
     public Game() {
         this.rect = new Rectangle();
-        this.bonuses = new BonusManager(this);
     }
 
 
@@ -101,7 +100,15 @@ public class Game implements GameEngine.OnAction {
             engine = createGameEngine();
             breaker = new Breaker(engine);
             manager = new BlockManager(this);
-            collision = new CollisionManager(this, Ball, breaker, manager, bonus, bonuses);
+            collision = new CollisionManager(this, Ball, breaker, manager, bonus);
+            bonuses = new BonusManager(this, Ball);
+
+            collision.setBonuses(bonuses);
+            bonuses.setCollision(collision);
+
+            Ball.speed += (0.400*(level-1));
+            Ball.vX = Ball.speed;
+            Ball.vY = Ball.speed;
 
             load = new Button("Load Game");
             newGame = new Button("Start New Game");
@@ -320,9 +327,9 @@ public class Game implements GameEngine.OnAction {
                 manager.clearBlocks();
                 bonuses.chocos.clear();
                 manager.destroyedBlockCount = 0;
-                Ball.speed += 0.400;
-                Ball.vX = Ball.speed;
-                Ball.vY = Ball.speed;
+//                Ball.speed += 0.400;
+//                Ball.vX = Ball.speed;
+//                Ball.vY = Ball.speed;
                 start(primaryStage);
 
             } catch (Exception e) {

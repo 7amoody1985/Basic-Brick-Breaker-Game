@@ -32,12 +32,15 @@ public class CollisionManager {
         return ball.xBall >= breaker.xBreak && ball.xBall <= leftZone;
     }
 
-    public CollisionManager(Game game, Ball ball, Breaker breaker, BlockManager blockManager, Bonus bonus, BonusManager bonuses) {
+    public CollisionManager(Game game, Ball ball, Breaker breaker, BlockManager blockManager, Bonus bonus) {
         this.game = game;
         this.ball = ball;
         this.breaker = breaker;
         this.manager = blockManager;
         this.bonus = bonus;
+    }
+
+    public void setBonuses(BonusManager bonuses) {
         this.bonuses = bonuses;
     }
 
@@ -97,6 +100,7 @@ public class CollisionManager {
 
     public void checkBonusCollisions(Bonus choco) {
         if (choco.y >= breaker.yBreak && choco.y <= breaker.yBreak + breaker.BREAK_HEIGHT && choco.x >= breaker.xBreak && choco.x <= breaker.xBreak + breaker.BREAK_WIDTH) {
+            System.out.println("Bonus Caught");
             bonuses.caught(choco);
         }
     }
