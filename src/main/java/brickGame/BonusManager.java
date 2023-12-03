@@ -38,7 +38,7 @@ public class BonusManager {
         choco.taken = true;
         choco.choco.setVisible(false);
         game.score += 3;
-        ui.showScore(choco.x, choco.y, 3, game);
+        ui.showScore(choco.x, choco.y, 3);
     }
 
     public void goldBall() {

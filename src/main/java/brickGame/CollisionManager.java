@@ -60,7 +60,7 @@ public class CollisionManager {
                         game.score += 1;
 
                         Platform.runLater(() -> {
-                            ui.show(block.x, block.y, 1, ui);
+                            ui.show(block.x, block.y, 1);
                             block.rect.setVisible(false);
                         });
 
@@ -138,10 +138,10 @@ public class CollisionManager {
             if (!bonuses.isGoldStatus) {
                 //TODO game over
                 game.heart--;
-                ui.show((double) UI.SCENE_WIDTH / 2, (double) UI.SCENE_HEIGHT / 2, -1, ui);
+                ui.show((double) UI.SCENE_WIDTH / 2, (double) UI.SCENE_HEIGHT / 2, -1);
 
                 if (game.heart == 0) {
-                    ui.showGameOver(game, ui);
+                    ui.showGameOver(game);
                     game.stopengine();
                 }
             }

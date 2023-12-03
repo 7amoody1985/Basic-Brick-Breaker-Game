@@ -103,23 +103,23 @@ public class UI {
         new Score().showMessage(message, ui);
     }
 
-    public void showWin(UI ui) {
-        new Score().showWin(ui);
+    public void showWin() {
+        new Score().showWin(this);
     }
 
-    public void showGameOver(Game game, UI ui) {
-        new Score().showGameOver(game, ui);
+    public void showGameOver(Game game) {
+        new Score().showGameOver(game, this);
     }
 
 //    public void showLiveLost() {
 //        new Score().show((double) UI.SCENE_WIDTH / 2, (double) UI.SCENE_HEIGHT / 2, -1, this);
 //    }
 
-    public void show(final double x, final double y, int score, final UI ui) {
-        new Score().show(x, y, score, ui);
+    public void show(final double x, final double y, int score) {
+        new Score().show(x, y, score, this);
     }
 
-    public void showScore(double x, double y, int score, Game game) {
+    public void showScore(double x, double y, int score) {
         new Score().show(x, y, score, this);
     }
 

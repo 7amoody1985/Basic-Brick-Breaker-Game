@@ -86,7 +86,6 @@ public class Score {
             label.setScaleX(2);
             label.setScaleY(2);
 
-
             ui.root.getChildren().addAll(label);
 
         });

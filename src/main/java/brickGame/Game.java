@@ -71,8 +71,8 @@ public class Game implements GameEngine.OnAction {
             }
             if (level == 18) {
 //                new Score().showWin(this);
-                ui.showWin(ui);
-                return;
+                ui.showWin();
+                return; // remove this and win will work,, require further work
             }
 
             Ball = new Ball(this);
