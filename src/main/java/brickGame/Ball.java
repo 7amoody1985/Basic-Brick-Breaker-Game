@@ -5,7 +5,6 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 
 public class Ball {
-    private Game game;
     public static final int BALL_RADIUS = 10;
     public double xBall;
     public double yBall;
@@ -16,13 +15,12 @@ public class Ball {
     public double speed = 1.500;
     public double vX = speed;
     public double vY = speed;
-    Circle ball = new Circle();
+    Circle ball;
     public void setBallImagePattern(String imageName) {
         ball.setFill(new ImagePattern(new Image(imageName)));
     }
 
     public Ball(Game game) {
-        this.game = game;
         xBall = (double) Game.SCENE_WIDTH / 2;
         yBall = (double) Game.SCENE_WIDTH / 2 + ((game.level + 1) * Block.getHeight()) + 15;
         ball = new Circle();
