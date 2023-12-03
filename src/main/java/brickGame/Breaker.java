@@ -6,8 +6,8 @@ import javafx.scene.shape.Rectangle;
 import javafx.application.Platform;
 
 public class Breaker {
-    private GameEngine engine;
-    public double xBreak = 0.0f;
+    private final GameEngine engine;
+    public double xBreak;
     public double yBreak = 640.0f;
     public double centerBreakX;
     private static final int MOVE_STEPS = 5;
@@ -16,15 +16,7 @@ public class Breaker {
     private final int HALF_BREAK_WIDTH = 65;
     public final int BREAK_WIDTH = 130;
     public Rectangle rect;
-
-
-//    public Breaker(float x, float y, float width, float height) {
-//        this.x = x;
-//        this.y = y;
-//        this.width = width;
-//        this.height = height;
-//    }
-
+    
     public Breaker(GameEngine engine) {
         if (engine == null) {
             throw new IllegalArgumentException("Engine cannot be null");
@@ -58,9 +50,7 @@ public class Breaker {
                     xBreak -= MOVE_DISTANCE;
                 }
                 centerBreakX = xBreak + HALF_BREAK_WIDTH;
-                Platform.runLater(() -> {
-                    rect.setX(xBreak);
-                });
+                Platform.runLater(() -> rect.setX(xBreak));
                 try {
                     Thread.sleep(1000 / fps);
                 } catch (InterruptedException e) {

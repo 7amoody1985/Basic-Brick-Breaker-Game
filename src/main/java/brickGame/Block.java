@@ -7,11 +7,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
-import java.util.ArrayList;
-import java.util.EnumMap;
-
 import java.io.Serializable;
-import java.util.Random;
+import java.util.EnumMap;
 
 public class Block implements Serializable {
 

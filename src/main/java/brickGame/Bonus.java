@@ -5,9 +5,7 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Random;
-import javafx.application.Platform;
 
 public class Bonus implements Serializable {
     public Rectangle choco;
@@ -15,9 +13,6 @@ public class Bonus implements Serializable {
     public double y;
     public long timeCreated;
     public boolean taken = false;
-    private CollisionManager collision;
-    private Game game;
-    private Ball ball;
 
     public Bonus(int row, int column) {
         x = (column * (Block.getWidth())) + Block.getPaddingH() + ((double) Block.getWidth() / 2) - 15;

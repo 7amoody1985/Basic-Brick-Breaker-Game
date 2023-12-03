@@ -3,41 +3,22 @@ package brickGame;
 import javafx.application.Platform;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class BonusManager {
-    private List<Bonus> bonuses;
     public boolean isGoldStatus = false;
     public long goldTime = 0;
     public final ArrayList<Bonus> chocos = new ArrayList<>();
     private CollisionManager collision;
-    private Game game;
-    private Ball ball;
+    private final Game game;
+    private final Ball ball;
 
     public BonusManager(Game game, Ball ball) {
         this.game = game;
         this.ball = ball;
-        this.bonuses = new ArrayList<>();
     }
 
     public void setCollision(CollisionManager collision) {
         this.collision = collision;
-    }
-
-    public void addBonus(Bonus bonus) {
-        this.bonuses.add(bonus);
-    }
-
-    public void removeBonus(Bonus bonus) {
-        this.bonuses.remove(bonus);
-    }
-
-    public List<Bonus> getBonuses() {
-        return this.bonuses;
-    }
-
-    public void clearBonuses() {
-        this.bonuses.clear();
     }
 
     public void bonusFall() {

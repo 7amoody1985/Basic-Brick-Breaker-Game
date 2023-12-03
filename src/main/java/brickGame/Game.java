@@ -4,21 +4,10 @@ import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.ImagePattern;
-import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-import java.util.Random;
 
 public class Game implements GameEngine.OnAction {
     public static final int SCENE_WIDTH = 500;
@@ -34,11 +23,8 @@ public class Game implements GameEngine.OnAction {
 
 
 
-    private Circle ball;
-//    private double xBall;
-//    private double yBall;
 
-    private Rectangle rect;
+    private final Rectangle rect;
 
 
     public int heart = 300;  // TEMPORARY FOR DEBUGGING
@@ -55,19 +41,12 @@ public class Game implements GameEngine.OnAction {
     private boolean isRightPressed = false;
 
 
-
-
-
-
-
-    private GameEngine gameEngine;
     private Ball Ball;
     private Breaker breaker;
     private CollisionManager collision;
     private Bonus bonus;
     private BlockManager manager;
     private BonusManager bonuses;
-    private BounceDirection bounce;
 
     public Game() {
         this.rect = new Rectangle();
@@ -100,7 +79,7 @@ public class Game implements GameEngine.OnAction {
             engine = createGameEngine();
             breaker = new Breaker(engine);
             manager = new BlockManager(this);
-            collision = new CollisionManager(this, Ball, breaker, manager, bonus);
+            collision = new CollisionManager(this, Ball, breaker, manager);
             bonuses = new BonusManager(this, Ball);
 
             collision.setBonuses(bonuses);
@@ -127,7 +106,7 @@ public class Game implements GameEngine.OnAction {
         if (!loadFromSave) {
             root.getChildren().addAll(breaker.rect, Ball.ball, scoreLabel, heartLabel, levelLabel, newGame);
         } else {
-            root.getChildren().addAll(rect, ball, scoreLabel, heartLabel, levelLabel);
+            root.getChildren().addAll(rect, Ball.ball, scoreLabel, heartLabel, levelLabel);
         }
         for (Block block : manager.getBlocks()) {
             root.getChildren().add(block.rect);
@@ -327,9 +306,6 @@ public class Game implements GameEngine.OnAction {
                 manager.clearBlocks();
                 bonuses.chocos.clear();
                 manager.destroyedBlockCount = 0;
-//                Ball.speed += 0.400;
-//                Ball.vX = Ball.speed;
-//                Ball.vY = Ball.speed;
                 start(primaryStage);
 
             } catch (Exception e) {

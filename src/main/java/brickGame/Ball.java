@@ -21,12 +21,6 @@ public class Ball {
         ball.setFill(new ImagePattern(new Image(imageName)));
     }
 
-//    public Ball(float x, float y, float radius) {
-//        this.x = x;
-//        this.y = y;
-//        this.radius = radius;
-//    }
-
     public Ball(Game game) {
         this.game = game;
         xBall = (double) Game.SCENE_WIDTH / 2;

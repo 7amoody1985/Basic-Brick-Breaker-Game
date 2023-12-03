@@ -3,15 +3,12 @@ package brickGame;
 import javafx.application.Platform;
 
 public class CollisionManager {
-    private BounceDirection bounce;
-    private Game game;
+    private final Game game;
     private GameEngine engine;
-    private BlockManager manager;
-    private Bonus bonus;
+    private final BlockManager manager;
     private BonusManager bonuses;
-    private Ball ball;
-    private Score score;
-    private Breaker breaker;
+    private final Ball ball;
+    private final Breaker breaker;
     private boolean BallCollideTopWall() {
         return ball.yBall <= Ball.BALL_RADIUS;
     }
@@ -32,12 +29,11 @@ public class CollisionManager {
         return ball.xBall >= breaker.xBreak && ball.xBall <= leftZone;
     }
 
-    public CollisionManager(Game game, Ball ball, Breaker breaker, BlockManager blockManager, Bonus bonus) {
+    public CollisionManager(Game game, Ball ball, Breaker breaker, BlockManager blockManager) {
         this.game = game;
         this.ball = ball;
         this.breaker = breaker;
         this.manager = blockManager;
-        this.bonus = bonus;
     }
 
     public void setBonuses(BonusManager bonuses) {
