@@ -44,7 +44,6 @@ public class Game implements GameEngine.OnAction {
     private Ball Ball;
     private Breaker breaker;
     private CollisionManager collision;
-    private Bonus bonus;
     private BlockManager manager;
     private BonusManager bonuses;
 
@@ -288,6 +287,10 @@ public class Game implements GameEngine.OnAction {
 //            throw new RuntimeException(e);
 //        }
 //    }
+
+    public void stopengine() {
+        engine.stop();
+    }
 
     public void nextLevel() {
         Platform.runLater(() -> {

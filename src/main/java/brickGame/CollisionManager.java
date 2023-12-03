@@ -4,7 +4,6 @@ import javafx.application.Platform;
 
 public class CollisionManager {
     private final Game game;
-    private GameEngine engine;
     private final BlockManager manager;
     private BonusManager bonuses;
     private final Ball ball;
@@ -140,7 +139,7 @@ public class CollisionManager {
 
                 if (game.heart == 0) {
                     new Score().showGameOver(game);
-                    engine.stop();
+                    game.stopengine();
                 }
             }
         }
