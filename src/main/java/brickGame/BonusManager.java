@@ -8,13 +8,15 @@ public class BonusManager {
     public final ArrayList<Bonus> chocos = new ArrayList<>();
     private final Game game;
     private final Ball ball;
+    private final UI ui;
     public boolean isGoldStatus = false;
     public long goldTime = 0;
     private CollisionManager collision;
 
-    public BonusManager(Game game, Ball ball) {
+    public BonusManager(Game game, Ball ball, UI ui) {
         this.game = game;
         this.ball = ball;
+        this.ui = ui;
     }
 
     public void setCollision(CollisionManager collision) {
@@ -23,7 +25,7 @@ public class BonusManager {
 
     public void bonusFall() {
         for (Bonus choco : chocos) {
-            if (choco.y > Game.SCENE_HEIGHT || choco.taken) {
+            if (choco.y > UI.SCENE_HEIGHT || choco.taken) {
                 continue;
             }
             collision.checkBonusCollisions(choco);
@@ -36,13 +38,13 @@ public class BonusManager {
         choco.taken = true;
         choco.choco.setVisible(false);
         game.score += 3;
-        new Score().show(choco.x, choco.y, 3, game);
+        ui.showScore(choco.x, choco.y, 3, game);
     }
 
     public void goldBall() {
         if (game.time - goldTime > 5000) {
             ball.setBallImagePattern("ball.png");
-            Platform.runLater(() -> game.root.getStyleClass().remove("goldRoot"));
+            Platform.runLater(() -> ui.root.getStyleClass().remove("goldRoot"));
             isGoldStatus = false;
         }
     }

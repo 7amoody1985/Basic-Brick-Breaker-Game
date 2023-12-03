@@ -10,29 +10,29 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 public class Game implements GameEngine.OnAction {
-    public static final int SCENE_WIDTH = 500;
-    public static final int SCENE_HEIGHT = 700;
+//    public static final int SCENE_WIDTH = 500;
+//    public static final int SCENE_HEIGHT = 700;
     public static String savePath = "D:/save/save.mdds";
 
-    public Pane root;
-    Stage primaryStage;
-    Button load = null;
-    Button newGame = null;
-    public int level = 0;
+//    public Pane root;
+//    Stage primaryStage;
+//    Button load = null;
+//    Button newGame = null;
+    public int level = 16;
 
 
 
 
 
-    private final Rectangle rect;
+//    private final Rectangle rect;
 
 
     public int heart = 300;  // TEMPORARY FOR DEBUGGING
     public int score = 0;
     public long time = 0;
     private GameEngine engine;
-    private Label scoreLabel;
-    private Label heartLabel;
+//    private Label scoreLabel;
+//    private Label heartLabel;
     private boolean loadFromSave = false;
 
 
@@ -46,13 +46,11 @@ public class Game implements GameEngine.OnAction {
     private CollisionManager collision;
     private BlockManager manager;
     private BonusManager bonuses;
+    private UI ui;
 
     public Game() {
-        this.rect = new Rectangle();
+//        this.rect = new Rectangle();
     }
-
-
-
 
     private GameEngine createGameEngine() {
         GameEngine engine = new GameEngine();
@@ -62,15 +60,18 @@ public class Game implements GameEngine.OnAction {
     }
 
     public void start(Stage primaryStage) {
-        this.primaryStage = primaryStage;
+//        this.primaryStage = primaryStage;
+        ui = new UI(primaryStage);
 
         if (!loadFromSave) {
             level++;
             if (level > 1) {
-                new Score().showMessage("Level Up :)", this);
+//              new Score().showMessage("Level Up :)", this);
+                ui.showMessage("Level Up :)", ui);
             }
             if (level == 18) {
-                new Score().showWin(this);
+//                new Score().showWin(this);
+                ui.showWin(ui);
                 return;
             }
 
@@ -78,8 +79,8 @@ public class Game implements GameEngine.OnAction {
             engine = createGameEngine();
             breaker = new Breaker(engine);
             manager = new BlockManager(this);
-            collision = new CollisionManager(this, Ball, breaker, manager);
-            bonuses = new BonusManager(this, Ball);
+            collision = new CollisionManager(this, Ball, breaker, manager, ui);
+            bonuses = new BonusManager(this, Ball, ui);
 
             collision.setBonuses(bonuses);
             bonuses.setCollision(collision);
@@ -88,58 +89,33 @@ public class Game implements GameEngine.OnAction {
             Ball.vX = Ball.speed;
             Ball.vY = Ball.speed;
 
-            load = new Button("Load Game");
-            newGame = new Button("Start New Game");
-            load.setTranslateX(220);
-            load.setTranslateY(300);
-            newGame.setTranslateX(220);
-            newGame.setTranslateY(340);
+            ui.setupButtons();
         }
 
-        root = new Pane();
-        scoreLabel = new Label("Score: " + score);
-        Label levelLabel = new Label("Level: " + level);
-        levelLabel.setTranslateY(20);
-        heartLabel = new Label("Heart : " + heart);
-        heartLabel.setTranslateX(SCENE_WIDTH - 80);
-        if (!loadFromSave) {
-            root.getChildren().addAll(breaker.rect, Ball.ball, scoreLabel, heartLabel, levelLabel, newGame);
-        } else {
-            root.getChildren().addAll(rect, Ball.ball, scoreLabel, heartLabel, levelLabel);
-        }
-        for (Block block : manager.getBlocks()) {
-            root.getChildren().add(block.rect);
-        }
-        Scene scene = new Scene(root, SCENE_WIDTH, SCENE_HEIGHT);
-        scene.getStylesheets().add("style.css");
-        scene.setOnKeyPressed(Game.this::handle);
-        scene.setOnKeyReleased(Game.this::handleReleased);
-
-        primaryStage.setTitle("Brick Game");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        ui.setupScene(this, breaker, Ball, manager, loadFromSave);
+        ui.showScene(); // primaryStage
 
         if (!loadFromSave) {
             if (level > 1 && level < 18) {
-                load.setVisible(false);
-                newGame.setVisible(false);
+                ui.load.setVisible(false);
+                ui.newGame.setVisible(false);
                 engine = createGameEngine();
                 engine.start();
             }
 
-            load.setOnAction(event -> {
+            ui.load.setOnAction(event -> {
 //                loadGame();
 
-                load.setVisible(false);
-                newGame.setVisible(false);
+                ui.load.setVisible(false);
+                ui.newGame.setVisible(false);
             });
 
-            newGame.setOnAction(event -> {
+            ui.newGame.setOnAction(event -> {
                 engine = createGameEngine();
                 engine.start();
 
-                load.setVisible(false);
-                newGame.setVisible(false);
+                ui.load.setVisible(false);
+                ui.newGame.setVisible(false);
             });
         } else {
             engine = createGameEngine();
@@ -309,7 +285,7 @@ public class Game implements GameEngine.OnAction {
                 manager.clearBlocks();
                 bonuses.chocos.clear();
                 manager.destroyedBlockCount = 0;
-                start(primaryStage);
+                start(ui.getPrimaryStage());
 
             } catch (Exception e) {
                 throw new RuntimeException(e);
@@ -338,7 +314,7 @@ public class Game implements GameEngine.OnAction {
                 manager.clearBlocks();
                 bonuses.chocos.clear();
 
-                start(primaryStage);
+                start(ui.getPrimaryStage());
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -348,17 +324,22 @@ public class Game implements GameEngine.OnAction {
     @Override
     public void onUpdate() {
         Platform.runLater(() -> {
-            scoreLabel.setText("Score: " + score);
-            heartLabel.setText("Heart : " + heart);
+//            scoreLabel.setText("Score: " + score);
+            ui.updateScore(score);
+//            heartLabel.setText("Heart : " + heart);
+            ui.updateHeart(heart);
 
-            rect.setX(breaker.xBreak);                          // TODO: check tf is this
-            rect.setY(breaker.yBreak);
-            Ball.ball.setCenterX(Ball.xBall);
-            Ball.ball.setCenterY(Ball.yBall);
+//            rect.setX(breaker.xBreak);
+//            rect.setY(breaker.yBreak);
+            ui.updateBreaker(breaker);
+//            Ball.ball.setCenterX(Ball.xBall);
+//            Ball.ball.setCenterY(Ball.yBall);
+            ui.updateBall(Ball);
 
-            for (Bonus choco : bonuses.chocos) {
-                choco.choco.setY(choco.y);
-            }
+//            for (Bonus choco : bonuses.chocos) {
+//                choco.choco.setY(choco.y);
+//            }
+            ui.updateBonus(bonuses);
         });
 
         if (isLeftPressed) {

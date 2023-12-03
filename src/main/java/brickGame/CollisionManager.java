@@ -8,12 +8,14 @@ public class CollisionManager {
     private final Ball ball;
     private final Breaker breaker;
     private BonusManager bonuses;
+    private UI ui;
 
-    public CollisionManager(Game game, Ball ball, Breaker breaker, BlockManager blockManager) {
+    public CollisionManager(Game game, Ball ball, Breaker breaker, BlockManager blockManager, UI ui) {
         this.game = game;
         this.ball = ball;
         this.breaker = breaker;
         this.manager = blockManager;
+        this.ui = ui;
     }
 
     private boolean BallCollideTopWall() {
@@ -21,7 +23,7 @@ public class CollisionManager {
     }
 
     private boolean BallCollideBottomWall() {
-        return ball.yBall >= Game.SCENE_HEIGHT - Ball.BALL_RADIUS;
+        return ball.yBall >= UI.SCENE_HEIGHT - Ball.BALL_RADIUS;
     }
 
     private boolean BallCollideWithBreaker() {
@@ -58,7 +60,7 @@ public class CollisionManager {
                         game.score += 1;
 
                         Platform.runLater(() -> {
-                            new Score().show(block.x, block.y, 1, game);
+                            ui.show(block.x, block.y, 1, ui);
                             block.rect.setVisible(false);
                         });
 
@@ -68,14 +70,14 @@ public class CollisionManager {
                         if (block.type == Block.Type.CHOCO.ordinal()) {
                             final Bonus choco = new Bonus(block.row, block.column);
                             choco.timeCreated = game.time;
-                            Platform.runLater(() -> game.root.getChildren().add(choco.choco));
+                            Platform.runLater(() -> ui.root.getChildren().add(choco.choco));
                             bonuses.chocos.add(choco);
                         }
                         if (block.type == Block.Type.STAR.ordinal()) {
                             bonuses.goldTime = game.time;
                             ball.setBallImagePattern("goldball.png");
                             System.out.println("gold ball");
-                            Platform.runLater(() -> game.root.getStyleClass().add("goldRoot"));
+                            Platform.runLater(() -> ui.root.getStyleClass().add("goldRoot"));
                             bonuses.isGoldStatus = true;
                         }
                         if (block.type == Block.Type.HEART.ordinal()) {
@@ -136,15 +138,15 @@ public class CollisionManager {
             if (!bonuses.isGoldStatus) {
                 //TODO game over
                 game.heart--;
-                new Score().show((double) Game.SCENE_WIDTH / 2, (double) Game.SCENE_HEIGHT / 2, -1, game);
+                ui.show((double) UI.SCENE_WIDTH / 2, (double) UI.SCENE_HEIGHT / 2, -1, ui);
 
                 if (game.heart == 0) {
-                    new Score().showGameOver(game);
+                    ui.showGameOver(game, ui);
                     game.stopengine();
                 }
             }
         }
-        if (ball.xBall >= Game.SCENE_WIDTH - Ball.BALL_RADIUS) { // right wall
+        if (ball.xBall >= UI.SCENE_WIDTH - Ball.BALL_RADIUS) { // right wall
             ball.ballBounce(BounceDirection.LEFT);
         }
 

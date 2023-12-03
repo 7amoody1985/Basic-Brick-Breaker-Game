@@ -18,8 +18,8 @@ public class Ball {
     private boolean goLeftBall = false;
 
     public Ball(Game game) {
-        xBall = (double) Game.SCENE_WIDTH / 2;
-        yBall = (double) Game.SCENE_WIDTH / 2 + ((game.level + 1) * Block.getHeight()) + 15;
+        xBall = (double) UI.SCENE_WIDTH / 2;
+        yBall = (double) UI.SCENE_WIDTH / 2 + ((game.level + 1) * Block.getHeight()) + 15;
         ball = new Circle();
         ball.setRadius(BALL_RADIUS);
         setBallImagePattern("ball.png");

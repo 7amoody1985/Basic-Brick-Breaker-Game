@@ -6,7 +6,7 @@ import javafx.scene.control.Label;
 //import sun.plugin2.message.Message;
 
 public class Score {
-    public void show(final double x, final double y, int score, final Game game) {
+    public void show(final double x, final double y, int score, final UI ui) {
         String sign;
         if (score >= 0) {
             sign = "+";
@@ -17,7 +17,7 @@ public class Score {
         label.setTranslateX(x);
         label.setTranslateY(y);
 
-        Platform.runLater(() -> game.root.getChildren().add(label));
+        Platform.runLater(() -> ui.root.getChildren().add(label));
 
         new Thread(() -> {
             for (int i = 0; i < 21; i++) {
@@ -36,12 +36,12 @@ public class Score {
         }).start();
     }
 
-    public void showMessage(String message, final Game game) {
+    public void showMessage(String message, final UI ui) {
         final Label label = new Label(message);
         label.setTranslateX(220);
         label.setTranslateY(340);
 
-        Platform.runLater(() -> game.root.getChildren().add(label));
+        Platform.runLater(() -> ui.root.getChildren().add(label));
 
         new Thread(() -> {
             for (int i = 0; i < 21; i++) {
@@ -60,7 +60,7 @@ public class Score {
         }).start();
     }
 
-    public void showGameOver(final Game game) {
+    public void showGameOver(final Game game, final UI ui) {
         Platform.runLater(() -> {
             Label label = new Label("Game Over :(");
             label.setTranslateX(200);
@@ -73,12 +73,12 @@ public class Score {
             restart.setTranslateY(300);
             restart.setOnAction(event -> game.restartGame());
 
-            game.root.getChildren().addAll(label, restart);
+            ui.root.getChildren().addAll(label, restart);
 
         });
     }
 
-    public void showWin(final Game game) {
+    public void showWin(final UI ui) {
         Platform.runLater(() -> {
             Label label = new Label("You Win :)");
             label.setTranslateX(200);
@@ -87,7 +87,7 @@ public class Score {
             label.setScaleY(2);
 
 
-            game.root.getChildren().addAll(label);
+            ui.root.getChildren().addAll(label);
 
         });
     }

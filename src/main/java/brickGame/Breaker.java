@@ -26,7 +26,7 @@ public class Breaker {
         rect = new Rectangle();
         rect.setWidth(BREAK_WIDTH);
         rect.setHeight(BREAK_HEIGHT);
-        xBreak = (double) (Game.SCENE_WIDTH / 2) - HALF_BREAK_WIDTH;
+        xBreak = (double) (UI.SCENE_WIDTH / 2) - HALF_BREAK_WIDTH;
         rect.setX(xBreak);
         rect.setY(yBreak);
 
@@ -38,7 +38,7 @@ public class Breaker {
         new Thread(() -> {
             int fps = engine.getFps();
             for (int i = 0; i < MOVE_STEPS; i++) {
-                if (xBreak >= (Game.SCENE_WIDTH - BREAK_WIDTH) && move == Game.Move.RIGHT) {
+                if (xBreak >= (UI.SCENE_WIDTH - BREAK_WIDTH) && move == Game.Move.RIGHT) {
                     return;
                 }
                 if (xBreak <= 0 && move == Game.Move.LEFT) {
