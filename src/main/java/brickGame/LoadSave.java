@@ -33,7 +33,8 @@ public class LoadSave {
                 game.level = inputStream.readInt();
                 game.score = inputStream.readInt();
                 game.heart = inputStream.readInt();
-                manager.destroyedBlockCount = inputStream.readInt();
+//                manager.destroyedBlockCount = inputStream.readInt();
+//                manager.getBlocks().size(); = inputStream.readDouble();
 
                 ball.xBall = inputStream.readDouble();
                 ball.yBall = inputStream.readDouble();
@@ -53,6 +54,9 @@ public class LoadSave {
                 ball.goLeftBall = inputStream.readBoolean();
                 ball.goRightBall = inputStream.readBoolean();
 
+                manager.clearBlocks();
+                bonuses.chocos.clear();
+
                 ArrayList<BlockSerializable> blockSerializable;
                 try {
                     blockSerializable = (ArrayList<BlockSerializable>) inputStream.readObject();
@@ -63,6 +67,7 @@ public class LoadSave {
                     int r = new Random().nextInt(200);
                     manager.getBlocks().add(new Block(block.row, block.j, manager.colors[r % manager.colors.length], block.type));
                 }
+//                manager.destroyedBlockCount = 0;
 
                 ui.showMessage("Game Loaded");
 

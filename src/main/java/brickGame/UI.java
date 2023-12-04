@@ -41,7 +41,7 @@ public class UI {
         heartLabel = new Label("Heart : " + game.heart);
         heartLabel.setTranslateX(SCENE_WIDTH - 80);
         if (!loadFromSave) {
-            root.getChildren().addAll(breaker.rect, ball.ball, scoreLabel, heartLabel, levelLabel, newGame);
+            root.getChildren().addAll(breaker.rect, ball.ball, scoreLabel, heartLabel, levelLabel, newGame, load);
         } else {
             root.getChildren().addAll(breaker.rect, ball.ball, scoreLabel, heartLabel, levelLabel);
         }

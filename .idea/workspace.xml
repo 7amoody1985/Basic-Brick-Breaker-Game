@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- Clean up&#10;- Reformatting">
-      <change afterPath="$PROJECT_DIR$/src/main/java/brickGame/SaveGame.java" afterDir="false" />
+    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="Moved Save and load game methods to a new class">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Ball.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bugs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bugs.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/LoadSave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/LoadSave.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/SaveGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/SaveGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/UI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -28,7 +28,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="ClassES" />
+        <entry key="$PROJECT_DIR$" value="ClassES_UI" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -47,25 +47,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;ClassES__UI&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/moham/IdeaProjects/CWGame&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "ClassES__UI__SL",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/moham/IdeaProjects/CWGame",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="brickGame" />
@@ -138,7 +138,7 @@
       <workItem from="1701520061955" duration="52998000" />
       <workItem from="1701693676382" duration="199000" />
       <workItem from="1701693979227" duration="5000" />
-      <workItem from="1701694076196" duration="8245000" />
+      <workItem from="1701694076196" duration="13765000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -428,7 +428,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701695807810</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Moved Save and load game methods to a new class">
+      <option name="closed" value="true" />
+      <created>1701703062030</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1701703062030</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -447,7 +455,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="- Fixed if ball doesn't hit paddle first, bricks have no hit box&#10;- Reverted back ball different speed everytime ball hits break for debugging purposes&#10;- Changed paddle/break behaviour and made movement smoother&#10;- Changed exception handling&#10;- Changed block spawning behaviour, now level 1 starts with 1 row of blocks instead of 2&#10;- Fixed rows not getting filled with blocks&#10;- Add some thread synchronization&#10;- Improved GameEngine reliability" />
     <MESSAGE value="- Fixed issues moving to next level at incorrect times" />
     <MESSAGE value="- Fixed block hit detection where sometimes it doesn't register, especially when ball speed is high" />
     <MESSAGE value="- Fixed crash when 2+ blocks get destroyed at once&#10;- Fixed glitches with &quot;+1&quot; score graphics (sometimes gets stuck on screen)" />
@@ -472,7 +479,8 @@
     <MESSAGE value="New UI Class&#10;Initial implementation" />
     <MESSAGE value="Everything working except showWin (fix commented)" />
     <MESSAGE value="- Clean up&#10;- Reformatting" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Clean up&#10;- Reformatting" />
+    <MESSAGE value="Moved Save and load game methods to a new class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Moved Save and load game methods to a new class" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

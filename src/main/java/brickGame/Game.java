@@ -86,7 +86,8 @@ public class Game implements GameEngine.OnAction {
             });
 
             ui.newGame.setOnAction(event -> {
-                load.loadGame();
+                engine = createGameEngine();
+                engine.start();
 
                 ui.load.setVisible(false);
                 ui.newGame.setVisible(false);

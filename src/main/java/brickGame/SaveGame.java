@@ -38,7 +38,9 @@ public class SaveGame {
                 outputStream.writeInt(game.level);
                 outputStream.writeInt(game.score);
                 outputStream.writeInt(game.heart);
-                outputStream.writeLong(manager.destroyedBlockCount);
+//                outputStream.writeLong(manager.destroyedBlockCount);
+//                outputStream.writeDouble(manager.getBlocks().size());
+
 
                 outputStream.writeDouble(ball.xBall);
                 outputStream.writeDouble(ball.yBall);
