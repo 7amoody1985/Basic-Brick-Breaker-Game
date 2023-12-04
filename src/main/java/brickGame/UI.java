@@ -82,8 +82,8 @@ public class UI {
         }
     }
 
-    public void showMessage(String message, UI ui) {
-        new Score().showMessage(message, ui);
+    public void showMessage(String message) {
+        new Score().showMessage(message, this);
     }
 
     public void showWin() {

@@ -1,82 +1,82 @@
 package brickGame;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import javafx.application.Platform;
+
+import java.io.*;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class LoadSave {
-    public boolean isExistHeartBlock;
-    public boolean isGoldStatus;
-    public boolean goDownBall;
-    public boolean goUpBall;
-    public boolean goLeftBall;
-    public boolean goRightBall;
-    public boolean collideToRightWall;
-    public boolean collideToLeftWall;
-    public boolean collideToRightBlock;
-    public boolean collideToBottomBlock;
-    public boolean collideToLeftBlock;
-    public boolean collideToTopBlock;
-    public int level;
-    public int score;
-    public int heart;
-    public int destroyedBlockCount;
-    public double xBall;
-    public double yBall;
-    public double xBreak;
-    public double yBreak;
-    public double centerBreakX;
-    public long time;
-    public long goldTime;
-    public double vX;
-    public ArrayList<BlockSerializable> blocks = new ArrayList<>();
+    private Game game;
+    private UI ui;
+    private BlockManager manager;
+    private BonusManager bonuses;
+    private Breaker breaker;
+    private Ball ball;
 
+    public LoadSave(Game game, UI ui, BlockManager manager, BonusManager bonuses, Breaker breaker, Ball ball) {
+        this.game = game;
+        this.ui = ui;
+        this.manager = manager;
+        this.bonuses = bonuses;
+        this.breaker = breaker;
+        this.ball = ball;
+    }
 
-    public void read() {
-
-
-        try {
-            ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(Game.savePath));
-
-
-            level = inputStream.readInt();
-            score = inputStream.readInt();
-            heart = inputStream.readInt();
-            destroyedBlockCount = inputStream.readInt();
-
-
-            xBall = inputStream.readDouble();
-            yBall = inputStream.readDouble();
-            xBreak = inputStream.readDouble();
-            yBreak = inputStream.readDouble();
-            centerBreakX = inputStream.readDouble();
-            time = inputStream.readLong();
-            goldTime = inputStream.readLong();
-            vX = inputStream.readDouble();
-
-
-            isExistHeartBlock = inputStream.readBoolean();
-            isGoldStatus = inputStream.readBoolean();
-            goDownBall = inputStream.readBoolean();
-            goRightBall = inputStream.readBoolean();
-            collideToRightWall = inputStream.readBoolean();
-            collideToLeftWall = inputStream.readBoolean();
-            collideToRightBlock = inputStream.readBoolean();
-            collideToBottomBlock = inputStream.readBoolean();
-            collideToLeftBlock = inputStream.readBoolean();
-            collideToTopBlock = inputStream.readBoolean();
-
-
+    public void loadGame() {
+        new Thread(() -> {
+            File file = new File(SaveGame.savePath);
+            ObjectInputStream inputStream = null;
             try {
-                blocks = (ArrayList<BlockSerializable>) inputStream.readObject();
-            } catch (ClassNotFoundException e) {
+                inputStream = new ObjectInputStream(new FileInputStream(file));
+
+                game.level = inputStream.readInt();
+                game.score = inputStream.readInt();
+                game.heart = inputStream.readInt();
+                manager.destroyedBlockCount = inputStream.readInt();
+
+                ball.xBall = inputStream.readDouble();
+                ball.yBall = inputStream.readDouble();
+                breaker.xBreak = inputStream.readDouble();
+                breaker.yBreak = inputStream.readDouble();
+                breaker.centerBreakX = inputStream.readDouble();
+                game.time = inputStream.readLong();
+                bonuses.goldTime = inputStream.readLong();
+                ball.vX = inputStream.readDouble();
+                ball.vY = inputStream.readDouble();
+                ball.speed = inputStream.readDouble();
+
+                manager.isExistHeartBlock = inputStream.readBoolean();
+                bonuses.isGoldStatus = inputStream.readBoolean();
+                ball.goDownBall = inputStream.readBoolean();
+                ball.goUpBall = inputStream.readBoolean();
+                ball.goLeftBall = inputStream.readBoolean();
+                ball.goRightBall = inputStream.readBoolean();
+
+                ArrayList<BlockSerializable> blockSerializable;
+                try {
+                    blockSerializable = (ArrayList<BlockSerializable>) inputStream.readObject();
+                } catch (OptionalDataException e) {
+                    blockSerializable = new ArrayList<>();
+                }
+                for (BlockSerializable block : blockSerializable) {
+                    int r = new Random().nextInt(200);
+                    manager.getBlocks().add(new Block(block.row, block.j, manager.colors[r % manager.colors.length], block.type));
+                }
+
+                ui.showMessage("Game Loaded");
+
+                try {
+                    game.loadFromSave = true;
+                    Platform.runLater(() -> game.start(ui.getPrimaryStage()));
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+
+                inputStream.close();
+            } catch (IOException | ClassNotFoundException e) {
                 throw new RuntimeException(e);
             }
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
+        }).start();
     }
 }

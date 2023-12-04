@@ -4,15 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="Everything working except showWin (fix commented)">
+    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- Clean up&#10;- Reformatting">
+      <change afterPath="$PROJECT_DIR$/src/main/java/brickGame/SaveGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Ball.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Block.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/BlockManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/BlockManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/CollisionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/CollisionManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/GameEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Score.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Score.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/LoadSave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/LoadSave.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/UI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -141,7 +138,7 @@
       <workItem from="1701520061955" duration="52998000" />
       <workItem from="1701693676382" duration="199000" />
       <workItem from="1701693979227" duration="5000" />
-      <workItem from="1701694076196" duration="1620000" />
+      <workItem from="1701694076196" duration="8245000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -423,7 +420,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701624553433</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="- Clean up&#10;- Reformatting">
+      <option name="closed" value="true" />
+      <created>1701695807809</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1701695807810</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -442,7 +447,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="- Noted more bugs" />
     <MESSAGE value="- Fixed if ball doesn't hit paddle first, bricks have no hit box&#10;- Reverted back ball different speed everytime ball hits break for debugging purposes&#10;- Changed paddle/break behaviour and made movement smoother&#10;- Changed exception handling&#10;- Changed block spawning behaviour, now level 1 starts with 1 row of blocks instead of 2&#10;- Fixed rows not getting filled with blocks&#10;- Add some thread synchronization&#10;- Improved GameEngine reliability" />
     <MESSAGE value="- Fixed issues moving to next level at incorrect times" />
     <MESSAGE value="- Fixed block hit detection where sometimes it doesn't register, especially when ball speed is high" />
@@ -467,7 +471,8 @@
     <MESSAGE value="- Reformatting&#10;- Clean up" />
     <MESSAGE value="New UI Class&#10;Initial implementation" />
     <MESSAGE value="Everything working except showWin (fix commented)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Everything working except showWin (fix commented)" />
+    <MESSAGE value="- Clean up&#10;- Reformatting" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Clean up&#10;- Reformatting" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

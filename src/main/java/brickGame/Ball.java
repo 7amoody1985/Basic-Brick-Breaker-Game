@@ -12,10 +12,10 @@ public class Ball {
     public double vX = speed;
     public double vY = speed;
     Circle ball;
-    private boolean goDownBall = true;
-    private boolean goUpBall = false;
-    private boolean goRightBall = false;
-    private boolean goLeftBall = false;
+    public boolean goDownBall = true;
+    public boolean goUpBall = false;
+    public boolean goRightBall = false;
+    public boolean goLeftBall = false;
 
     public Ball(Game game) {
         xBall = (double) UI.SCENE_WIDTH / 2;
