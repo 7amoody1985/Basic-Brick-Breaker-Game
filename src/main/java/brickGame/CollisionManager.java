@@ -7,8 +7,8 @@ public class CollisionManager {
     private final BlockManager manager;
     private final Ball ball;
     private final Breaker breaker;
+    private final UI ui;
     private BonusManager bonuses;
-    private UI ui;
 
     public CollisionManager(Game game, Ball ball, Breaker breaker, BlockManager blockManager, UI ui) {
         this.game = game;
@@ -105,7 +105,6 @@ public class CollisionManager {
             bonuses.caught(choco);
         }
     }
-
 
     private void checkBreakerCollision() {
         if (BallCollideWithBreaker()) {

@@ -29,8 +29,6 @@ public class Ball {
         ball.setFill(new ImagePattern(new Image(imageName)));
     }
 
-    // getters and setters for x, y, and radius
-
     public void moveBall() {
         if (goDownBall) {
             yBall += vY;

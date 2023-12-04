@@ -1,48 +1,36 @@
 package brickGame;
 
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 
 public class UI {
-    private Stage primaryStage;
-    private Scene scene;
-    public Pane root;
-    private Label scoreLabel;
-    private Label heartLabel;
-    public Button newGame;
-    private Rectangle rect;
-    private Ball Ball;
-    private boolean loadFromSave;
-    private Breaker breaker;
-    private BlockManager manager;
-    Button load = null;
     public static final int SCENE_WIDTH = 500;
     public static final int SCENE_HEIGHT = 700;
-
-    public Stage getPrimaryStage() {
-        return primaryStage;
-    }
+    private final Stage primaryStage;
+    private final Scene scene;
+    private final Rectangle rect;
+    public Pane root;
+    public Button newGame;
+    Button load;
+    private Label scoreLabel;
+    private Label heartLabel;
 
     public UI(Stage primaryStage) {
         this.rect = new Rectangle();
-//        this.primaryStage = primaryStage;
-//        this.Ball = Ball;
-//        this.root = new Pane();
-//        this.scene = new Scene(root, Game.SCENE_WIDTH, Game.SCENE_HEIGHT);
-//        scene.getStylesheets().add("style.css");
-//        this.breaker = breaker;
-//        this.manager = manager;
-//        this.loadFromSave = loadFromSave;
         this.primaryStage = primaryStage;
         this.load = new Button("Load Game");
         this.newGame = new Button("Start New Game");
         this.root = new Pane();
         this.scene = new Scene(root, SCENE_WIDTH, SCENE_HEIGHT);
         scene.getStylesheets().add("style.css");
+    }
+
+    public Stage getPrimaryStage() {
+        return primaryStage;
     }
 
     public void setupScene(Game game, Breaker breaker, Ball ball, BlockManager manager, boolean loadFromSave) {
@@ -60,7 +48,6 @@ public class UI {
         for (Block block : manager.getBlocks()) {
             root.getChildren().add(block.rect);
         }
-//        Scene scene = new Scene(root, SCENE_WIDTH, SCENE_HEIGHT);
         scene.setOnKeyPressed(game::handle);
         scene.setOnKeyReleased(game::handleReleased);
     }
@@ -89,14 +76,10 @@ public class UI {
         ball.ball.setCenterY(ball.yBall);
     }
 
-    public void updateBonus(BonusManager bonuses ) {
+    public void updateBonus(BonusManager bonuses) {
         for (Bonus choco : bonuses.chocos) {
             choco.choco.setY(choco.y);
         }
-    }
-
-    public Pane getRoot() {
-        return root;
     }
 
     public void showMessage(String message, UI ui) {
@@ -110,10 +93,6 @@ public class UI {
     public void showGameOver(Game game) {
         new Score().showGameOver(game, this);
     }
-
-//    public void showLiveLost() {
-//        new Score().show((double) UI.SCENE_WIDTH / 2, (double) UI.SCENE_HEIGHT / 2, -1, this);
-//    }
 
     public void show(final double x, final double y, int score) {
         new Score().show(x, y, score, this);
@@ -130,41 +109,3 @@ public class UI {
         newGame.setTranslateY(340);
     }
 }
-
-// new load game button
-//load = new Button("Load Game");
-//        newGame = new Button("Start New Game");
-//        load.setTranslateX(220);
-//        load.setTranslateY(300);
-//        newGame.setTranslateX(220);
-//        newGame.setTranslateY(340);
-
-
-// more load game stuff
-//if (!loadFromSave) {
-//        if (level > 1 && level < 18) {
-//        load.setVisible(false);
-//        newGame.setVisible(false);
-//        engine = createGameEngine();
-//        engine.start();
-//        }
-//
-//        load.setOnAction(event -> {
-////                loadGame();
-//
-//        load.setVisible(false);
-//        newGame.setVisible(false);
-//        });
-//
-//        newGame.setOnAction(event -> {
-//        engine = createGameEngine();
-//        engine.start();
-//
-//        load.setVisible(false);
-//        newGame.setVisible(false);
-//        });
-//        } else {
-//        engine = createGameEngine();
-//        engine.start();
-//        loadFromSave = false;
-//        }

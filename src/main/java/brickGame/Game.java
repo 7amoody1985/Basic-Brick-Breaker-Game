@@ -1,42 +1,18 @@
 package brickGame;
 
 import javafx.application.Platform;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.Pane;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 public class Game implements GameEngine.OnAction {
-//    public static final int SCENE_WIDTH = 500;
-//    public static final int SCENE_HEIGHT = 700;
     public static String savePath = "D:/save/save.mdds";
 
-//    public Pane root;
-//    Stage primaryStage;
-//    Button load = null;
-//    Button newGame = null;
-    public int level = 16;
-
-
-
-
-
-//    private final Rectangle rect;
-
-
+    public int level = 0;
     public int heart = 300;  // TEMPORARY FOR DEBUGGING
     public int score = 0;
     public long time = 0;
     private GameEngine engine;
-//    private Label scoreLabel;
-//    private Label heartLabel;
     private boolean loadFromSave = false;
-
-
-
     private boolean isLeftPressed = false;
     private boolean isRightPressed = false;
 
@@ -49,7 +25,7 @@ public class Game implements GameEngine.OnAction {
     private UI ui;
 
     public Game() {
-//        this.rect = new Rectangle();
+
     }
 
     private GameEngine createGameEngine() {
@@ -60,19 +36,16 @@ public class Game implements GameEngine.OnAction {
     }
 
     public void start(Stage primaryStage) {
-//        this.primaryStage = primaryStage;
         ui = new UI(primaryStage);
 
         if (!loadFromSave) {
             level++;
             if (level > 1) {
-//              new Score().showMessage("Level Up :)", this);
                 ui.showMessage("Level Up :)", ui);
             }
             if (level == 18) {
-//                new Score().showWin(this);
                 ui.showWin();
-                return; // remove this and win will work,, require further work
+                return; // remove this and win will work.... require further work
             }
 
             Ball = new Ball(this);
@@ -85,7 +58,7 @@ public class Game implements GameEngine.OnAction {
             collision.setBonuses(bonuses);
             bonuses.setCollision(collision);
 
-            Ball.speed += (0.400*(level-1));
+            Ball.speed += (0.400 * (level - 1));
             Ball.vX = Ball.speed;
             Ball.vY = Ball.speed;
 
@@ -149,15 +122,6 @@ public class Game implements GameEngine.OnAction {
                 break;
         }
     }
-
-
-
-
-
-
-
-
-
 
 
 //    private void saveGame() {
@@ -324,21 +288,12 @@ public class Game implements GameEngine.OnAction {
     @Override
     public void onUpdate() {
         Platform.runLater(() -> {
-//            scoreLabel.setText("Score: " + score);
             ui.updateScore(score);
-//            heartLabel.setText("Heart : " + heart);
             ui.updateHeart(heart);
 
-//            rect.setX(breaker.xBreak);
-//            rect.setY(breaker.yBreak);
             ui.updateBreaker(breaker);
-//            Ball.ball.setCenterX(Ball.xBall);
-//            Ball.ball.setCenterY(Ball.yBall);
             ui.updateBall(Ball);
 
-//            for (Bonus choco : bonuses.chocos) {
-//                choco.choco.setY(choco.y);
-//            }
             ui.updateBonus(bonuses);
         });
 

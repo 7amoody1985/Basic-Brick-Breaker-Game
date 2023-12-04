@@ -39,7 +39,7 @@ public class GameEngine {
             isStopped.set(true);
         }
     }
-
+    
     private void gameLoop() {
         while (!isStopped.get()) {
             long startTime = System.currentTimeMillis();

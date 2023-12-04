@@ -47,7 +47,6 @@ public class BlockManager {
         this.blocks.clear();
     }
 
-
     public void checkDestroyedCount() {
         if (destroyedBlockCount == blocks.size()) {
             //TODO win level todo...

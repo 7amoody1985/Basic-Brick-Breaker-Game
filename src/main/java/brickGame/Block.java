@@ -98,7 +98,6 @@ public class Block implements Serializable {
                 return HitDirection.TOP.ordinal();
             }
         }
-
         return HitDirection.NO_HIT.ordinal();
     }
 
