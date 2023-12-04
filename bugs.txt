@@ -2,3 +2,4 @@ BUGS FOUND:
 - Ball sometimes freezes on screen but game engine still reports collisions and sometimes when nextLevel (hard to reproduce)
 - Fix ui.showWin(); (line 48)
 - +1 and bonus animations not working when loading level
+- Update breaker position when loading game before getting user input

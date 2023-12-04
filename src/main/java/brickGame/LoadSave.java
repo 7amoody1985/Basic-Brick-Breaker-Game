@@ -7,12 +7,12 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class LoadSave {
-    private Game game;
-    private UI ui;
-    private BlockManager manager;
-    private BonusManager bonuses;
-    private Breaker breaker;
-    private Ball ball;
+    private final Game game;
+    private final UI ui;
+    private final BlockManager manager;
+    private final BonusManager bonuses;
+    private final Breaker breaker;
+    private final Ball ball;
 
     public LoadSave(Game game, UI ui, BlockManager manager, BonusManager bonuses, Breaker breaker, Ball ball) {
         this.game = game;
@@ -26,15 +26,13 @@ public class LoadSave {
     public void loadGame() {
         new Thread(() -> {
             File file = new File(SaveGame.savePath);
-            ObjectInputStream inputStream = null;
+            ObjectInputStream inputStream;
             try {
                 inputStream = new ObjectInputStream(new FileInputStream(file));
 
                 game.level = inputStream.readInt();
                 game.score = inputStream.readInt();
                 game.heart = inputStream.readInt();
-//                manager.destroyedBlockCount = inputStream.readInt();
-//                manager.getBlocks().size(); = inputStream.readDouble();
 
                 ball.xBall = inputStream.readDouble();
                 ball.yBall = inputStream.readDouble();
@@ -59,6 +57,7 @@ public class LoadSave {
 
                 ArrayList<BlockSerializable> blockSerializable;
                 try {
+                    //noinspection unchecked
                     blockSerializable = (ArrayList<BlockSerializable>) inputStream.readObject();
                 } catch (OptionalDataException e) {
                     blockSerializable = new ArrayList<>();
@@ -67,7 +66,6 @@ public class LoadSave {
                     int r = new Random().nextInt(200);
                     manager.getBlocks().add(new Block(block.row, block.j, manager.colors[r % manager.colors.length], block.type));
                 }
-//                manager.destroyedBlockCount = 0;
 
                 ui.showMessage("Game Loaded");
 

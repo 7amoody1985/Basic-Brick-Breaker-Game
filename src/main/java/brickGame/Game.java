@@ -9,11 +9,10 @@ public class Game implements GameEngine.OnAction {
     public int heart = 300;  // TEMPORARY FOR DEBUGGING
     public int score = 0;
     public long time = 0;
-    private GameEngine engine;
     public boolean loadFromSave = false;
+    private GameEngine engine;
     private boolean isLeftPressed = false;
     private boolean isRightPressed = false;
-
 
     private Ball Ball;
     private Breaker breaker;

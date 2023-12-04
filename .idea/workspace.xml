@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="Moved Save and load game methods to a new class">
+    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- Save and load game now working&#10;- Noted bugs need to be fixed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bugs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bugs.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/LoadSave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/LoadSave.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/SaveGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/SaveGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/UI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +137,7 @@
       <workItem from="1701520061955" duration="52998000" />
       <workItem from="1701693676382" duration="199000" />
       <workItem from="1701693979227" duration="5000" />
-      <workItem from="1701694076196" duration="13765000" />
+      <workItem from="1701694076196" duration="13978000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -436,7 +435,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701703062030</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="- Save and load game now working&#10;- Noted bugs need to be fixed">
+      <option name="closed" value="true" />
+      <created>1701708732423</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1701708732423</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -455,7 +462,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="- Fixed issues moving to next level at incorrect times" />
     <MESSAGE value="- Fixed block hit detection where sometimes it doesn't register, especially when ball speed is high" />
     <MESSAGE value="- Fixed crash when 2+ blocks get destroyed at once&#10;- Fixed glitches with &quot;+1&quot; score graphics (sometimes gets stuck on screen)" />
     <MESSAGE value="- Optimized scene thread further for better reliability" />
@@ -480,7 +486,8 @@
     <MESSAGE value="Everything working except showWin (fix commented)" />
     <MESSAGE value="- Clean up&#10;- Reformatting" />
     <MESSAGE value="Moved Save and load game methods to a new class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Moved Save and load game methods to a new class" />
+    <MESSAGE value="- Save and load game now working&#10;- Noted bugs need to be fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Save and load game now working&#10;- Noted bugs need to be fixed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

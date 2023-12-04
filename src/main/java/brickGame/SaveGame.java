@@ -27,7 +27,8 @@ public class SaveGame {
     public void saveGame() {
         new Thread(() -> {
             File directory = new File("D:/save");
-            if (! directory.exists()){
+            if (!directory.exists()) {
+                //noinspection ResultOfMethodCallIgnored
                 directory.mkdir();
             }
             File file = new File(savePath);
@@ -38,9 +39,6 @@ public class SaveGame {
                 outputStream.writeInt(game.level);
                 outputStream.writeInt(game.score);
                 outputStream.writeInt(game.heart);
-//                outputStream.writeLong(manager.destroyedBlockCount);
-//                outputStream.writeDouble(manager.getBlocks().size());
-
 
                 outputStream.writeDouble(ball.xBall);
                 outputStream.writeDouble(ball.yBall);
@@ -70,7 +68,6 @@ public class SaveGame {
                 outputStream.writeObject(blockSerializable);
 
                 ui.showMessage("Game Saved");
-
 
                 outputStream.flush();
                 outputStream.close();
