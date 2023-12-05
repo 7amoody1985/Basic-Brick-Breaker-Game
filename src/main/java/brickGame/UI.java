@@ -30,6 +30,8 @@ public class UI {
         this.newGame = new Button("Start New Game");
         this.root = new Pane();
         this.scene = new Scene(root, SCENE_WIDTH, SCENE_HEIGHT);
+        Image icon = new Image("icon.jpg");
+        primaryStage.getIcons().add(icon);
         scene.getStylesheets().add("style.css");
     }
 
