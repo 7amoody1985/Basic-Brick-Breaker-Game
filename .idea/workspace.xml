@@ -4,8 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- Clean up&#10;- Code reformatting&#10;- Noted 1 more bug">
+    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- Changed gold ball background color to gold">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/bgGold.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/heartplus.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/heartstrike.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/BonusManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/BonusManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/CollisionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/CollisionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Score.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Score.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/UI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/block.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/block.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -24,7 +33,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="ClassES_UI" />
+        <entry key="$PROJECT_DIR$" value="ClassES_UI_SL" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -43,25 +52,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;ClassES__UI__SL&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/moham/IdeaProjects/CWGame&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "ClassES__UI__SL__UI",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/moham/IdeaProjects/CWGame",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="brickGame" />
@@ -149,7 +158,7 @@
       <workItem from="1701693979227" duration="5000" />
       <workItem from="1701694076196" duration="15521000" />
       <workItem from="1701775831498" duration="42000" />
-      <workItem from="1701790844826" duration="1646000" />
+      <workItem from="1701790844826" duration="12376000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -463,7 +472,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701708933255</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="- Changed gold ball background color to gold">
+      <option name="closed" value="true" />
+      <created>1701792532982</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1701792532982</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -482,7 +499,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="- Fixed crash when 2+ blocks get destroyed at once&#10;- Fixed glitches with &quot;+1&quot; score graphics (sometimes gets stuck on screen)" />
     <MESSAGE value="- Optimized scene thread further for better reliability" />
     <MESSAGE value="- Fixed heart counter position&#10;- Changed window title&#10;- Made ball always spawn in the middle of the screen instead of randomly&#10;- Reworked ball physics, now ball always has the same speed no matter than angle after hitting breaker&#10;- Added speed variable to easily adjust starting ball speed" />
     <MESSAGE value="- Fixed breaker sometimes goes beyond scene border&#10;- Changed starting ball speed&#10;- Improved ball hit detection&#10;- Fixed Ball sometimes goes through block&#10;- Some changed in attempt to fix game freeze" />
@@ -507,7 +523,8 @@
     <MESSAGE value="Moved Save and load game methods to a new class" />
     <MESSAGE value="- Save and load game now working&#10;- Noted bugs need to be fixed" />
     <MESSAGE value="- Clean up&#10;- Code reformatting&#10;- Noted 1 more bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Clean up&#10;- Code reformatting&#10;- Noted 1 more bug" />
+    <MESSAGE value="- Changed gold ball background color to gold" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Changed gold ball background color to gold" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

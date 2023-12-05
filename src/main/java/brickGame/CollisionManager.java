@@ -1,6 +1,7 @@
 package brickGame;
 
 import javafx.application.Platform;
+import javafx.scene.image.Image;
 
 public class CollisionManager {
     private final Game game;
@@ -59,21 +60,31 @@ public class CollisionManager {
                     if (hitCode != Block.HitDirection.NO_HIT.ordinal()) {
                         game.score += 1;
 
-                        Platform.runLater(() -> {
-                            ui.show(block.x, block.y, 1);
-                            block.rect.setVisible(false);
-                        });
+                        if (block.type == Block.Type.NORMAL.ordinal()) {
+                            Platform.runLater(() -> {
+                                ui.show(block.x, block.y, "+1");
+                                block.rect.setVisible(false);
+                            });
+                        }
 
                         block.isDestroyed = true;
                         manager.destroyedBlockCount++;
 
                         if (block.type == Block.Type.CHOCO.ordinal()) {
+                            Platform.runLater(() -> {
+                                ui.show(block.x, block.y, "Bonus!");
+                                block.rect.setVisible(false);
+                            });
                             final Bonus choco = new Bonus(block.row, block.column);
                             choco.timeCreated = game.time;
                             Platform.runLater(() -> ui.root.getChildren().add(choco.choco));
                             bonuses.chocos.add(choco);
                         }
                         if (block.type == Block.Type.STAR.ordinal()) {
+                            Platform.runLater(() -> {
+                                ui.show(block.x, block.y, "Gold Ball!");
+                                block.rect.setVisible(false);
+                            });
                             bonuses.goldTime = game.time;
                             ball.setBallImagePattern("goldball.png");
                             System.out.println("gold ball");
@@ -82,6 +93,11 @@ public class CollisionManager {
                         }
                         if (block.type == Block.Type.HEART.ordinal()) {
                             game.heart++;
+                            Image image = new Image("heartplus.png");
+                            Platform.runLater(() -> {
+                                ui.showImg((double) UI.SCENE_WIDTH / 2, (double) UI.SCENE_HEIGHT / 2, image);
+                                block.rect.setVisible(false);
+                            });
                         }
 
                         if (hitCode == Block.HitDirection.RIGHT.ordinal()) {
@@ -137,7 +153,8 @@ public class CollisionManager {
             if (!bonuses.isGoldStatus) {
                 //TODO game over
                 game.heart--;
-                ui.show((double) UI.SCENE_WIDTH / 2, (double) UI.SCENE_HEIGHT / 2, -1);
+                Image image = new Image("heartstrike.png");
+                ui.showImg((double) UI.SCENE_WIDTH / 2, (double) UI.SCENE_HEIGHT / 2, image);
 
                 if (game.heart == 0) {
                     ui.showGameOver(game);

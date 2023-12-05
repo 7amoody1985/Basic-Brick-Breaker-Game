@@ -1,11 +1,14 @@
 package brickGame;
 
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import javafx.scene.layout.VBox;
 
 public class UI {
     public static final int SCENE_WIDTH = 500;
@@ -15,6 +18,7 @@ public class UI {
     private final Rectangle rect;
     public Pane root;
     public Button newGame;
+    VBox buttonBox = new VBox();
     Button load;
     private Label scoreLabel;
     private Label heartLabel;
@@ -37,11 +41,11 @@ public class UI {
         root.getChildren().clear();
         scoreLabel = new Label("Score: " + game.score);
         Label levelLabel = new Label("Level: " + game.level);
-        levelLabel.setTranslateY(20);
+        levelLabel.setTranslateX(220);
         heartLabel = new Label("Heart : " + game.heart);
         heartLabel.setTranslateX(SCENE_WIDTH - 80);
         if (!loadFromSave) {
-            root.getChildren().addAll(breaker.rect, ball.ball, scoreLabel, heartLabel, levelLabel, newGame, load);
+            root.getChildren().addAll(breaker.rect, ball.ball, scoreLabel, heartLabel, levelLabel, buttonBox);
         } else {
             root.getChildren().addAll(breaker.rect, ball.ball, scoreLabel, heartLabel, levelLabel);
         }
@@ -94,18 +98,36 @@ public class UI {
         new Score().showGameOver(game, this);
     }
 
-    public void show(final double x, final double y, int score) {
+    public void show(final double x, final double y, String score) {
         new Score().show(x, y, score, this);
     }
 
-    public void showScore(double x, double y, int score) {
-        new Score().show(x, y, score, this);
+    public void showImg(final double x, final double y, Image image) {
+        new Score().showImage(x, y, image, this);
     }
 
     public void setupButtons() {
-        load.setTranslateX(220);
-        load.setTranslateY(300);
-        newGame.setTranslateX(220);
-        newGame.setTranslateY(340);
+        buttonBox.getChildren().addAll(newGame, load);
+        buttonBox.setPadding(new javafx.geometry.Insets(125, 70, 125, 70));
+        buttonBox.setSpacing(20); // Set spacing between buttons
+        buttonBox.setAlignment(javafx.geometry.Pos.CENTER);
+        buttonBox.getStyleClass().add("buttonBox");
+        newGame.getStyleClass().add("button");
+        load.getStyleClass().add("button");
+
+        Platform.runLater(() -> {
+            double boxWidth = buttonBox.getBoundsInParent().getWidth();
+            double boxHeight = buttonBox.getBoundsInParent().getHeight();
+            buttonBox.setLayoutX((double) (SCENE_WIDTH / 2) - (boxWidth / 2));
+            buttonBox.setLayoutY((double) (SCENE_HEIGHT / 2) - (boxHeight / 2));
+        });
+
+        root.getChildren().add(buttonBox);
+    }
+
+    public void hide() {
+        load.setVisible(false);
+        newGame.setVisible(false);
+        buttonBox.setVisible(false);
     }
 }

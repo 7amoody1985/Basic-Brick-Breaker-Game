@@ -3,16 +3,13 @@ package brickGame;
 import javafx.application.Platform;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class Score {
-    public void show(final double x, final double y, int score, final UI ui) {
-        String sign;
-        if (score >= 0) {
-            sign = "+";
-        } else {
-            sign = "";
-        }
-        final Label label = new Label(sign + score);
+    public void show(final double x, final double y, String score, final UI ui) {
+        final Label label = new Label(score);
+        label.getStyleClass().add("plusScore");
         label.setTranslateX(x);
         label.setTranslateY(y);
 
@@ -26,6 +23,32 @@ public class Score {
                         label.setScaleX(scale);
                         label.setScaleY(scale);
                         label.setOpacity((20 - scale) / 20.0);
+                    });
+                    Thread.sleep(20);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }).start();
+    }
+
+    public void showImage(final double x, final double y, Image image, final UI ui) {
+        ImageView heart = new ImageView(image);
+        heart.setFitHeight(10);
+        heart.setFitWidth(10);
+        heart.setTranslateX(x);
+        heart.setTranslateY(y);
+
+        Platform.runLater(() -> ui.root.getChildren().add(heart));
+
+        new Thread(() -> {
+            for (int i = 0; i < 21; i++) {
+                final int scale = i;
+                try {
+                    Platform.runLater(() -> {
+                        heart.setScaleX(scale);
+                        heart.setScaleY(scale);
+                        heart.setOpacity((20 - scale) / 20.0);
                     });
                     Thread.sleep(15);
                 } catch (InterruptedException e) {
@@ -51,7 +74,7 @@ public class Score {
                         label.setScaleY(Math.abs(scale - 10));
                         label.setOpacity((20 - scale) / 20.0);
                     });
-                    Thread.sleep(15);
+                    Thread.sleep(30);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }

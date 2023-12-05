@@ -71,8 +71,7 @@ public class Game implements GameEngine.OnAction {
 
         if (!loadFromSave) {
             if (level > 1 && level < 18) {
-                ui.load.setVisible(false);
-                ui.newGame.setVisible(false);
+                ui.hide();
                 engine = createGameEngine();
                 engine.start();
             }
@@ -80,16 +79,14 @@ public class Game implements GameEngine.OnAction {
             ui.load.setOnAction(event -> {
                 load.loadGame();
 
-                ui.load.setVisible(false);
-                ui.newGame.setVisible(false);
+                ui.hide();
             });
 
             ui.newGame.setOnAction(event -> {
                 engine = createGameEngine();
                 engine.start();
 
-                ui.load.setVisible(false);
-                ui.newGame.setVisible(false);
+                ui.hide();
             });
         } else {
             engine = createGameEngine();
