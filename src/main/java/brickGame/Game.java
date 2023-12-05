@@ -48,6 +48,7 @@ public class Game implements GameEngine.OnAction {
             }
 
             Ball = new Ball(this);
+            Ball.ball.setVisible(false);
             engine = createGameEngine();
             breaker = new Breaker(engine);
             manager = new BlockManager(this);
@@ -72,6 +73,8 @@ public class Game implements GameEngine.OnAction {
         if (!loadFromSave) {
             if (level > 1 && level < 18) {
                 ui.hide();
+                showBall();
+
                 engine = createGameEngine();
                 engine.start();
             }
@@ -80,6 +83,7 @@ public class Game implements GameEngine.OnAction {
                 load.loadGame();
 
                 ui.hide();
+                showBall();
             });
 
             ui.newGame.setOnAction(event -> {
@@ -87,12 +91,18 @@ public class Game implements GameEngine.OnAction {
                 engine.start();
 
                 ui.hide();
+                showBall();
             });
         } else {
             engine = createGameEngine();
             engine.start();
+            showBall();
             loadFromSave = false;
         }
+    }
+
+    public void showBall() {
+        Ball.ball.setVisible(true);
     }
 
 
