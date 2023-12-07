@@ -1,9 +1,10 @@
 package brickGame;
 
 import javafx.application.Platform;
-import javafx.scene.Scene;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -19,7 +20,9 @@ public class UI {
     public Pane root;
     public Button newGame;
     VBox buttonBox = new VBox();
-    Button load;
+    public Button load;
+    public Button settings;
+    public Toggle fpsCounter;
     private Label scoreLabel;
     private Label heartLabel;
 
@@ -28,6 +31,8 @@ public class UI {
         this.primaryStage = primaryStage;
         this.load = new Button("Load Game");
         this.newGame = new Button("Start New Game");
+        this.settings = new Button("Settings");
+        this.fpsCounter = new ToggleButton("FPS Counter");
         this.root = new Pane();
         this.scene = new Scene(root, SCENE_WIDTH, SCENE_HEIGHT);
         Image icon = new Image("icon.jpg");
@@ -109,7 +114,7 @@ public class UI {
     }
 
     public void setupButtons() {
-        buttonBox.getChildren().addAll(newGame, load);
+        buttonBox.getChildren().addAll(newGame, load, settings);
         buttonBox.setPadding(new javafx.geometry.Insets(125, 70, 125, 70));
         buttonBox.setSpacing(20); // Set spacing between buttons
         buttonBox.setAlignment(javafx.geometry.Pos.CENTER);
@@ -131,5 +136,25 @@ public class UI {
         load.setVisible(false);
         newGame.setVisible(false);
         buttonBox.setVisible(false);
+    }
+
+    public void showSettings() {
+        load.setVisible(false);
+        newGame.setVisible(false);
+        settings.setVisible(false);
+
+        setupSettings();
+    }
+
+    public void setupSettings() {
+        buttonBox.getChildren().clear();
+        buttonBox.getChildren().addAll((Node) fpsCounter);
+
+        Platform.runLater(() -> {
+            double boxWidth = buttonBox.getBoundsInParent().getWidth();
+            double boxHeight = buttonBox.getBoundsInParent().getHeight();
+            buttonBox.setLayoutX((double) (SCENE_WIDTH / 2) - (boxWidth / 2));
+            buttonBox.setLayoutY((double) (SCENE_HEIGHT / 2) - (boxHeight / 2));
+        });
     }
 }

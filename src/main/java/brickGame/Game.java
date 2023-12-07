@@ -86,6 +86,10 @@ public class Game implements GameEngine.OnAction {
                 showBall();
             });
 
+            ui.settings.setOnAction(event -> {
+                ui.showSettings();
+            });
+
             ui.newGame.setOnAction(event -> {
                 engine = createGameEngine();
                 engine.start();
@@ -100,6 +104,7 @@ public class Game implements GameEngine.OnAction {
             loadFromSave = false;
         }
     }
+
 
     public void showBall() {
         Ball.ball.setVisible(true);
