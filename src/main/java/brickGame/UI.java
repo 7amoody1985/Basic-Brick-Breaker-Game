@@ -35,6 +35,7 @@ public class UI {
     public UI(Stage primaryStage, Sound sound) {
         this.rect = new Rectangle();
         this.primaryStage = primaryStage;
+        this.primaryStage.setResizable(false);
         this.load = new Button("Load Game");
         this.newGame = new Button("Start New Game");
         this.settings = new Button("Settings");
@@ -59,13 +60,13 @@ public class UI {
         root.getChildren().clear();
         scoreLabel = new Label("Score: " + game.score);
         Label levelLabel = new Label("Level: " + game.level);
-        levelLabel.setTranslateX(220);
-        heartLabel = new Label("Heart : " + game.heart);
-        heartLabel.setTranslateX(SCENE_WIDTH - 80);
+        Platform.runLater(() -> levelLabel.setTranslateX(((double) SCENE_WIDTH / 2) - (levelLabel.getWidth() / 2)));
+        heartLabel = new Label("Heart: " + game.heart);
+        heartLabel.setTranslateX(SCENE_WIDTH - 95);
         fpsLabel = new Label();
+        fpsLabel.setText("FPS: ");
         fpsLabel.setVisible(false);
         fpsLabel.setTranslateY(17);
-        fpsLabel.setText("FPS: ");
 
         if (!loadFromSave) {
             root.getChildren().addAll(breaker.rect, ball.ball, scoreLabel, heartLabel, levelLabel, buttonBox, fpsLabel);
@@ -140,12 +141,13 @@ public class UI {
 
     public void setupButtons() {
         showStartMenu();
-        buttonBox.setPadding(new javafx.geometry.Insets(70, 70, 70, 70));
-        buttonBox.setSpacing(20); // Set spacing between buttons
+        buttonBox.setSpacing(30); // Set spacing between buttons
         buttonBox.setAlignment(javafx.geometry.Pos.CENTER);
         buttonBox.getStyleClass().add("buttonBox");
         newGame.getStyleClass().add("button");
         load.getStyleClass().add("button");
+
+        buttonBox.setPrefSize(320, 380);
 
         positionButtonBox();
 
@@ -156,8 +158,8 @@ public class UI {
 
     private void positionButtonBox() {
         Platform.runLater(() -> {
-            double boxWidth = buttonBox.getBoundsInParent().getWidth();
-            double boxHeight = buttonBox.getBoundsInParent().getHeight();
+            double boxWidth = buttonBox.getWidth();
+            double boxHeight = buttonBox.getHeight();
             buttonBox.setLayoutX((double) (SCENE_WIDTH / 2) - (boxWidth / 2));
             buttonBox.setLayoutY((double) (SCENE_HEIGHT / 2) - (boxHeight / 2));
         });

@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- Added more settings&#10;- Added sound toggle button&#10;- Added music toggle button&#10;- Added background music&#10;- Added button click sound&#10;- More sounds to be added...">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/SFX/BrickHit.mp3" afterDir="false" />
+    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- UI improvements&#10;- Made window not resizable&#10;- Fixed start menu alignment, previously not centered on screen&#10;- Made start menu size static&#10;- Added more spacing between start menu buttons&#10;- Fixed Level label alignment&#10;- Fixed Heart label alignment">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/CollisionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/CollisionManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/UI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SFX/Brick Hit.mp3" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,7 +167,7 @@
       <workItem from="1701969762102" duration="4459000" />
       <workItem from="1701974289560" duration="140000" />
       <workItem from="1702033664060" duration="656000" />
-      <workItem from="1702034329151" duration="16598000" />
+      <workItem from="1702034329151" duration="18827000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -548,7 +545,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702050532156</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="- Fully functional sound system (except Win and game over)">
+      <option name="closed" value="true" />
+      <created>1702053732699</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1702053732699</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -567,8 +572,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Idk this thing randomly appeared" />
-    <MESSAGE value="- Fixed breaker zones not equal&#10;- Refactoring" />
     <MESSAGE value="- Moved all code in main to new Game class" />
     <MESSAGE value="?" />
     <MESSAGE value="- Refactoring" />
@@ -592,7 +595,9 @@
     <MESSAGE value="- Imported new font&#10;- Changed font&#10;- Added settings button&#10;- Changed menu shadow color&#10;- Changed button shadow color&#10;- Working on settings menu" />
     <MESSAGE value="- Added fps counter&#10;- Added exit button&#10;- Added fully functional settings menu" />
     <MESSAGE value="- Added more settings&#10;- Added sound toggle button&#10;- Added music toggle button&#10;- Added background music&#10;- Added button click sound&#10;- More sounds to be added..." />
-    <option name="LAST_COMMIT_MESSAGE" value="- Added more settings&#10;- Added sound toggle button&#10;- Added music toggle button&#10;- Added background music&#10;- Added button click sound&#10;- More sounds to be added..." />
+    <MESSAGE value="- Fully functional sound system (except Win and game over)" />
+    <MESSAGE value="- UI improvements&#10;- Made window not resizable&#10;- Fixed start menu alignment, previously not centered on screen&#10;- Made start menu size static&#10;- Added more spacing between start menu buttons&#10;- Fixed Level label alignment&#10;- Fixed Heart label alignment" />
+    <option name="LAST_COMMIT_MESSAGE" value="- UI improvements&#10;- Made window not resizable&#10;- Fixed start menu alignment, previously not centered on screen&#10;- Made start menu size static&#10;- Added more spacing between start menu buttons&#10;- Fixed Level label alignment&#10;- Fixed Heart label alignment" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 public class Game implements GameEngine.OnAction {
     private final Sound sound = new Sound();
     public int level = 0;
-    public int heart = 300;  // TEMPORARY FOR DEBUGGING
+    public int heart = 3;
     public int score = 0;
     public long time = 0;
     public boolean loadFromSave = false;
