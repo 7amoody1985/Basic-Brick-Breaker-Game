@@ -79,6 +79,7 @@ public class Game implements GameEngine.OnAction {
             }
 
             ui.load.setOnAction(event -> {
+                ui.buttonClickSound();
                 load.loadGame();
 
                 ui.hide();
@@ -86,6 +87,7 @@ public class Game implements GameEngine.OnAction {
             });
 
             ui.newGame.setOnAction(event -> {
+                ui.buttonClickSound();
                 engine = createGameEngine();
                 engine.start();
 

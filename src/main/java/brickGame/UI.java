@@ -17,6 +17,7 @@ public class UI {
     private final Stage primaryStage;
     private final Scene scene;
     private final Rectangle rect;
+    private final Sound sound;
     public Pane root;
     public Button newGame;
     public Button load;
@@ -24,6 +25,8 @@ public class UI {
     public Button exit;
     public Button back;
     public ToggleButton fpsCounter;
+    public ToggleButton soundButton;
+    public ToggleButton musicButton;
     VBox buttonBox = new VBox();
     private Label scoreLabel;
     private Label heartLabel;
@@ -36,6 +39,9 @@ public class UI {
         this.newGame = new Button("Start New Game");
         this.settings = new Button("Settings");
         this.fpsCounter = new ToggleButton("FPS Counter: OFF");
+        this.soundButton = new ToggleButton("Sound: ON");
+        this.musicButton = new ToggleButton("Music: ON");
+        this.sound = new Sound();
         this.back = new Button("Back");
         this.exit = new Button("Exit");
         this.root = new Pane();
@@ -57,7 +63,7 @@ public class UI {
         heartLabel = new Label("Heart : " + game.heart);
         heartLabel.setTranslateX(SCENE_WIDTH - 80);
         fpsLabel = new Label();
-        fpsLabel.setVisible(true); // Hide it by default
+        fpsLabel.setVisible(false);
         fpsLabel.setTranslateY(17);
         fpsLabel.setText("FPS: ");
 
@@ -163,11 +169,41 @@ public class UI {
         buttonBox.setVisible(false);
     }
 
+    public void buttonClickSound() {
+        sound.playSound("Button Click.mp3");
+    }
+
     public void startMenuHandler() {
 
-        settings.setOnAction(event -> showSettings());
+        settings.setOnAction(event -> {
+            buttonClickSound();
+            showSettings();
+        });
+
+        soundButton.setOnAction(event -> {
+            if (soundButton.isSelected()) {
+                sound.toggleSound();
+                soundButton.setText("Sound: OFF");
+            } else {
+                sound.toggleSound();
+                soundButton.setText("Sound: ON");
+            }
+            buttonClickSound();
+        });
+
+        musicButton.setOnAction(event -> {
+            buttonClickSound();
+            if (musicButton.isSelected()) {
+                sound.musicOff();
+                musicButton.setText("Music: OFF");
+            } else {
+                sound.musicOn();
+                musicButton.setText("Music: ON");
+            }
+        });
 
         fpsCounter.setOnAction(event -> {
+            buttonClickSound();
             if (fpsCounter.isSelected()) {
                 fpsLabel.setVisible(true);
                 fpsCounter.setText("FPS Counter: ON");
@@ -177,13 +213,19 @@ public class UI {
             }
         });
 
-        back.setOnAction(event -> showStartMenu());
+        back.setOnAction(event -> {
+            buttonClickSound();
+            showStartMenu();
+        });
 
-        exit.setOnAction(event -> System.exit(0));
+        exit.setOnAction(event -> {
+            buttonClickSound();
+            System.exit(0);
+        });
     }
 
     public void showSettings() {
         buttonBox.getChildren().clear();
-        buttonBox.getChildren().addAll(fpsCounter, back);
+        buttonBox.getChildren().addAll(soundButton, musicButton, fpsCounter, back);
     }
 }

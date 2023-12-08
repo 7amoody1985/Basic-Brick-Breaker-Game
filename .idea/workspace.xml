@@ -4,21 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- Imported new font&#10;- Changed font&#10;- Added settings button&#10;- Changed menu shadow color&#10;- Changed button shadow color&#10;- Working on settings menu">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_01_12_2023_3_21_AM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_01_12_2023_3_21_AM__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_01_12_2023_3_23_AM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_01_12_2023_3_23_AM__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_01_12_2023_3_30_AM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_01_12_2023_3_30_AM__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_01_12_2023_3_31_AM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_01_12_2023_3_31_AM__Changes_.xml" beforeDir="false" />
+    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- Added fps counter&#10;- Added exit button&#10;- Added fully functional settings menu">
+      <change afterPath="$PROJECT_DIR$/src/main/java/brickGame/Sound.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/SFX/Background Music.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/SFX/Bonus Hit.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/SFX/Breaker hit.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/SFX/Brick Hit.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/SFX/Button Click.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/SFX/Game Over.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/SFX/Gold Ball.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/SFX/Heart++.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/SFX/Heart--.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/SFX/Win.mp3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Ball.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/GameEngine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/UI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,7 +179,7 @@
       <workItem from="1701969762102" duration="4459000" />
       <workItem from="1701974289560" duration="140000" />
       <workItem from="1702033664060" duration="656000" />
-      <workItem from="1702034329151" duration="3965000" />
+      <workItem from="1702034329151" duration="13314000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -540,7 +541,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701974223893</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="- Added fps counter&#10;- Added exit button&#10;- Added fully functional settings menu">
+      <option name="closed" value="true" />
+      <created>1702038519100</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1702038519100</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -559,7 +568,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="- Ball now spawns in the middle of the screen going straight down even after each level" />
     <MESSAGE value="- Adjusted angle when ball hits either side of breaker&#10;- Code clean up" />
     <MESSAGE value="Idk this thing randomly appeared" />
     <MESSAGE value="- Fixed breaker zones not equal&#10;- Refactoring" />
@@ -584,7 +592,8 @@
     <MESSAGE value="- Fixed ball visible on top left corner before game starts" />
     <MESSAGE value="- Added new application icon" />
     <MESSAGE value="- Imported new font&#10;- Changed font&#10;- Added settings button&#10;- Changed menu shadow color&#10;- Changed button shadow color&#10;- Working on settings menu" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Imported new font&#10;- Changed font&#10;- Added settings button&#10;- Changed menu shadow color&#10;- Changed button shadow color&#10;- Working on settings menu" />
+    <MESSAGE value="- Added fps counter&#10;- Added exit button&#10;- Added fully functional settings menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Added fps counter&#10;- Added exit button&#10;- Added fully functional settings menu" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
