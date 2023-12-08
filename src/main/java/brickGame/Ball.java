@@ -23,6 +23,7 @@ public class Ball {
         ball = new Circle();
         ball.setRadius(BALL_RADIUS);
         setBallImagePattern("ball.png");
+        ball.setVisible(false);
     }
 
     public void setBallImagePattern(String imageName) {

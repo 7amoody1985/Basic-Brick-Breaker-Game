@@ -40,7 +40,7 @@
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 255, 0.6), 15, 0, 0, 0);
 }
 
-.button:hover {
+.button:hover, .toggle-button:hover {
     -fx-background-color: #ff00ff;
     -fx-background-radius: 20;
     -fx-border-color: #ff00ff;

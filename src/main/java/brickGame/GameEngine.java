@@ -12,6 +12,11 @@ public class GameEngine {
     private final IntegerProperty fps = new SimpleIntegerProperty();
     private OnAction onAction;
     private long time = 0;
+    private final UI ui;
+
+    public GameEngine(UI ui) {
+        this.ui = ui;
+    }
 
     public void setOnAction(OnAction onAction) {
         this.onAction = onAction;
@@ -20,7 +25,6 @@ public class GameEngine {
     public int getFps() {
         return fps.get();
     }
-
     /**
      * @param fps set fps and we convert it to millisecond
      */
@@ -56,6 +60,7 @@ public class GameEngine {
                 try {
                     //noinspection BusyWait
                     Thread.sleep(1000 / fps.get() - deltaTime);
+                    ui.updateFPS(fps.get());
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
                     throw new RuntimeException(e);
