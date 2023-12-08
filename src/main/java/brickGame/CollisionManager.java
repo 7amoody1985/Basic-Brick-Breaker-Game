@@ -9,14 +9,16 @@ public class CollisionManager {
     private final Ball ball;
     private final Breaker breaker;
     private final UI ui;
+    private final Sound sound;
     private BonusManager bonuses;
 
-    public CollisionManager(Game game, Ball ball, Breaker breaker, BlockManager blockManager, UI ui) {
+    public CollisionManager(Game game, Ball ball, Breaker breaker, BlockManager blockManager, UI ui, Sound sound) {
         this.game = game;
         this.ball = ball;
         this.breaker = breaker;
         this.manager = blockManager;
         this.ui = ui;
+        this.sound = sound;
     }
 
     private boolean BallCollideTopWall() {
@@ -27,7 +29,7 @@ public class CollisionManager {
         return ball.yBall >= UI.SCENE_HEIGHT - Ball.BALL_RADIUS;
     }
 
-    private boolean BallCollideWithBreaker() {
+    private boolean BallInBreakerZone() {
         return ball.yBall >= breaker.yBreak - Ball.BALL_RADIUS;
     }
 
@@ -61,6 +63,7 @@ public class CollisionManager {
                         game.score += 1;
 
                         if (block.type == Block.Type.NORMAL.ordinal()) {
+                            sound.playSound("BrickHit.mp3");
                             Platform.runLater(() -> {
                                 ui.show(block.x, block.y, "+1");
                                 block.rect.setVisible(false);
@@ -71,6 +74,7 @@ public class CollisionManager {
                         manager.destroyedBlockCount++;
 
                         if (block.type == Block.Type.CHOCO.ordinal()) {
+                            sound.playSound("BrickHit.mp3");
                             Platform.runLater(() -> {
                                 ui.show(block.x, block.y, "Bonus!");
                                 block.rect.setVisible(false);
@@ -81,6 +85,7 @@ public class CollisionManager {
                             bonuses.chocos.add(choco);
                         }
                         if (block.type == Block.Type.STAR.ordinal()) {
+                            sound.playSound("Gold Ball.mp3");
                             Platform.runLater(() -> {
                                 ui.show(block.x, block.y, "Gold Ball!");
                                 block.rect.setVisible(false);
@@ -93,6 +98,7 @@ public class CollisionManager {
                         }
                         if (block.type == Block.Type.HEART.ordinal()) {
                             game.heart++;
+                            sound.playSound("Heart++.mp3");
                             Image image = new Image("heartplus.png");
                             Platform.runLater(() -> {
                                 ui.showImg((double) UI.SCENE_WIDTH / 2, (double) UI.SCENE_HEIGHT / 2, image);
@@ -117,25 +123,29 @@ public class CollisionManager {
 
     public void checkBonusCollisions(Bonus choco) {
         if (choco.y >= breaker.yBreak && choco.y <= breaker.yBreak + breaker.BREAK_HEIGHT && choco.x >= breaker.xBreak && choco.x <= breaker.xBreak + breaker.BREAK_WIDTH) {
+            sound.playSound("Bonus Hit.mp3");
             System.out.println("Bonus Caught");
             bonuses.caught(choco);
         }
     }
 
     private void checkBreakerCollision() {
-        if (BallCollideWithBreaker()) {
+        if (BallInBreakerZone()) {
             double zoneWidth = breaker.BREAK_WIDTH / 3.0;
             double leftZone = breaker.xBreak + zoneWidth;
             double rightZone = breaker.xBreak + 2 * zoneWidth;
 
             if (BreakerLeftZone(leftZone)) {
+                sound.playSound("Breaker Hit.mp3");
                 ball.resetCollideFlags();
                 ball.ballBounce(BounceDirection.UP);
                 ball.ballBounce(BounceDirection.LEFT);
             } else if (BreakerMiddleZone(leftZone, rightZone)) {
+                sound.playSound("Breaker Hit.mp3");
                 ball.resetCollideFlags();
                 ball.ballBounce(BounceDirection.STRAIGHT_UP);
             } else if (BreakerRightZone(rightZone)) {
+                sound.playSound("Breaker Hit.mp3");
                 ball.resetCollideFlags();
                 ball.ballBounce(BounceDirection.UP);
                 ball.ballBounce(BounceDirection.RIGHT);
@@ -151,7 +161,7 @@ public class CollisionManager {
         if (BallCollideBottomWall()) {
             ball.ballBounce(BounceDirection.UP);
             if (!bonuses.isGoldStatus) {
-                //TODO game over
+                sound.playSound("Heart--.mp3");
                 game.heart--;
                 Image image = new Image("heartstrike.png");
                 ui.showImg((double) UI.SCENE_WIDTH / 2, (double) UI.SCENE_HEIGHT / 2, image);

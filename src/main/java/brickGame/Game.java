@@ -5,6 +5,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 public class Game implements GameEngine.OnAction {
+    private final Sound sound = new Sound();
     public int level = 0;
     public int heart = 300;  // TEMPORARY FOR DEBUGGING
     public int score = 0;
@@ -13,7 +14,6 @@ public class Game implements GameEngine.OnAction {
     private GameEngine engine;
     private boolean isLeftPressed = false;
     private boolean isRightPressed = false;
-
     private Ball Ball;
     private Breaker breaker;
     private CollisionManager collision;
@@ -35,7 +35,7 @@ public class Game implements GameEngine.OnAction {
     }
 
     public void start(Stage primaryStage) {
-        ui = new UI(primaryStage);
+        ui = new UI(primaryStage, sound);
 
         if (!loadFromSave) {
             level++;
@@ -51,7 +51,7 @@ public class Game implements GameEngine.OnAction {
             engine = createGameEngine();
             breaker = new Breaker(engine);
             manager = new BlockManager(this);
-            collision = new CollisionManager(this, Ball, breaker, manager, ui);
+            collision = new CollisionManager(this, Ball, breaker, manager, ui, sound);
             bonuses = new BonusManager(this, Ball, ui);
             save = new SaveGame(this, ui, manager, bonuses, breaker, Ball);
             load = new LoadSave(this, ui, manager, bonuses, breaker, Ball);

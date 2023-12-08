@@ -32,7 +32,7 @@ public class UI {
     private Label heartLabel;
     private Label fpsLabel;
 
-    public UI(Stage primaryStage) {
+    public UI(Stage primaryStage, Sound sound) {
         this.rect = new Rectangle();
         this.primaryStage = primaryStage;
         this.load = new Button("Load Game");
@@ -41,7 +41,7 @@ public class UI {
         this.fpsCounter = new ToggleButton("FPS Counter: OFF");
         this.soundButton = new ToggleButton("Sound: ON");
         this.musicButton = new ToggleButton("Music: ON");
-        this.sound = new Sound();
+        this.sound = sound;
         this.back = new Button("Back");
         this.exit = new Button("Exit");
         this.root = new Pane();
