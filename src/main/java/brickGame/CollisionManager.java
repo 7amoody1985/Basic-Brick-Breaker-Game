@@ -167,6 +167,8 @@ public class CollisionManager {
                 ui.showImg((double) UI.SCENE_WIDTH / 2, (double) UI.SCENE_HEIGHT / 2, image);
 
                 if (game.heart == 0) {
+                    sound.musicOff();
+                    sound.playSound("Game Over.mp3");
                     ui.showGameOver(game);
                     game.stopengine();
                 }

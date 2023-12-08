@@ -159,6 +159,7 @@ public class Game implements GameEngine.OnAction {
     public void restartGame() {
         Platform.runLater(() -> {
             try {
+                sound.musicOn();
                 level = 0;
                 heart = 3;
                 score = 0;

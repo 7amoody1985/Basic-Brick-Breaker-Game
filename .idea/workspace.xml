@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- UI improvements&#10;- Made window not resizable&#10;- Fixed start menu alignment, previously not centered on screen&#10;- Made start menu size static&#10;- Added more spacing between start menu buttons&#10;- Fixed Level label alignment&#10;- Fixed Heart label alignment">
+    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- Remade game over menu&#10;- Moved showGameOver method from Score class to UI class&#10;- Added Game over sound">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/CollisionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/CollisionManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Score.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Score.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/UI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -167,7 +169,8 @@
       <workItem from="1701969762102" duration="4459000" />
       <workItem from="1701974289560" duration="140000" />
       <workItem from="1702033664060" duration="656000" />
-      <workItem from="1702034329151" duration="18827000" />
+      <workItem from="1702034329151" duration="18856000" />
+      <workItem from="1702056076107" duration="2549000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -553,7 +556,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702053732699</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="- UI improvements&#10;- Made window not resizable&#10;- Fixed start menu alignment, previously not centered on screen&#10;- Made start menu size static&#10;- Added more spacing between start menu buttons&#10;- Fixed Level label alignment&#10;- Fixed Heart label alignment">
+      <option name="closed" value="true" />
+      <created>1702055929633</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1702055929633</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -572,7 +583,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="- Moved all code in main to new Game class" />
     <MESSAGE value="?" />
     <MESSAGE value="- Refactoring" />
     <MESSAGE value="- Split game class into different classes (code not working)" />
@@ -597,7 +607,8 @@
     <MESSAGE value="- Added more settings&#10;- Added sound toggle button&#10;- Added music toggle button&#10;- Added background music&#10;- Added button click sound&#10;- More sounds to be added..." />
     <MESSAGE value="- Fully functional sound system (except Win and game over)" />
     <MESSAGE value="- UI improvements&#10;- Made window not resizable&#10;- Fixed start menu alignment, previously not centered on screen&#10;- Made start menu size static&#10;- Added more spacing between start menu buttons&#10;- Fixed Level label alignment&#10;- Fixed Heart label alignment" />
-    <option name="LAST_COMMIT_MESSAGE" value="- UI improvements&#10;- Made window not resizable&#10;- Fixed start menu alignment, previously not centered on screen&#10;- Made start menu size static&#10;- Added more spacing between start menu buttons&#10;- Fixed Level label alignment&#10;- Fixed Heart label alignment" />
+    <MESSAGE value="- Remade game over menu&#10;- Moved showGameOver method from Score class to UI class&#10;- Added Game over sound" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Remade game over menu&#10;- Moved showGameOver method from Score class to UI class&#10;- Added Game over sound" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

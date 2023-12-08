@@ -1,7 +1,6 @@
 package brickGame;
 
 import javafx.application.Platform;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -80,24 +79,6 @@ public class Score {
                 }
             }
         }).start();
-    }
-
-    public void showGameOver(final Game game, final UI ui) {
-        Platform.runLater(() -> {
-            Label label = new Label("Game Over :(");
-            label.setTranslateX(200);
-            label.setTranslateY(250);
-            label.setScaleX(2);
-            label.setScaleY(2);
-
-            Button restart = new Button("Restart");
-            restart.setTranslateX(220);
-            restart.setTranslateY(300);
-            restart.setOnAction(event -> game.restartGame());
-
-            ui.root.getChildren().addAll(label, restart);
-
-        });
     }
 
     public void showWin(final UI ui) {

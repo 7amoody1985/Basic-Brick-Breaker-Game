@@ -91,7 +91,7 @@ public class UI {
     }
 
     public void updateHeart(int heart) {
-        heartLabel.setText("Heart : " + heart);
+        heartLabel.setText("Heart: " + heart);
     }
 
     public void updateBreaker(Breaker breaker) {
@@ -123,7 +123,21 @@ public class UI {
     }
 
     public void showGameOver(Game game) {
-        new Score().showGameOver(game, this);
+        Platform.runLater(() -> {
+            Label gameOverLabel = new Label("Game Over");
+            gameOverLabel.setScaleX(2);
+            gameOverLabel.setScaleY(2);
+            gameOverLabel.setTranslateY(250);
+
+            Button restart = new Button("Start Menu");
+            restart.setTranslateY(300);
+            restart.setOnAction(event -> game.restartGame());
+
+            root.getChildren().addAll(gameOverLabel, restart);
+
+            gameOverLabel.layoutBoundsProperty().addListener((observable, oldValue, newValue) -> gameOverLabel.setTranslateX((SCENE_WIDTH - newValue.getWidth()) / 2));
+            restart.layoutBoundsProperty().addListener((observable, oldValue, newValue) -> restart.setTranslateX((SCENE_WIDTH - newValue.getWidth()) / 2));
+        });
     }
 
     public void show(final double x, final double y, String score) {
