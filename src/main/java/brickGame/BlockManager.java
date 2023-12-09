@@ -9,12 +9,12 @@ import java.util.Random;
 public class BlockManager {
     public final Color[] colors = new Color[]{Color.MAGENTA, Color.RED, Color.GOLD, Color.CORAL, Color.AQUA, Color.VIOLET, Color.GREENYELLOW, Color.ORANGE, Color.PINK, Color.SLATEGREY, Color.YELLOW, Color.TOMATO, Color.TAN,};
     private final List<Block> blocks;
-    private final Game game;
+    private final UI ui;
     public boolean isExistHeartBlock = false;
     public int destroyedBlockCount = 0;
 
-    public BlockManager(Game game) {
-        this.game = game;
+    public BlockManager(Game game, UI ui) {
+        this.ui = ui;
         this.blocks = new ArrayList<>();
         if (game.level <= game.finalLevel) {
             for (int i = 0; i < 4; i++) {
@@ -49,11 +49,10 @@ public class BlockManager {
         this.blocks.clear();
     }
 
-    public void checkDestroyedCount() {
+    public void checkDestroyedCount(GameEngine engine) {
         if (destroyedBlockCount == blocks.size()) {
-            //TODO win level todo...
             System.out.println("You Win");
-            game.nextLevel();
+            ui.nextMenu(engine);
         }
     }
 }

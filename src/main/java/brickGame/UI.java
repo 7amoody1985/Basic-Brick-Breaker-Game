@@ -66,24 +66,27 @@ public class UI {
     }
 
     public void setupScene(Game game, Breaker breaker, Ball ball, BlockManager manager, boolean loadFromSave) {
-        root.getChildren().clear();
+        Platform.runLater(() -> root.getChildren().clear());
         scoreLabel = new Label("Score: " + game.score);
         Label levelLabel = new Label("Level: " + game.level);
-        Platform.runLater(() -> levelLabel.setTranslateX(((double) SCENE_WIDTH / 2) - (levelLabel.getWidth() / 2)));
+        levelLabel.layoutBoundsProperty().addListener((observable, oldValue, newValue) -> Platform.runLater(() -> levelLabel.setTranslateX(((double) SCENE_WIDTH / 2) - (levelLabel.getWidth() / 2))));
         heartLabel = new Label("Heart: " + game.heart);
-        heartLabel.setTranslateX(SCENE_WIDTH - 95);
         fpsLabel = new Label();
-        fpsLabel.setText("FPS: ");
-        fpsLabel.setVisible(false);
-        fpsLabel.setTranslateY(17);
+
+        Platform.runLater(() -> {
+            heartLabel.setTranslateX(SCENE_WIDTH - 95);
+            fpsLabel.setText("FPS: ");
+            fpsLabel.setVisible(false);
+            fpsLabel.setTranslateY(17);
+        });
 
         if (!loadFromSave) {
-            root.getChildren().addAll(breaker.rect, ball.ball, scoreLabel, heartLabel, levelLabel, buttonBox, fpsLabel);
+            Platform.runLater(() -> root.getChildren().addAll(breaker.rect, ball.ball, scoreLabel, heartLabel, levelLabel, buttonBox, fpsLabel));
         } else {
-            root.getChildren().addAll(breaker.rect, ball.ball, scoreLabel, heartLabel, levelLabel, fpsLabel);
+            Platform.runLater(() -> root.getChildren().addAll(breaker.rect, ball.ball, scoreLabel, heartLabel, levelLabel, fpsLabel));
         }
         for (Block block : manager.getBlocks()) {
-            root.getChildren().add(block.rect);
+            Platform.runLater(() -> root.getChildren().add(block.rect));
         }
         scene.setOnKeyPressed(game::handle);
         scene.setOnKeyReleased(game::handleReleased);
@@ -96,26 +99,30 @@ public class UI {
     }
 
     public void updateScore(int score) {
-        scoreLabel.setText("Score: " + score);
+        Platform.runLater(() -> scoreLabel.setText("Score: " + score));
     }
 
     public void updateHeart(int heart) {
-        heartLabel.setText("Heart: " + heart);
+        Platform.runLater(() -> heartLabel.setText("Heart: " + heart));
     }
 
     public void updateBreaker(Breaker breaker) {
-        rect.setX(breaker.xBreak);
-        rect.setY(breaker.yBreak);
+        Platform.runLater(() -> {
+            rect.setX(breaker.xBreak);
+            rect.setY(breaker.yBreak);
+        });
     }
 
     public void updateBall(Ball ball) {
-        ball.ball.setCenterX(ball.xBall);
-        ball.ball.setCenterY(ball.yBall);
+        Platform.runLater(() -> {
+            ball.ball.setCenterX(ball.xBall);
+            ball.ball.setCenterY(ball.yBall);
+        });
     }
 
     public void updateBonus(BonusManager bonuses) {
         for (Bonus choco : bonuses.chocos) {
-            choco.choco.setY(choco.y);
+            Platform.runLater(() -> choco.choco.setY(choco.y));
         }
     }
 
@@ -139,18 +146,40 @@ public class UI {
                 game.restartGame();
             });
 
-            VBox box = new VBox();
-            box.getChildren().addAll(gameOverLabel, restart);
-            box.setSpacing(30);
-            box.setAlignment(javafx.geometry.Pos.CENTER);
-            box.getStyleClass().add("buttonBox");
+            setupSmallBox(gameOverLabel, restart);
+        });
+    }
 
-            box.setPrefSize(320, 190);
+    private void setupSmallBox(Label gameOverLabel, Button restart) {
+        VBox box = new VBox();
+        box.getChildren().addAll(gameOverLabel, restart);
+        box.setSpacing(30);
+        box.setAlignment(javafx.geometry.Pos.CENTER);
+        box.getStyleClass().add("buttonBox");
 
-            root.getChildren().add(box);
+        box.setPrefSize(320, 190);
 
-            box.layoutBoundsProperty().addListener((observable, oldValue, newValue) -> box.setTranslateX((SCENE_WIDTH - newValue.getWidth()) / 2));
-            box.layoutBoundsProperty().addListener((observable, oldValue, newValue) -> box.setTranslateY((SCENE_HEIGHT - newValue.getHeight()) / 2));
+        root.getChildren().add(box);
+
+        box.layoutBoundsProperty().addListener((observable, oldValue, newValue) -> box.setTranslateX((SCENE_WIDTH - newValue.getWidth()) / 2));
+        box.layoutBoundsProperty().addListener((observable, oldValue, newValue) -> box.setTranslateY((SCENE_HEIGHT - newValue.getHeight()) / 2));
+    }
+
+    public void nextMenu(GameEngine engine) {
+        engine.stop();
+        Platform.runLater(() -> {
+            Label nextLabel = new Label("You completed level " + game.level + " !");
+            nextLabel.setScaleX(1.3);
+            nextLabel.setScaleY(1.3);
+
+            Button restart = new Button("Next Level");
+            restart.setOnAction(event -> {
+                buttonClickSound();
+                engine.start();
+                game.nextLevel();
+            });
+
+            setupSmallBox(nextLabel, restart);
         });
     }
 
@@ -164,36 +193,42 @@ public class UI {
 
     public void showStartMenu() {
         isPauseMenu = false;
-        buttonBox.getChildren().clear();
-        buttonBox.getChildren().addAll(newGame, load, settings, exit);
+        Platform.runLater(() -> {
+            buttonBox.getChildren().clear();
+            buttonBox.getChildren().addAll(newGame, load, settings, exit);
+            buttonBox.toFront();
+        });
     }
 
     public void setupButtons() {
         showStartMenu();
-        buttonBox.setSpacing(30);
-        buttonBox.setAlignment(javafx.geometry.Pos.CENTER);
-        buttonBox.getStyleClass().add("buttonBox");
 
-        buttonBox.setPrefSize(320, 380);
+        Platform.runLater(() -> {
+            buttonBox.setSpacing(30);
+            buttonBox.setAlignment(javafx.geometry.Pos.CENTER);
+            buttonBox.getStyleClass().add("buttonBox");
+
+            buttonBox.setPrefSize(320, 380);
+        });
 
         positionButtonBox();
 
-        root.getChildren().add(buttonBox);
+        Platform.runLater(() -> root.getChildren().add(buttonBox));
 
         startMenuHandler();
     }
 
     private void positionButtonBox() {
-        Platform.runLater(() -> {
+        buttonBox.layoutBoundsProperty().addListener((observable, oldValue, newValue) -> Platform.runLater(() -> {
             double boxWidth = buttonBox.getWidth();
             double boxHeight = buttonBox.getHeight();
             buttonBox.setLayoutX((double) (SCENE_WIDTH / 2) - (boxWidth / 2));
             buttonBox.setLayoutY((double) (SCENE_HEIGHT / 2) - (boxHeight / 2));
-        });
+        }));
     }
 
     public void hide() {
-        buttonBox.setVisible(false);
+        Platform.runLater(() -> buttonBox.setVisible(false));
     }
 
     public void buttonClickSound() {
@@ -210,10 +245,10 @@ public class UI {
         soundButton.setOnAction(event -> {
             if (soundButton.isSelected()) {
                 sound.toggleSound();
-                soundButton.setText("Sound: OFF");
+                Platform.runLater(() -> soundButton.setText("Sound: OFF"));
             } else {
                 sound.toggleSound();
-                soundButton.setText("Sound: ON");
+                Platform.runLater(() -> soundButton.setText("Sound: ON"));
             }
             buttonClickSound();
         });
@@ -222,10 +257,10 @@ public class UI {
             buttonClickSound();
             if (musicButton.isSelected()) {
                 sound.musicOff();
-                musicButton.setText("Music: OFF");
+                Platform.runLater(() -> musicButton.setText("Music: OFF"));
             } else {
                 sound.musicOn();
-                musicButton.setText("Music: ON");
+                Platform.runLater(() -> musicButton.setText("Music: ON"));
             }
         });
 
@@ -233,10 +268,10 @@ public class UI {
             buttonClickSound();
             if (fpsCounter.isSelected()) {
                 fpsLabel.setVisible(true);
-                fpsCounter.setText("FPS Counter: ON");
+                Platform.runLater(() -> fpsCounter.setText("FPS Counter: ON"));
             } else {
                 fpsLabel.setVisible(false);
-                fpsCounter.setText("FPS Counter: OFF");
+                Platform.runLater(() -> fpsCounter.setText("FPS Counter: OFF"));
             }
         });
 
@@ -262,6 +297,7 @@ public class UI {
         save.setOnAction(event -> {
             buttonClickSound();
             game.saveGame();
+            buttonBox.toFront();
         });
 
         mainMenu.setOnAction(event -> {
@@ -271,14 +307,20 @@ public class UI {
     }
 
     public void showSettings() {
-        buttonBox.getChildren().clear();
-        buttonBox.getChildren().addAll(soundButton, musicButton, fpsCounter, back);
+        Platform.runLater(() -> {
+            buttonBox.getChildren().clear();
+            buttonBox.getChildren().addAll(soundButton, musicButton, fpsCounter, back);
+            buttonBox.toFront();
+        });
     }
 
     public void showPauseMenu() {
         isPauseMenu = true;
-        buttonBox.getChildren().clear();
-        buttonBox.getChildren().addAll(resume, save, mainMenu, settings, exit);
-        buttonBox.setVisible(true);
+        Platform.runLater(() -> {
+            buttonBox.getChildren().clear();
+            buttonBox.getChildren().addAll(resume, save, mainMenu, settings, exit);
+            buttonBox.setVisible(true);
+            buttonBox.toFront();
+        });
     }
 }

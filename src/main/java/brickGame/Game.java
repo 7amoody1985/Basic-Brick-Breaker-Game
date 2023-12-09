@@ -48,7 +48,7 @@ public class Game implements GameEngine.OnAction {
             Ball = new Ball(this);
             engine = createGameEngine();
             breaker = new Breaker(engine);
-            manager = new BlockManager(this);
+            manager = new BlockManager(this, ui);
             collision = new CollisionManager(this, Ball, breaker, manager, ui, sound);
             bonuses = new BonusManager(this, Ball, ui);
             save = new SaveGame(this, ui, manager, bonuses, breaker, Ball);
@@ -241,7 +241,7 @@ public class Game implements GameEngine.OnAction {
 
     @Override
     public void onPhysicsUpdate() {
-        manager.checkDestroyedCount();
+        manager.checkDestroyedCount(engine);
 
         Ball.moveBall();
         collision.checkCollisions();
