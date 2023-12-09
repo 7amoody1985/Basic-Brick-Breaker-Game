@@ -163,8 +163,6 @@ public class UI {
         buttonBox.setSpacing(30);
         buttonBox.setAlignment(javafx.geometry.Pos.CENTER);
         buttonBox.getStyleClass().add("buttonBox");
-        newGame.getStyleClass().add("button");
-        load.getStyleClass().add("button");
 
         buttonBox.setPrefSize(320, 380);
 

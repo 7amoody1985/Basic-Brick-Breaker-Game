@@ -19,7 +19,7 @@
 }
 
 .buttonBox {
-    -fx-background-color: #2d2d2d;
+    -fx-background-color: rgba(150, 150, 150, 0.4);
     -fx-background-radius: 20;
     -fx-border-color: #ffffff;
     -fx-border-width: 2;
@@ -28,7 +28,7 @@
 }
 
 .button, .toggle-button {
-    -fx-background-color: #2d2d2d;
+    -fx-background-color: rgba(60, 60, 60, 0.4);
     -fx-background-radius: 20;
     -fx-border-color: #ffffff;
     -fx-border-width: 2;
@@ -41,7 +41,7 @@
 }
 
 .button:hover, .toggle-button:hover {
-    -fx-background-color: #ff00ff;
+    -fx-background-color: rgba(150, 150, 150, 0.4);
     -fx-background-radius: 20;
     -fx-border-color: #ff00ff;
     -fx-border-width: 2;
