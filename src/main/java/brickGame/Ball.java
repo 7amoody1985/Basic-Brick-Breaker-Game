@@ -11,15 +11,15 @@ public class Ball {
     public double speed = 1.500;
     public double vX = speed;
     public double vY = speed;
-    Circle ball;
     public boolean goDownBall = true;
     public boolean goUpBall = false;
     public boolean goRightBall = false;
     public boolean goLeftBall = false;
+    Circle ball;
 
     public Ball(Game game) {
         xBall = (double) UI.SCENE_WIDTH / 2;
-        yBall = (double) UI.SCENE_WIDTH / 2 + ((game.level + 1) * Block.getHeight()) + 15;
+        yBall = (double) UI.SCENE_WIDTH / 2 + ((game.level + 1) + (Block.getHeight() * ((double) game.level / 2)) + Block.getPaddingTop());
         ball = new Circle();
         ball.setRadius(BALL_RADIUS);
         setBallImagePattern("ball.png");

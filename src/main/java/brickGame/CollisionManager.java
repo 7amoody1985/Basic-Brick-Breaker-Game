@@ -169,7 +169,7 @@ public class CollisionManager {
                 if (game.heart == 0) {
                     sound.musicOff();
                     sound.playSound("Game Over.mp3");
-                    ui.showGameOver(game);
+                    ui.restartMenu(game, "Game Over");
                     game.stopengine();
                 }
             }

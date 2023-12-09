@@ -80,17 +80,4 @@ public class Score {
             }
         }).start();
     }
-
-    public void showWin(final UI ui) {
-        Platform.runLater(() -> {
-            Label label = new Label("You Win :)");
-            label.setTranslateX(200);
-            label.setTranslateY(250);
-            label.setScaleX(2);
-            label.setScaleY(2);
-
-            ui.root.getChildren().addAll(label);
-
-        });
-    }
 }

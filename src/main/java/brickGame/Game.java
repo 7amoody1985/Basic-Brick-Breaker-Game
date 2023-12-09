@@ -7,6 +7,7 @@ import javafx.stage.Stage;
 public class Game implements GameEngine.OnAction {
     private final Sound sound = new Sound();
     public int level = 0;
+    public int finalLevel = 17;
     public int heart = 3;
     public int score = 0;
     public long time = 0;
@@ -42,10 +43,6 @@ public class Game implements GameEngine.OnAction {
             if (level > 1) {
                 ui.showMessage("Level Up :)");
             }
-            if (level == 18) {
-                ui.showWin();
-                return; // remove this and win will work.... require further work
-            }
 
             Ball = new Ball(this);
             engine = createGameEngine();
@@ -70,12 +67,19 @@ public class Game implements GameEngine.OnAction {
         ui.showScene();
 
         if (!loadFromSave) {
-            if (level > 1 && level < 18) {
+            if (level > 1 && level <= finalLevel) {
                 ui.hide();
                 Ball.ball.setVisible(true);
 
                 engine = createGameEngine();
                 engine.start();
+            }
+
+            if (level == finalLevel + 1) {
+                ui.hide();
+                ui.restartMenu(this, "You Win!");
+                sound.musicOff();
+                sound.playSound("Win.mp3");
             }
 
             ui.load.setOnAction(event -> {

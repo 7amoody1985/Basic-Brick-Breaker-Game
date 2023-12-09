@@ -118,25 +118,30 @@ public class UI {
         new Score().showMessage(message, this);
     }
 
-    public void showWin() {
-        new Score().showWin(this);
-    }
-
-    public void showGameOver(Game game) {
+    public void restartMenu(Game game, String string) {
         Platform.runLater(() -> {
-            Label gameOverLabel = new Label("Game Over");
+            Label gameOverLabel = new Label(string);
             gameOverLabel.setScaleX(2);
             gameOverLabel.setScaleY(2);
-            gameOverLabel.setTranslateY(250);
 
             Button restart = new Button("Start Menu");
-            restart.setTranslateY(300);
-            restart.setOnAction(event -> game.restartGame());
+            restart.setOnAction(event -> {
+                buttonClickSound();
+                game.restartGame();
+            });
 
-            root.getChildren().addAll(gameOverLabel, restart);
+            VBox box = new VBox();
+            box.getChildren().addAll(gameOverLabel, restart);
+            box.setSpacing(30);
+            box.setAlignment(javafx.geometry.Pos.CENTER);
+            box.getStyleClass().add("buttonBox");
 
-            gameOverLabel.layoutBoundsProperty().addListener((observable, oldValue, newValue) -> gameOverLabel.setTranslateX((SCENE_WIDTH - newValue.getWidth()) / 2));
-            restart.layoutBoundsProperty().addListener((observable, oldValue, newValue) -> restart.setTranslateX((SCENE_WIDTH - newValue.getWidth()) / 2));
+            box.setPrefSize(320, 190);
+
+            root.getChildren().add(box);
+
+            box.layoutBoundsProperty().addListener((observable, oldValue, newValue) -> box.setTranslateX((SCENE_WIDTH - newValue.getWidth()) / 2));
+            box.layoutBoundsProperty().addListener((observable, oldValue, newValue) -> box.setTranslateY((SCENE_HEIGHT - newValue.getHeight()) / 2));
         });
     }
 
@@ -155,7 +160,7 @@ public class UI {
 
     public void setupButtons() {
         showStartMenu();
-        buttonBox.setSpacing(30); // Set spacing between buttons
+        buttonBox.setSpacing(30);
         buttonBox.setAlignment(javafx.geometry.Pos.CENTER);
         buttonBox.getStyleClass().add("buttonBox");
         newGame.getStyleClass().add("button");

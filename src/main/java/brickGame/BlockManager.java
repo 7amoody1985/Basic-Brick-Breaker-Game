@@ -16,25 +16,27 @@ public class BlockManager {
     public BlockManager(Game game) {
         this.game = game;
         this.blocks = new ArrayList<>();
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < game.level; j++) {
-                int r = new Random().nextInt(500);
-                int type;
-                if (r % 10 == 1) {
-                    type = Block.Type.CHOCO.ordinal();
-                } else if (r % 10 == 2) {
-                    if (!isExistHeartBlock) {
-                        type = Block.Type.HEART.ordinal();
-                        isExistHeartBlock = true;
+        if (game.level <= game.finalLevel) {
+            for (int i = 0; i < 4; i++) {
+                for (int j = 0; j < game.level; j++) {
+                    int r = new Random().nextInt(500);
+                    int type;
+                    if (r % 10 == 1) {
+                        type = Block.Type.CHOCO.ordinal();
+                    } else if (r % 10 == 2) {
+                        if (!isExistHeartBlock) {
+                            type = Block.Type.HEART.ordinal();
+                            isExistHeartBlock = true;
+                        } else {
+                            type = Block.Type.NORMAL.ordinal();
+                        }
+                    } else if (r % 10 == 3) {
+                        type = Block.Type.STAR.ordinal();
                     } else {
                         type = Block.Type.NORMAL.ordinal();
                     }
-                } else if (r % 10 == 3) {
-                    type = Block.Type.STAR.ordinal();
-                } else {
-                    type = Block.Type.NORMAL.ordinal();
+                    blocks.add(new Block(j, i, colors[r % (colors.length)], type));
                 }
-                blocks.add(new Block(j, i, colors[r % (colors.length)], type));
             }
         }
     }
