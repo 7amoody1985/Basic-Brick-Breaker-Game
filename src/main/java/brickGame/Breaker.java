@@ -44,10 +44,20 @@ public class Breaker {
                 if (xBreak <= 0 && move == Game.Move.LEFT) {
                     return;
                 }
+                if (xBreak >= (UI.SCENE_WIDTH - BREAK_WIDTH) && move == Game.Move.RIGHTFAST) {
+                    return;
+                }
+                if (xBreak <= 0 && move == Game.Move.LEFTFAST) {
+                    return;
+                }
                 if (move == Game.Move.RIGHT) {
                     xBreak += MOVE_DISTANCE;
-                } else {
+                } else if (move == Game.Move.LEFT) {
                     xBreak -= MOVE_DISTANCE;
+                } else if (move == Game.Move.LEFTFAST) {
+                    xBreak -= MOVE_DISTANCE + 0.5;
+                } else if (move == Game.Move.RIGHTFAST) {
+                    xBreak += MOVE_DISTANCE + 0.5;
                 }
                 centerBreakX = xBreak + HALF_BREAK_WIDTH;
                 Platform.runLater(() -> rect.setX(xBreak));

@@ -17,6 +17,7 @@ public class Game implements GameEngine.OnAction {
     private GameEngine engine;
     private boolean isLeftPressed = false;
     private boolean isRightPressed = false;
+    private boolean isSpacePressed = false;
     private Ball Ball;
     private Breaker breaker;
     private CollisionManager collision;
@@ -120,6 +121,9 @@ public class Game implements GameEngine.OnAction {
             case RIGHT:
                 isRightPressed = true;
                 break;
+            case SPACE:
+                isSpacePressed = true;
+                break;
             case S:
                 saveGame();
                 break;
@@ -152,6 +156,9 @@ public class Game implements GameEngine.OnAction {
                 break;
             case RIGHT:
                 isRightPressed = false;
+                break;
+            case SPACE:
+                isSpacePressed = false;
                 break;
         }
     }
@@ -232,6 +239,12 @@ public class Game implements GameEngine.OnAction {
         if (isRightPressed) {
             breaker.move(Move.RIGHT);
         }
+        if (isSpacePressed && isLeftPressed) {
+            breaker.move(Move.LEFTFAST);
+        }
+        if (isSpacePressed && isRightPressed) {
+            breaker.move(Move.RIGHTFAST);
+        }
 
         collision.checkBlockCollisions();
     }
@@ -257,6 +270,6 @@ public class Game implements GameEngine.OnAction {
     }
 
     public enum Move {
-        LEFT, RIGHT
+        LEFT, RIGHT, LEFTFAST, RIGHTFAST
     }
 }
