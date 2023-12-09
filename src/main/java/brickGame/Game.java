@@ -12,6 +12,7 @@ public class Game implements GameEngine.OnAction {
     public int score = 0;
     public long time = 0;
     public boolean loadFromSave = false;
+    boolean isPaused = false;
     private GameEngine engine;
     private boolean isLeftPressed = false;
     private boolean isRightPressed = false;
@@ -36,7 +37,7 @@ public class Game implements GameEngine.OnAction {
     }
 
     public void start(Stage primaryStage) {
-        ui = new UI(primaryStage, sound);
+        ui = new UI(primaryStage, sound, this);
 
         if (!loadFromSave) {
             level++;
@@ -106,6 +107,10 @@ public class Game implements GameEngine.OnAction {
         }
     }
 
+    public void saveGame() {
+        save.saveGame();
+    }
+
     public void handle(KeyEvent event) {
         switch (event.getCode()) {
             case LEFT:
@@ -115,9 +120,28 @@ public class Game implements GameEngine.OnAction {
                 isRightPressed = true;
                 break;
             case S:
-                save.saveGame();
+                saveGame();
+                break;
+            case ESCAPE:
+                if (isPaused) {
+                    unPause();
+                } else {
+                    pause();
+                }
                 break;
         }
+    }
+
+    public void unPause() {
+        ui.buttonBox.setVisible(false);
+        engine.start();
+        isPaused = false;
+    }
+
+    public void pause() {
+        engine.stop();
+        ui.showPauseMenu();
+        isPaused = true;
     }
 
     public void handleReleased(KeyEvent event) {

@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- Fixed ball spawn position in high levels&#10;- Fixed Win menu&#10;- Reworked game over and win menus">
+    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- Removed unnecessary code&#10;- Changed menu and buttons style&#10;- updated bugs.txt">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bugs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bugs.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/UI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,15 +169,7 @@
       <workItem from="1702033664060" duration="656000" />
       <workItem from="1702034329151" duration="18856000" />
       <workItem from="1702056076107" duration="3502000" />
-      <workItem from="1702101585991" duration="8343000" />
-    </task>
-    <task id="LOCAL-00003" summary="Code formatting and clean up, fixed typos, changed some visibilities.">
-      <option name="closed" value="true" />
-      <created>1698592565544</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1698592565544</updated>
+      <workItem from="1702101585991" duration="12775000" />
     </task>
     <task id="LOCAL-00004" summary="Some modifications for debugging">
       <option name="closed" value="true" />
@@ -564,7 +555,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702106476423</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="- Removed unnecessary code&#10;- Changed menu and buttons style&#10;- updated bugs.txt">
+      <option name="closed" value="true" />
+      <created>1702119211164</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1702119211164</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -583,7 +582,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="- Refactoring" />
     <MESSAGE value="- Split game class into different classes (code not working)" />
     <MESSAGE value="- Code working, with exception of bonus drops&#10;- Looking for further bugs caused by new classes" />
     <MESSAGE value="FULLY WORKING LIKE BEFORE NEW CLASSES&#10;- Fixed bonus collision with ball&#10;- Fixed Ball speed not increasing each level&#10;- Fixed crash when switching ball pattern after gold ball finishes" />
@@ -608,7 +606,8 @@
     <MESSAGE value="- UI improvements&#10;- Made window not resizable&#10;- Fixed start menu alignment, previously not centered on screen&#10;- Made start menu size static&#10;- Added more spacing between start menu buttons&#10;- Fixed Level label alignment&#10;- Fixed Heart label alignment" />
     <MESSAGE value="- Remade game over menu&#10;- Moved showGameOver method from Score class to UI class&#10;- Added Game over sound" />
     <MESSAGE value="- Fixed ball spawn position in high levels&#10;- Fixed Win menu&#10;- Reworked game over and win menus" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Fixed ball spawn position in high levels&#10;- Fixed Win menu&#10;- Reworked game over and win menus" />
+    <MESSAGE value="- Removed unnecessary code&#10;- Changed menu and buttons style&#10;- updated bugs.txt" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Removed unnecessary code&#10;- Changed menu and buttons style&#10;- updated bugs.txt" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

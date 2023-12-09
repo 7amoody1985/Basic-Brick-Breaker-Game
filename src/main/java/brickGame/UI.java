@@ -18,24 +18,30 @@ public class UI {
     private final Scene scene;
     private final Rectangle rect;
     private final Sound sound;
+    private final Game game;
     public Pane root;
     public Button newGame;
     public Button load;
     public Button settings;
     public Button exit;
     public Button back;
+    public Button resume;
+    public Button save;
+    public Button mainMenu;
     public ToggleButton fpsCounter;
     public ToggleButton soundButton;
     public ToggleButton musicButton;
     VBox buttonBox = new VBox();
+    private boolean isPauseMenu = false;
     private Label scoreLabel;
     private Label heartLabel;
     private Label fpsLabel;
 
-    public UI(Stage primaryStage, Sound sound) {
+    public UI(Stage primaryStage, Sound sound, Game game) {
         this.rect = new Rectangle();
         this.primaryStage = primaryStage;
         this.primaryStage.setResizable(false);
+        this.game = game;
         this.load = new Button("Load Game");
         this.newGame = new Button("Start New Game");
         this.settings = new Button("Settings");
@@ -45,6 +51,9 @@ public class UI {
         this.sound = sound;
         this.back = new Button("Back");
         this.exit = new Button("Exit");
+        this.resume = new Button("Resume");
+        this.save = new Button("Save");
+        this.mainMenu = new Button("Main Menu");
         this.root = new Pane();
         this.scene = new Scene(root, SCENE_WIDTH, SCENE_HEIGHT);
         Image icon = new Image("icon.jpg");
@@ -154,6 +163,7 @@ public class UI {
     }
 
     public void showStartMenu() {
+        isPauseMenu = false;
         buttonBox.getChildren().clear();
         buttonBox.getChildren().addAll(newGame, load, settings, exit);
     }
@@ -183,8 +193,6 @@ public class UI {
     }
 
     public void hide() {
-        load.setVisible(false);
-        newGame.setVisible(false);
         buttonBox.setVisible(false);
     }
 
@@ -234,17 +242,43 @@ public class UI {
 
         back.setOnAction(event -> {
             buttonClickSound();
-            showStartMenu();
+            if (isPauseMenu) {
+                showPauseMenu();
+            } else {
+                showStartMenu();
+            }
         });
 
         exit.setOnAction(event -> {
             buttonClickSound();
             System.exit(0);
         });
+
+        resume.setOnAction(event -> {
+            buttonClickSound();
+            game.unPause();
+        });
+
+        save.setOnAction(event -> {
+            buttonClickSound();
+            game.saveGame();
+        });
+
+        mainMenu.setOnAction(event -> {
+            buttonClickSound();
+            game.restartGame();
+        });
     }
 
     public void showSettings() {
         buttonBox.getChildren().clear();
         buttonBox.getChildren().addAll(soundButton, musicButton, fpsCounter, back);
+    }
+
+    public void showPauseMenu() {
+        isPauseMenu = true;
+        buttonBox.getChildren().clear();
+        buttonBox.getChildren().addAll(resume, save, mainMenu, settings, exit);
+        buttonBox.setVisible(true);
     }
 }
