@@ -11,6 +11,7 @@ public class Game implements GameEngine.OnAction {
     public int heart = 3;
     public int score = 0;
     public long time = 0;
+    public int horizontalGridSize = 4;
     public boolean loadFromSave = false;
     boolean isPaused = false;
     private GameEngine engine;
@@ -48,7 +49,7 @@ public class Game implements GameEngine.OnAction {
             Ball = new Ball(this);
             engine = createGameEngine();
             breaker = new Breaker(engine);
-            manager = new BlockManager(this, ui);
+            manager = new BlockManager(this, ui, horizontalGridSize);
             collision = new CollisionManager(this, Ball, breaker, manager, ui, sound);
             bonuses = new BonusManager(this, Ball, ui);
             save = new SaveGame(this, ui, manager, bonuses, breaker, Ball);

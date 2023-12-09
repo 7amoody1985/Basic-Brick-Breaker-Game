@@ -12,8 +12,8 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 public class UI {
-    public static final int SCENE_WIDTH = 500;
     public static final int SCENE_HEIGHT = 700;
+    public static int SCENE_WIDTH = 500;
     private final Stage primaryStage;
     private final Scene scene;
     private final Rectangle rect;
@@ -22,6 +22,10 @@ public class UI {
     public Pane root;
     public Button newGame;
     public Button load;
+    public Button difficulty;
+    public Button easy;
+    public Button medium;
+    public Button hard;
     public Button settings;
     public Button exit;
     public Button back;
@@ -44,6 +48,10 @@ public class UI {
         this.game = game;
         this.load = new Button("Load Game");
         this.newGame = new Button("Start New Game");
+        this.difficulty = new Button("Difficulty");
+        this.easy = new Button("Easy");
+        this.medium = new Button("Medium");
+        this.hard = new Button("Hard");
         this.settings = new Button("Settings");
         this.fpsCounter = new ToggleButton("FPS Counter: OFF");
         this.soundButton = new ToggleButton("Sound: ON");
@@ -195,7 +203,7 @@ public class UI {
         isPauseMenu = false;
         Platform.runLater(() -> {
             buttonBox.getChildren().clear();
-            buttonBox.getChildren().addAll(newGame, load, settings, exit);
+            buttonBox.getChildren().addAll(newGame, load, difficulty, settings, exit);
             buttonBox.toFront();
         });
     }
@@ -304,12 +312,46 @@ public class UI {
             buttonClickSound();
             game.restartGame();
         });
+
+        difficulty.setOnAction(event -> {
+            buttonClickSound();
+            showDifficulty();
+        });
+
+        easy.setOnAction(event -> {
+            buttonClickSound();
+            SCENE_WIDTH = 500;
+            game.horizontalGridSize = 4;
+            game.restartGame();
+        });
+
+        medium.setOnAction(event -> {
+            buttonClickSound();
+            SCENE_WIDTH = 700;
+            game.horizontalGridSize = 6;
+            game.restartGame();
+        });
+
+        hard.setOnAction(event -> {
+            buttonClickSound();
+            SCENE_WIDTH = 900;
+            game.horizontalGridSize = 8;
+            game.restartGame();
+        });
     }
 
     public void showSettings() {
         Platform.runLater(() -> {
             buttonBox.getChildren().clear();
             buttonBox.getChildren().addAll(soundButton, musicButton, fpsCounter, back);
+            buttonBox.toFront();
+        });
+    }
+
+    public void showDifficulty() {
+        Platform.runLater(() -> {
+            buttonBox.getChildren().clear();
+            buttonBox.getChildren().addAll(easy, medium, hard, back);
             buttonBox.toFront();
         });
     }

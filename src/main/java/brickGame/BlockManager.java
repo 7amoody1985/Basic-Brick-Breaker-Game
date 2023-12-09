@@ -13,11 +13,11 @@ public class BlockManager {
     public boolean isExistHeartBlock = false;
     public int destroyedBlockCount = 0;
 
-    public BlockManager(Game game, UI ui) {
+    public BlockManager(Game game, UI ui, int horizontalSize) {
         this.ui = ui;
         this.blocks = new ArrayList<>();
         if (game.level <= game.finalLevel) {
-            for (int i = 0; i < 4; i++) {
+            for (int i = 0; i < horizontalSize; i++) {
                 for (int j = 0; j < game.level; j++) {
                     int r = new Random().nextInt(500);
                     int type;

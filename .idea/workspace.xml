@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- Added fully functional pause menu">
+    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- Implemented difficulty system">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bugs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bugs.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/BlockManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/BlockManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/BonusManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/BonusManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/UI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,15 +171,7 @@
       <workItem from="1702033664060" duration="656000" />
       <workItem from="1702034329151" duration="18856000" />
       <workItem from="1702056076107" duration="3502000" />
-      <workItem from="1702101585991" duration="17720000" />
-    </task>
-    <task id="LOCAL-00005" summary="- Fixed bug where game crashes if ball hits 2 bricks at once&#10;- Fixed ball different speed everytime ball hits break&#10;- Added text file to keep track of bugs">
-      <option name="closed" value="true" />
-      <created>1699799259348</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1699799259348</updated>
+      <workItem from="1702101585991" duration="21066000" />
     </task>
     <task id="LOCAL-00006" summary="- Noted more bugs">
       <option name="closed" value="true" />
@@ -566,7 +557,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702123655671</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="- Added simple menu between levels&#10;- Fixed UI buttons sometimes not responsive&#10;- Improved UI reliability">
+      <option name="closed" value="true" />
+      <created>1702129827075</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1702129827075</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -585,8 +584,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="- Code working, with exception of bonus drops&#10;- Looking for further bugs caused by new classes" />
-    <MESSAGE value="FULLY WORKING LIKE BEFORE NEW CLASSES&#10;- Fixed bonus collision with ball&#10;- Fixed Ball speed not increasing each level&#10;- Fixed crash when switching ball pattern after gold ball finishes" />
     <MESSAGE value="- Fixed engine stop" />
     <MESSAGE value="- Clean up" />
     <MESSAGE value="- Reformatting&#10;- Clean up" />
@@ -610,7 +607,9 @@
     <MESSAGE value="- Fixed ball spawn position in high levels&#10;- Fixed Win menu&#10;- Reworked game over and win menus" />
     <MESSAGE value="- Removed unnecessary code&#10;- Changed menu and buttons style&#10;- updated bugs.txt" />
     <MESSAGE value="- Added fully functional pause menu" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Added fully functional pause menu" />
+    <MESSAGE value="- Added simple menu between levels&#10;- Fixed UI buttons sometimes not responsive&#10;- Improved UI reliability" />
+    <MESSAGE value="- Implemented difficulty system" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Implemented difficulty system" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
