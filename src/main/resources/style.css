@@ -19,6 +19,12 @@
     -fx-font-family: "Press Start 2P";
 }
 
+.controlsLabel {
+    -fx-text-fill: rgba(255, 255, 255, 0.5);
+    -fx-line-spacing: 5px;
+    -fx-font-size: 5px;
+}
+
 .buttonBox {
     -fx-background-color: rgba(150, 150, 150, 0.4);
     -fx-background-radius: 20;

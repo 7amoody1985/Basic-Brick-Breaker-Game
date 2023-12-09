@@ -40,6 +40,8 @@ public class UI {
     private Label scoreLabel;
     private Label heartLabel;
     private Label fpsLabel;
+    private Label controlsLabel;
+    private boolean isControlsVisible = true;
 
     public UI(Stage primaryStage, Sound sound, Game game) {
         this.rect = new Rectangle();
@@ -80,18 +82,29 @@ public class UI {
         levelLabel.layoutBoundsProperty().addListener((observable, oldValue, newValue) -> Platform.runLater(() -> levelLabel.setTranslateX(((double) SCENE_WIDTH / 2) - (levelLabel.getWidth() / 2))));
         heartLabel = new Label("Heart: " + game.heart);
         fpsLabel = new Label();
+        controlsLabel = new Label("""
+                Controls:\s
+                C: Hide Controls
+                Left Arrow: Move Left
+                Right Arrow: Move Right
+                Space: Speed Boost
+                S: Save Game
+                Esc: Pause Game
+                """);
+        controlsLabel.getStyleClass().add("controlsLabel");
 
         Platform.runLater(() -> {
             heartLabel.setTranslateX(SCENE_WIDTH - 95);
             fpsLabel.setText("FPS: ");
             fpsLabel.setVisible(false);
             fpsLabel.setTranslateY(17);
+            controlsLabel.setTranslateY(SCENE_HEIGHT - 80);
         });
 
         if (!loadFromSave) {
-            Platform.runLater(() -> root.getChildren().addAll(breaker.rect, ball.ball, scoreLabel, heartLabel, levelLabel, buttonBox, fpsLabel));
+            Platform.runLater(() -> root.getChildren().addAll(breaker.rect, ball.ball, scoreLabel, heartLabel, levelLabel, buttonBox, fpsLabel, controlsLabel));
         } else {
-            Platform.runLater(() -> root.getChildren().addAll(breaker.rect, ball.ball, scoreLabel, heartLabel, levelLabel, fpsLabel));
+            Platform.runLater(() -> root.getChildren().addAll(breaker.rect, ball.ball, scoreLabel, heartLabel, levelLabel, fpsLabel, controlsLabel));
         }
         for (Block block : manager.getBlocks()) {
             Platform.runLater(() -> root.getChildren().add(block.rect));
@@ -364,5 +377,15 @@ public class UI {
             buttonBox.setVisible(true);
             buttonBox.toFront();
         });
+    }
+
+    public void toggleControls() {
+        if (isControlsVisible) {
+            Platform.runLater(() -> controlsLabel.setVisible(false));
+            isControlsVisible = false;
+        } else {
+            Platform.runLater(() -> controlsLabel.setVisible(true));
+            isControlsVisible = true;
+        }
     }
 }

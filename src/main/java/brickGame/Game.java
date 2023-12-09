@@ -134,6 +134,8 @@ public class Game implements GameEngine.OnAction {
                     pause();
                 }
                 break;
+            case C:
+                ui.toggleControls();
         }
     }
 
