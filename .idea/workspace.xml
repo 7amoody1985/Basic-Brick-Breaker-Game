@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- Added breaker speed control">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/UI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/style.css" afterDir="false" />
-    </list>
+    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- Added controls help" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -170,15 +165,7 @@
       <workItem from="1702033664060" duration="656000" />
       <workItem from="1702034329151" duration="18856000" />
       <workItem from="1702056076107" duration="3502000" />
-      <workItem from="1702101585991" duration="24252000" />
-    </task>
-    <task id="LOCAL-00008" summary="- Fixed issues moving to next level at incorrect times">
-      <option name="closed" value="true" />
-      <created>1700590309085</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1700590309085</updated>
+      <workItem from="1702101585991" duration="24614000" />
     </task>
     <task id="LOCAL-00009" summary="- Fixed block hit detection where sometimes it doesn't register, especially when ball speed is high">
       <option name="closed" value="true" />
@@ -564,7 +551,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702136564913</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="- Added controls help">
+      <option name="closed" value="true" />
+      <created>1702137540327</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1702137540327</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -583,7 +578,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="- Reformatting&#10;- Clean up" />
     <MESSAGE value="New UI Class&#10;Initial implementation" />
     <MESSAGE value="Everything working except showWin (fix commented)" />
     <MESSAGE value="- Clean up&#10;- Reformatting" />
@@ -608,7 +602,8 @@
     <MESSAGE value="- Implemented difficulty system" />
     <MESSAGE value="- Added breaker speed controller" />
     <MESSAGE value="- Added breaker speed control" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Added breaker speed control" />
+    <MESSAGE value="- Added controls help" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Added controls help" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
