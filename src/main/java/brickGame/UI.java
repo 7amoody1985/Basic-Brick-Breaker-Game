@@ -69,6 +69,10 @@ public class UI {
         Image icon = new Image("icon.jpg");
         primaryStage.getIcons().add(icon);
         scene.getStylesheets().add("style.css");
+        primaryStage.setOnCloseRequest(event -> {
+            Platform.exit();
+            System.exit(0);
+        });
     }
 
     public Stage getPrimaryStage() {
