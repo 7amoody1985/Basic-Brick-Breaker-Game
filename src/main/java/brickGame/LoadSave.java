@@ -6,6 +6,10 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * The LoadSave class is responsible for loading and saving the game state.
+ * It handles the serialization and deserialization of the game state.
+ */
 public class LoadSave {
     private final Game game;
     private final UI ui;
@@ -14,6 +18,16 @@ public class LoadSave {
     private final Breaker breaker;
     private final Ball ball;
 
+    /**
+     * Constructs a new LoadSave object.
+     *
+     * @param game    the game instance.
+     * @param ui      the UI instance.
+     * @param manager the block manager instance.
+     * @param bonuses the bonus manager instance.
+     * @param breaker the breaker instance.
+     * @param ball    the ball instance.
+     */
     public LoadSave(Game game, UI ui, BlockManager manager, BonusManager bonuses, Breaker breaker, Ball ball) {
         this.game = game;
         this.ui = ui;
@@ -23,6 +37,11 @@ public class LoadSave {
         this.ball = ball;
     }
 
+    /**
+     * Loads the game state from a file.
+     * The game state includes the game settings, the ball state, the breaker state, and the blocks state.
+     * After loading the game state, it starts the game.
+     */
     public void loadGame() {
         new Thread(() -> {
             File file = new File(SaveGame.savePath);

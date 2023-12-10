@@ -5,6 +5,10 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
+/**
+ * The Breaker class represents the player's paddle in the game.
+ * The paddle can move left or right, and it is represented as a rectangle with an image fill.
+ */
 public class Breaker {
     private static final int MOVE_STEPS = 5;
     private static final double MOVE_DISTANCE = 0.5;
@@ -17,6 +21,12 @@ public class Breaker {
     public double centerBreakX;
     public Rectangle rect;
 
+    /**
+     * Constructs a new Breaker object.
+     * Initializes the paddle with the given game engine, and draws the paddle.
+     *
+     * @param engine the game engine instance.
+     */
     public Breaker(GameEngine engine) {
         this.engine = engine;
 
@@ -31,6 +41,12 @@ public class Breaker {
         rect.setFill(pattern);
     }
 
+    /**
+     * Moves the paddle in the given direction.
+     * The movement is performed in a new thread, and the paddle is moved in steps.
+     *
+     * @param move the direction to move the paddle.
+     */
     public void move(Game.Move move) {
         new Thread(() -> {
             int fps = engine.getFps();

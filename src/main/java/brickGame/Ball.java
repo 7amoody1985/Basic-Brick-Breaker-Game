@@ -4,6 +4,10 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 
+/**
+ * The Ball class represents a ball in the game.
+ * It handles the movement and bouncing of the ball.
+ */
 public class Ball {
     public static final int BALL_RADIUS = 10;
     public double xBall;
@@ -17,6 +21,11 @@ public class Ball {
     public boolean goLeftBall = false;
     Circle ball;
 
+    /**
+     * Constructs a new Ball object.
+     *
+     * @param game the game instance.
+     */
     public Ball(Game game) {
         xBall = (double) UI.SCENE_WIDTH / 2;
         yBall = (double) UI.SCENE_HEIGHT / 2 + ((game.level + 1) + (Block.getHeight() * ((double) game.level / 2)) + Block.getPaddingTop());
@@ -26,10 +35,18 @@ public class Ball {
         ball.setVisible(false);
     }
 
+    /**
+     * Sets the image pattern of the ball.
+     *
+     * @param imageName the name of the image file.
+     */
     public void setBallImagePattern(String imageName) {
         ball.setFill(new ImagePattern(new Image(imageName)));
     }
 
+    /**
+     * Moves the ball based on its current speed and instructed direction flag.
+     */
     public void moveBall() {
         if (goDownBall) {
             yBall += vY;
@@ -57,6 +74,11 @@ public class Ball {
         }
     }
 
+    /**
+     * Changes the direction of the ball's movement based on a bounce direction.
+     *
+     * @param bounce the bounce direction.
+     */
     public void ballBounce(BounceDirection bounce) {
         if (bounce == BounceDirection.LEFT) {
             goRightBall = false;
@@ -82,6 +104,9 @@ public class Ball {
         }
     }
 
+    /**
+     * Resets the ball's direction flags.
+     */
     public void resetCollideFlags() {
         goUpBall = false;
         goDownBall = false;

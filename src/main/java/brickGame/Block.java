@@ -9,6 +9,11 @@ import javafx.scene.shape.Rectangle;
 import java.io.Serializable;
 import java.util.EnumMap;
 
+/**
+ * The Block class represents a block in the game.
+ * Each block has a position (row and column), a color, a type, and a state (destroyed or not).
+ * It handles the drawing of the block and collision detection.
+ */
 public class Block implements Serializable {
 
     private static final int WIDTH = 100;
@@ -24,6 +29,14 @@ public class Block implements Serializable {
     public int y;
     public Rectangle rect;
 
+    /**
+     * Constructs and draws a new Block object.
+     *
+     * @param row    the row of the block.
+     * @param column the column of the block.
+     * @param color  the color of the block.
+     * @param type   the type of the block.
+     */
     public Block(int row, int column, Color color, int type) {
         this.row = row;
         this.column = column;
@@ -33,22 +46,48 @@ public class Block implements Serializable {
         draw();
     }
 
+    /**
+     * Returns the top padding of the block.
+     * This is the space above the block.
+     *
+     * @return the top padding of the block.
+     */
     public static int getPaddingTop() {
         return PADDING_TOP;
     }
 
+    /**
+     * Returns the horizontal padding of the block.
+     * This is the space on the left and right sides of the block.
+     *
+     * @return the horizontal padding of the block.
+     */
     public static int getPaddingH() {
         return PADDING_HORIZONTAL;
     }
 
+    /**
+     * Returns the height of the block.
+     *
+     * @return the height of the block.
+     */
     public static int getHeight() {
         return HEIGHT;
     }
 
+    /**
+     * Returns the width of the block.
+     *
+     * @return the width of the block.
+     */
     public static int getWidth() {
         return WIDTH;
     }
 
+    /**
+     * Draws the block at its position.
+     * The block is represented as a rectangle with an image or color fill.
+     */
     private void draw() {
         x = (column * WIDTH) + PADDING_HORIZONTAL;
         y = (row * HEIGHT) + PADDING_TOP;
@@ -76,6 +115,15 @@ public class Block implements Serializable {
 
     }
 
+    /**
+     * Checks if the block is hit by the ball.
+     * The hit direction is determined based on the ball's position relative to the block.
+     *
+     * @param xBall      the x coordinate of the ball.
+     * @param yBall      the y coordinate of the ball.
+     * @param ballRadius the radius of the ball.
+     * @return the direction of the hit.
+     */
     public int checkHitToBlock(double xBall, double yBall, double ballRadius) {
         if (isDestroyed) {
             return HitDirection.NO_HIT.ordinal();
@@ -98,26 +146,60 @@ public class Block implements Serializable {
         return HitDirection.NO_HIT.ordinal();
     }
 
+    /**
+     * Checks if the ball hits the top of the block.
+     *
+     * @param yBall      the y coordinate of the ball.
+     * @param ballRadius the radius of the ball.
+     * @return true if the ball hits the top of the block, false otherwise.
+     */
     private boolean blockTopHit(double yBall, double ballRadius) {
         return yBall - ballRadius <= y && yBall + ballRadius >= y;
     }
 
+    /**
+     * Checks if the ball hits the bottom of the block.
+     *
+     * @param yBall      the y coordinate of the ball.
+     * @param ballRadius the radius of the ball.
+     * @return true if the ball hits the bottom of the block, false otherwise.
+     */
     private boolean blockBottomHit(double yBall, double ballRadius) {
         return yBall + ballRadius >= y + HEIGHT && yBall - ballRadius <= y + HEIGHT;
     }
 
+    /**
+     * Checks if the ball hits the left side of the block.
+     *
+     * @param xBall      the x coordinate of the ball.
+     * @param ballRadius the radius of the ball.
+     * @return true if the ball hits the left side of the block, false otherwise.
+     */
     private boolean blockLeftSideHit(double xBall, double ballRadius) {
         return xBall - ballRadius <= x && xBall + ballRadius >= x;
     }
 
+    /**
+     * Checks if the ball hits the right side of the block.
+     *
+     * @param xBall      the x coordinate of the ball.
+     * @param ballRadius the radius of the ball.
+     * @return true if the ball hits the right side of the block, false otherwise.
+     */
     private boolean blockRightSideHit(double xBall, double ballRadius) {
         return xBall + ballRadius >= x + WIDTH && xBall - ballRadius <= x + WIDTH;
     }
 
+    /**
+     * Enum representing the possible directions of a hit on the block.
+     */
     public enum HitDirection {
         RIGHT, BOTTOM, LEFT, TOP, NO_HIT
     }
 
+    /**
+     * Enum representing the possible types of a block.
+     */
     public enum Type {
         NORMAL, CHOCO, STAR, HEART
     }

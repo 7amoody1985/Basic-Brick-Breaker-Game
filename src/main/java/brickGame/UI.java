@@ -11,6 +11,11 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
+/**
+ * The UI class is responsible for managing the user interface of the game.
+ * It handles the creation and setup of the game scene, the game menu, and the game controls.
+ * It also manages the display of the game score, heart count, and frames per second (fps).
+ */
 public class UI {
     public static final int SCENE_HEIGHT = 700;
     public static int SCENE_WIDTH = 500;
@@ -43,6 +48,15 @@ public class UI {
     private Label controlsLabel;
     private boolean isControlsVisible = true;
 
+    /**
+     * Constructs a new UI object.
+     * Initializes the stage, scene, root pane, and game menu.
+     * Sets up the game controls and starts the game music.
+     *
+     * @param primaryStage the primary stage for this application, onto which the application scene can be set.
+     * @param sound        the sound instance.
+     * @param game         the game instance.
+     */
     public UI(Stage primaryStage, Sound sound, Game game) {
         this.rect = new Rectangle();
         this.primaryStage = primaryStage;
@@ -75,10 +89,25 @@ public class UI {
         });
     }
 
+    /**
+     * Returns the primary stage of the application.
+     *
+     * @return the primary stage of the application.
+     */
     public Stage getPrimaryStage() {
         return primaryStage;
     }
 
+    /**
+     * Sets up the game scene.
+     * Adds the breaker, ball, score label, heart label, level label, button box, fps label, and controls label to the root pane.
+     * Sets up the key event handlers for the scene.
+     *
+     * @param game    the game instance.
+     * @param breaker the breaker instance.
+     * @param ball    the ball instance.
+     * @param manager the block manager instance.
+     */
     public void setupScene(Game game, Breaker breaker, Ball ball, BlockManager manager) {
         Platform.runLater(() -> root.getChildren().clear());
         scoreLabel = new Label("Score: " + game.score);
@@ -114,20 +143,38 @@ public class UI {
         scene.setOnKeyReleased(game::handleReleased);
     }
 
+    /**
+     * Shows the game scene.
+     */
     public void showScene() {
         primaryStage.setTitle("Brick Game");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
+    /**
+     * Updates the score label with the given score.
+     *
+     * @param score the score to display.
+     */
     public void updateScore(int score) {
         Platform.runLater(() -> scoreLabel.setText("Score: " + score));
     }
 
+    /**
+     * Updates the heart label with the given heart count.
+     *
+     * @param heart the heart count to display.
+     */
     public void updateHeart(int heart) {
         Platform.runLater(() -> heartLabel.setText("Heart: " + heart));
     }
 
+    /**
+     * Updates the breaker's position.
+     *
+     * @param breaker the breaker instance.
+     */
     public void updateBreaker(Breaker breaker) {
         Platform.runLater(() -> {
             rect.setX(breaker.xBreak);
@@ -135,6 +182,11 @@ public class UI {
         });
     }
 
+    /**
+     * Updates the ball's position.
+     *
+     * @param ball the ball instance.
+     */
     public void updateBall(Ball ball) {
         Platform.runLater(() -> {
             ball.ball.setCenterX(ball.xBall);
@@ -142,20 +194,41 @@ public class UI {
         });
     }
 
+    /**
+     * Updates the bonus's position.
+     *
+     * @param bonuses the bonus manager instance.
+     */
     public void updateBonus(BonusManager bonuses) {
         for (Bonus choco : bonuses.chocos) {
             Platform.runLater(() -> choco.choco.setY(choco.y));
         }
     }
 
+    /**
+     * Updates the fps label with the given fps.
+     *
+     * @param fps the fps to display.
+     */
     public void updateFPS(int fps) {
         Platform.runLater(() -> fpsLabel.setText("FPS: " + fps));
     }
 
+    /**
+     * Displays a message in the center of the screen.
+     *
+     * @param message the message to display.
+     */
     public void showMessage(String message) {
         new Score().showMessage(message, this);
     }
 
+    /**
+     * Displays the restart menu with the given message.
+     *
+     * @param game   the game instance.
+     * @param string the message to display.
+     */
     public void restartMenu(Game game, String string) {
         Platform.runLater(() -> {
             Label gameOverLabel = new Label(string);
@@ -172,6 +245,13 @@ public class UI {
         });
     }
 
+    /**
+     * Sets up a small box containing a label and a button.
+     * The box is positioned in the center of the screen.
+     *
+     * @param gameOverLabel the label to display in the box.
+     * @param restart       the button to display in the box.
+     */
     private void setupSmallBox(Label gameOverLabel, Button restart) {
         VBox box = new VBox();
         box.getChildren().addAll(gameOverLabel, restart);
@@ -187,6 +267,11 @@ public class UI {
         box.layoutBoundsProperty().addListener((observable, oldValue, newValue) -> box.setTranslateY((SCENE_HEIGHT - newValue.getHeight()) / 2));
     }
 
+    /**
+     * Displays the next level menu.
+     *
+     * @param engine the game engine instance.
+     */
     public void nextMenu(GameEngine engine) {
         engine.stop();
         Platform.runLater(() -> {
@@ -205,14 +290,31 @@ public class UI {
         });
     }
 
+    /**
+     * Displays a score label at the given position.
+     *
+     * @param x     the x-coordinate of the label.
+     * @param y     the y-coordinate of the label.
+     * @param score the score to display.
+     */
     public void show(final double x, final double y, String score) {
         new Score().show(x, y, score, this);
     }
 
+    /**
+     * Displays an image at the given position.
+     *
+     * @param x     the x-coordinate of the image.
+     * @param y     the y-coordinate of the image.
+     * @param image the image to display.
+     */
     public void showImg(final double x, final double y, Image image) {
         new Score().showImage(x, y, image, this);
     }
 
+    /**
+     * Displays the start menu.
+     */
     public void showStartMenu() {
         isPauseMenu = false;
         Platform.runLater(() -> {
@@ -222,6 +324,9 @@ public class UI {
         });
     }
 
+    /**
+     * Sets up the game menu.
+     */
     public void setupButtons() {
         showStartMenu();
 
@@ -240,6 +345,9 @@ public class UI {
         startMenuHandler();
     }
 
+    /**
+     * Positions the game menu in the center of the screen.
+     */
     private void positionButtonBox() {
         buttonBox.layoutBoundsProperty().addListener((observable, oldValue, newValue) -> Platform.runLater(() -> {
             double boxWidth = buttonBox.getWidth();
@@ -249,14 +357,23 @@ public class UI {
         }));
     }
 
+    /**
+     * Hides the game menu.
+     */
     public void hide() {
         Platform.runLater(() -> buttonBox.setVisible(false));
     }
 
+    /**
+     * Plays the button click sound effect.
+     */
     public void buttonClickSound() {
         sound.playSound("Button Click.mp3");
     }
 
+    /**
+     * Handles the button actions for the start menu.
+     */
     public void startMenuHandler() {
 
         settings.setOnAction(event -> {
@@ -353,6 +470,9 @@ public class UI {
         });
     }
 
+    /**
+     * Displays the settings menu.
+     */
     public void showSettings() {
         Platform.runLater(() -> {
             buttonBox.getChildren().clear();
@@ -361,6 +481,9 @@ public class UI {
         });
     }
 
+    /**
+     * Displays the difficulty menu.
+     */
     public void showDifficulty() {
         Platform.runLater(() -> {
             buttonBox.getChildren().clear();
@@ -369,6 +492,9 @@ public class UI {
         });
     }
 
+    /**
+     * Displays the pause menu.
+     */
     public void showPauseMenu() {
         isPauseMenu = true;
         Platform.runLater(() -> {
@@ -379,6 +505,9 @@ public class UI {
         });
     }
 
+    /**
+     * Toggles the visibility of the game controls.
+     */
     public void toggleControls() {
         if (isControlsVisible) {
             Platform.runLater(() -> controlsLabel.setVisible(false));

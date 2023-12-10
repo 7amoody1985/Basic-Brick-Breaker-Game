@@ -4,6 +4,10 @@ import javafx.application.Platform;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
+/**
+ * The Game class represents the main game logic.
+ * It handles user input, game state updates, and transitions between game levels.
+ */
 public class Game implements GameEngine.OnAction {
     private final Sound sound = new Sound();
     public int level = 0;
@@ -27,10 +31,18 @@ public class Game implements GameEngine.OnAction {
     private SaveGame save;
     private LoadSave load;
 
+    /**
+     * Default constructor for the Game class.
+     */
     public Game() {
 
     }
 
+    /**
+     * Creates a new GameEngine instance.
+     *
+     * @return a new GameEngine instance.
+     */
     private GameEngine createGameEngine() {
         GameEngine engine = new GameEngine(ui);
         engine.setOnAction(this);
@@ -38,6 +50,11 @@ public class Game implements GameEngine.OnAction {
         return engine;
     }
 
+    /**
+     * Starts the game. This method initializes the game state and starts the game loop.
+     *
+     * @param primaryStage the primary stage for this application.
+     */
     public void start(Stage primaryStage) {
 
         if (!loadFromSave) {
@@ -107,16 +124,27 @@ public class Game implements GameEngine.OnAction {
         }
     }
 
+    /**
+     * Sets the speed of the ball based on the current level.
+     */
     private void setBallSpeed() {
         Ball.speed += (0.400 * (level - 1));
         Ball.vX = Ball.speed;
         Ball.vY = Ball.speed;
     }
 
+    /**
+     * Saves the current game state.
+     */
     public void saveGame() {
         save.saveGame();
     }
 
+    /**
+     * Handles user input.
+     *
+     * @param event the KeyEvent that triggered this method call.
+     */
     public void handle(KeyEvent event) {
         switch (event.getCode()) {
             case LEFT:
@@ -143,6 +171,9 @@ public class Game implements GameEngine.OnAction {
         }
     }
 
+    /**
+     * Unpauses the game.
+     */
     public void unPause() {
         ui.buttonBox.setVisible(false);
         if (engine.isStopped()) {
@@ -151,12 +182,20 @@ public class Game implements GameEngine.OnAction {
         isPaused = false;
     }
 
+    /**
+     * Pauses the game.
+     */
     public void pause() {
         engine.stop();
         ui.showPauseMenu();
         isPaused = true;
     }
 
+    /**
+     * Handles user input when a key is released.
+     *
+     * @param event the KeyEvent that triggered this method call.
+     */
     public void handleReleased(KeyEvent event) {
         switch (event.getCode()) {
             case LEFT:
@@ -171,10 +210,16 @@ public class Game implements GameEngine.OnAction {
         }
     }
 
+    /**
+     * Stops the game engine.
+     */
     public void stopengine() {
         engine.stop();
     }
 
+    /**
+     * Advances the game to the next level.
+     */
     public void nextLevel() {
         Platform.runLater(() -> {
             try {
@@ -200,6 +245,9 @@ public class Game implements GameEngine.OnAction {
         });
     }
 
+    /**
+     * Restarts the game.
+     */
     public void restartGame() {
         Platform.runLater(() -> {
             try {
@@ -229,6 +277,9 @@ public class Game implements GameEngine.OnAction {
         });
     }
 
+    /**
+     * Handles game state updates.
+     */
     @Override
     public void onUpdate() {
         Platform.runLater(() -> {
@@ -257,10 +308,16 @@ public class Game implements GameEngine.OnAction {
         collision.checkBlockCollisions();
     }
 
+    /**
+     * Called when the game engine initializes.
+     */
     @Override
     public void onInit() {
     }
 
+    /**
+     * Called when the game engine updates the physics.
+     */
     @Override
     public void onPhysicsUpdate() {
         manager.checkDestroyedCount(engine);
@@ -272,11 +329,19 @@ public class Game implements GameEngine.OnAction {
         bonuses.bonusFall();
     }
 
+    /**
+     * Called when the game engine updates the time.
+     *
+     * @param time the current time.
+     */
     @Override
     public void onTime(long time) {
         this.time = time;
     }
 
+    /**
+     * Represents the possible move directions.
+     */
     public enum Move {
         LEFT, RIGHT, LEFTFAST, RIGHTFAST
     }

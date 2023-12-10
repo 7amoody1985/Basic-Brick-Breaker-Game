@@ -6,6 +6,10 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
+/**
+ * The SaveGame class is responsible for saving the game state.
+ * It handles the serialization of the game state to a file.
+ */
 public class SaveGame {
     public static final String savePath = System.getProperty("user.home") + "/Documents/BrickGame/save.mdds";
     private static final String saveDirectory = System.getProperty("user.home") + "/Documents/BrickGame";
@@ -16,6 +20,16 @@ public class SaveGame {
     private final Ball ball;
     private final BlockManager manager;
 
+    /**
+     * Constructs a new SaveGame object.
+     *
+     * @param game    the game instance.
+     * @param ui      the UI instance.
+     * @param manager the block manager instance.
+     * @param bonuses the bonus manager instance.
+     * @param breaker the breaker instance.
+     * @param ball    the ball instance.
+     */
     public SaveGame(Game game, UI ui, BlockManager manager, BonusManager bonuses, Breaker breaker, Ball ball) {
         this.game = game;
         this.ui = ui;
@@ -25,6 +39,11 @@ public class SaveGame {
         this.ball = ball;
     }
 
+    /**
+     * Saves the game state to a file.
+     * The game state includes the game settings, the ball state, the breaker state, and the blocks state.
+     * The game state is serialized and written to a file in a new thread.
+     */
     public void saveGame() {
         new Thread(() -> {
             File directory = new File(saveDirectory);

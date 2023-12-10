@@ -3,6 +3,10 @@ package brickGame;
 import javafx.application.Platform;
 import javafx.scene.image.Image;
 
+/**
+ * The CollisionManager class is responsible for managing the collisions in the game.
+ * It handles the collision detection between the ball and the walls, the ball and the blocks, the ball and the bonuses, and the ball and the paddle.
+ */
 public class CollisionManager {
     private final Game game;
     private final BlockManager manager;
@@ -12,6 +16,16 @@ public class CollisionManager {
     private final Sound sound;
     private BonusManager bonuses;
 
+    /**
+     * Constructs a new CollisionManager object.
+     *
+     * @param game         the game instance.
+     * @param ball         the ball instance.
+     * @param breaker      the breaker instance.
+     * @param blockManager the block manager instance.
+     * @param ui           the UI instance.
+     * @param sound        the sound instance.
+     */
     public CollisionManager(Game game, Ball ball, Breaker breaker, BlockManager blockManager, UI ui, Sound sound) {
         this.game = game;
         this.ball = ball;
@@ -21,51 +35,122 @@ public class CollisionManager {
         this.sound = sound;
     }
 
+    /**
+     * Checks if the ball collides with the top wall.
+     *
+     * @return true if the ball collides with the top wall, false otherwise.
+     */
     private boolean BallCollideTopWall() {
         return ball.yBall <= Ball.BALL_RADIUS;
     }
 
+    /**
+     * Checks if the ball collides with the bottom wall.
+     *
+     * @return true if the ball collides with the bottom wall, false otherwise.
+     */
     private boolean BallCollideBottomWall() {
         return ball.yBall >= UI.SCENE_HEIGHT - Ball.BALL_RADIUS;
     }
 
-    private boolean BallCollideLeftWall() { return ball.xBall <= Ball.BALL_RADIUS; }
+    /**
+     * Checks if the ball collides with the left wall.
+     *
+     * @return true if the ball collides with the left wall, false otherwise.
+     */
+    private boolean BallCollideLeftWall() {
+        return ball.xBall <= Ball.BALL_RADIUS;
+    }
 
-    private boolean BallCollideRightWall() { return ball.xBall >= UI.SCENE_WIDTH - Ball.BALL_RADIUS; }
+    /**
+     * Checks if the ball collides with the right wall.
+     *
+     * @return true if the ball collides with the right wall, false otherwise.
+     */
+    private boolean BallCollideRightWall() {
+        return ball.xBall >= UI.SCENE_WIDTH - Ball.BALL_RADIUS;
+    }
 
+    /**
+     * Checks if the ball collides with a bonus drop.
+     *
+     * @param choco the bonus to check for collision.
+     * @return true if the ball collides with the bonus drop, false otherwise.
+     */
     private boolean BallCollideBonusDrop(Bonus choco) {
         return choco.y >= breaker.yBreak && choco.y <= breaker.yBreak + breaker.BREAK_HEIGHT && choco.x >= breaker.xBreak && choco.x <= breaker.xBreak + breaker.BREAK_WIDTH;
     }
 
+    /**
+     * Checks if the ball collides with a block.
+     *
+     * @return true if the ball collides with a block, false otherwise.
+     */
     private boolean BallCollideBlock() {
         return ball.yBall >= Block.getPaddingTop() - Ball.BALL_RADIUS && ball.yBall <= (Block.getHeight() * (game.level + 1)) + Block.getPaddingTop() - Ball.BALL_RADIUS;
     }
 
+    /**
+     * Checks if the ball is in the breaker zone.
+     *
+     * @return true if the ball is in the breaker zone, false otherwise.
+     */
     private boolean BallInBreakerZone() {
         return ball.yBall >= breaker.yBreak - Ball.BALL_RADIUS;
     }
 
+    /**
+     * Checks if the ball collides in the right zone of the breaker.
+     *
+     * @param rightZone the right zone of the breaker.
+     * @return true if the ball collides in the right zone of the breaker, false otherwise.
+     */
     private boolean BreakerRightZone(double rightZone) {
         return ball.xBall >= rightZone && ball.xBall <= breaker.xBreak + breaker.BREAK_WIDTH;
     }
 
+    /**
+     * Checks if the ball collides in the middle zone of the breaker.
+     *
+     * @param leftZone  the left zone of the breaker.
+     * @param rightZone the right zone of the breaker.
+     * @return true if the ball collides in the middle zone of the breaker, false otherwise.
+     */
     private boolean BreakerMiddleZone(double leftZone, double rightZone) {
         return ball.xBall > leftZone && ball.xBall < rightZone;
     }
 
+    /**
+     * Checks if the ball collides in the left zone of the breaker.
+     *
+     * @param leftZone the left zone of the breaker.
+     * @return true if the ball collides in the left zone of the breaker, false otherwise.
+     */
     private boolean BreakerLeftZone(double leftZone) {
         return ball.xBall >= breaker.xBreak && ball.xBall <= leftZone;
     }
 
+    /**
+     * Sets the bonus manager.
+     *
+     * @param bonuses the bonus manager instance.
+     */
     public void setBonuses(BonusManager bonuses) {
         this.bonuses = bonuses;
     }
 
+    /**
+     * Checks for collisions between the ball and the breaker, and the ball and the walls.
+     */
     public void checkCollisions() {
         checkBreakerCollision();
         checkWallCollision();
     }
 
+    /**
+     * Checks for collisions between the ball and the blocks.
+     * If a collision is detected, it handles the collision based on the block type and the hit direction.
+     */
     public void checkBlockCollisions() {
         if (BallCollideBlock()) {
             synchronized (manager.getBlocks()) {
@@ -133,6 +218,12 @@ public class CollisionManager {
         }
     }
 
+    /**
+     * Checks for collisions between the ball and the bonuses.
+     * If a collision is detected, it handles the collision.
+     *
+     * @param choco the bonus to check for collision.
+     */
     public void checkBonusCollisions(Bonus choco) {
         if (BallCollideBonusDrop(choco)) {
             sound.playSound("Bonus Hit.mp3");
@@ -141,6 +232,10 @@ public class CollisionManager {
         }
     }
 
+    /**
+     * Checks for collisions between the ball and the breaker.
+     * If a collision is detected, it handles the collision based on the breaker zone.
+     */
     private void checkBreakerCollision() {
         if (BallInBreakerZone()) {
             double zoneWidth = breaker.BREAK_WIDTH / 3.0;
@@ -165,6 +260,10 @@ public class CollisionManager {
         }
     }
 
+    /**
+     * Checks for collisions between the ball and the walls.
+     * If a collision is detected, it handles the collision based on which wall.
+     */
     private void checkWallCollision() {
         if (BallCollideTopWall()) {
             ball.ballBounce(BounceDirection.DOWN);
