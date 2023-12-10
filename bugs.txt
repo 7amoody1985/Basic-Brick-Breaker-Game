@@ -1,4 +1,3 @@
 BUGS FOUND:
-- Ball sometimes freezes on screen but game engine still reports collisions and sometimes when nextLevel (hard to reproduce)
-- +1 and bonus animations not working when loading level + gold ball
-- Update breaker position when loading game before getting user input
+- Ball sometimes freezes on screen but game engine still reports collisions and sometimes when nextLevel (hard to reproduce) ??? (maybe fixed)
+- fix load gold ball,, bonus drop?

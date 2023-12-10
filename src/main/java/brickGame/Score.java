@@ -59,7 +59,7 @@ public class Score {
 
     public void showMessage(String message, final UI ui) {
         final Label label = new Label(message);
-        label.setTranslateX(220);
+        label.setTranslateX((double) UI.SCENE_WIDTH / 2);
         label.setTranslateY(340);
 
         Platform.runLater(() -> ui.root.getChildren().add(label));
@@ -79,5 +79,6 @@ public class Score {
                 }
             }
         }).start();
+        Platform.runLater(() -> ui.buttonBox.toFront());
     }
 }

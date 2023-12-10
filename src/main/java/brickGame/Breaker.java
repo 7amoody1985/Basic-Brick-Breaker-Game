@@ -18,9 +18,6 @@ public class Breaker {
     public Rectangle rect;
 
     public Breaker(GameEngine engine) {
-        if (engine == null) {
-            throw new IllegalArgumentException("Engine cannot be null");
-        }
         this.engine = engine;
 
         rect = new Rectangle();

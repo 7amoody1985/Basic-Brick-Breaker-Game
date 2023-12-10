@@ -10,9 +10,9 @@ public class GameEngine {
 
     private final BooleanProperty isStopped = new SimpleBooleanProperty(true);
     private final IntegerProperty fps = new SimpleIntegerProperty();
+    private final UI ui;
     private OnAction onAction;
     private long time = 0;
-    private final UI ui;
 
     public GameEngine(UI ui) {
         this.ui = ui;
@@ -25,6 +25,7 @@ public class GameEngine {
     public int getFps() {
         return fps.get();
     }
+
     /**
      * @param fps set fps and we convert it to millisecond
      */
@@ -43,7 +44,11 @@ public class GameEngine {
             isStopped.set(true);
         }
     }
-    
+
+    public boolean isStopped() {
+        return isStopped.get();
+    }
+
     private void gameLoop() {
         while (!isStopped.get()) {
             long startTime = System.currentTimeMillis();

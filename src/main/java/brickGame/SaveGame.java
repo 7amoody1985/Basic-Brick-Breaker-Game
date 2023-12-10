@@ -36,6 +36,8 @@ public class SaveGame {
             try {
                 outputStream = new ObjectOutputStream(new FileOutputStream(file));
 
+                outputStream.writeInt(UI.SCENE_WIDTH);
+                outputStream.writeInt(game.horizontalGridSize);
                 outputStream.writeInt(game.level);
                 outputStream.writeInt(game.score);
                 outputStream.writeInt(game.heart);

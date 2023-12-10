@@ -13,7 +13,7 @@ public class Game implements GameEngine.OnAction {
     public long time = 0;
     public int horizontalGridSize = 4;
     public boolean loadFromSave = false;
-    boolean isPaused = false;
+    private boolean isPaused = false;
     private GameEngine engine;
     private boolean isLeftPressed = false;
     private boolean isRightPressed = false;
@@ -39,9 +39,9 @@ public class Game implements GameEngine.OnAction {
     }
 
     public void start(Stage primaryStage) {
-        ui = new UI(primaryStage, sound, this);
 
         if (!loadFromSave) {
+            ui = new UI(primaryStage, sound, this);
             level++;
             if (level > 1) {
                 ui.showMessage("Level Up :)");
@@ -51,23 +51,21 @@ public class Game implements GameEngine.OnAction {
             engine = createGameEngine();
             breaker = new Breaker(engine);
             manager = new BlockManager(this, ui, horizontalGridSize);
-            collision = new CollisionManager(this, Ball, breaker, manager, ui, sound);
-            bonuses = new BonusManager(this, Ball, ui);
-            save = new SaveGame(this, ui, manager, bonuses, breaker, Ball);
-            load = new LoadSave(this, ui, manager, bonuses, breaker, Ball);
-
-            collision.setBonuses(bonuses);
-            bonuses.setCollision(collision);
-
-            Ball.speed += (0.400 * (level - 1));
-            Ball.vX = Ball.speed;
-            Ball.vY = Ball.speed;
-
+            setBallSpeed();
             ui.setupButtons();
         }
 
-        ui.setupScene(this, breaker, Ball, manager, loadFromSave);
+        bonuses = new BonusManager(this, Ball, ui);
+
+        collision = new CollisionManager(this, Ball, breaker, manager, ui, sound);
+        collision.setBonuses(bonuses);
+        bonuses.setCollision(collision);
+
+        ui.setupScene(this, breaker, Ball, manager);
         ui.showScene();
+
+        save = new SaveGame(this, ui, manager, bonuses, breaker, Ball);
+        load = new LoadSave(this, ui, manager, bonuses, breaker, Ball);
 
         if (!loadFromSave) {
             if (level > 1 && level <= finalLevel) {
@@ -87,14 +85,15 @@ public class Game implements GameEngine.OnAction {
 
             ui.load.setOnAction(event -> {
                 ui.buttonClickSound();
+                isPaused = false;
                 load.loadGame();
 
                 ui.hide();
-                Ball.ball.setVisible(true);
             });
 
             ui.newGame.setOnAction(event -> {
                 ui.buttonClickSound();
+                isPaused = false;
                 engine = createGameEngine();
                 engine.start();
 
@@ -102,11 +101,21 @@ public class Game implements GameEngine.OnAction {
                 Ball.ball.setVisible(true);
             });
         } else {
-            engine = createGameEngine();
+//            engine = createGameEngine();  // Look here ??
             engine.start();
             Ball.ball.setVisible(true);
             loadFromSave = false;
         }
+    }
+
+    public void printBallSpeed() {
+        System.out.println("Ball speed: " + Ball.speed);
+    }
+
+    private void setBallSpeed() {
+        Ball.speed += (0.400 * (level - 1));
+        Ball.vX = Ball.speed;
+        Ball.vY = Ball.speed;
     }
 
     public void saveGame() {
@@ -141,7 +150,9 @@ public class Game implements GameEngine.OnAction {
 
     public void unPause() {
         ui.buttonBox.setVisible(false);
-        engine.start();
+        if (engine.isStopped()) {
+            engine.start();
+        }
         isPaused = false;
     }
 

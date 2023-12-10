@@ -75,7 +75,7 @@ public class UI {
         return primaryStage;
     }
 
-    public void setupScene(Game game, Breaker breaker, Ball ball, BlockManager manager, boolean loadFromSave) {
+    public void setupScene(Game game, Breaker breaker, Ball ball, BlockManager manager) {
         Platform.runLater(() -> root.getChildren().clear());
         scoreLabel = new Label("Score: " + game.score);
         Label levelLabel = new Label("Level: " + game.level);
@@ -101,11 +101,8 @@ public class UI {
             controlsLabel.setTranslateY(SCENE_HEIGHT - 80);
         });
 
-        if (!loadFromSave) {
-            Platform.runLater(() -> root.getChildren().addAll(breaker.rect, ball.ball, scoreLabel, heartLabel, levelLabel, buttonBox, fpsLabel, controlsLabel));
-        } else {
-            Platform.runLater(() -> root.getChildren().addAll(breaker.rect, ball.ball, scoreLabel, heartLabel, levelLabel, fpsLabel, controlsLabel));
-        }
+        Platform.runLater(() -> root.getChildren().addAll(breaker.rect, ball.ball, scoreLabel, heartLabel, levelLabel, buttonBox, fpsLabel, controlsLabel));
+
         for (Block block : manager.getBlocks()) {
             Platform.runLater(() -> root.getChildren().add(block.rect));
         }
@@ -313,12 +310,12 @@ public class UI {
         resume.setOnAction(event -> {
             buttonClickSound();
             game.unPause();
+            game.printBallSpeed();                          // for debugging TODO REMOVE
         });
 
         save.setOnAction(event -> {
             buttonClickSound();
             game.saveGame();
-            buttonBox.toFront();
         });
 
         mainMenu.setOnAction(event -> {

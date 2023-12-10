@@ -30,6 +30,8 @@ public class LoadSave {
             try {
                 inputStream = new ObjectInputStream(new FileInputStream(file));
 
+                UI.SCENE_WIDTH = inputStream.readInt();
+                game.horizontalGridSize = inputStream.readInt();
                 game.level = inputStream.readInt();
                 game.score = inputStream.readInt();
                 game.heart = inputStream.readInt();
@@ -67,16 +69,18 @@ public class LoadSave {
                     manager.getBlocks().add(new Block(block.row, block.j, manager.colors[r % manager.colors.length], block.type));
                 }
 
-                ui.showMessage("Game Loaded");
+                inputStream.close();
 
                 try {
                     game.loadFromSave = true;
-                    Platform.runLater(() -> game.start(ui.getPrimaryStage()));
+                    Platform.runLater(() -> {
+                        game.start(ui.getPrimaryStage());
+                        ui.showMessage("Game Loaded");
+                        breaker.rect.setX(breaker.xBreak);
+                    });
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }
-
-                inputStream.close();
             } catch (IOException | ClassNotFoundException e) {
                 throw new RuntimeException(e);
             }
