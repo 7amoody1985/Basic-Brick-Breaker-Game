@@ -7,7 +7,8 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class SaveGame {
-    public static String savePath = "D:/save/save.mdds";
+    public static final String savePath = System.getProperty("user.home") + "/Documents/BrickGame/save.mdds";
+    private static final String saveDirectory = System.getProperty("user.home") + "/Documents/BrickGame";
     private final Game game;
     private final UI ui;
     private final BonusManager bonuses;
@@ -26,7 +27,7 @@ public class SaveGame {
 
     public void saveGame() {
         new Thread(() -> {
-            File directory = new File("D:/save");
+            File directory = new File(saveDirectory);
             if (!directory.exists()) {
                 //noinspection ResultOfMethodCallIgnored
                 directory.mkdir();
