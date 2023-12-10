@@ -33,6 +33,14 @@ public class CollisionManager {
 
     private boolean BallCollideRightWall() { return ball.xBall >= UI.SCENE_WIDTH - Ball.BALL_RADIUS; }
 
+    private boolean BallCollideBonusDrop(Bonus choco) {
+        return choco.y >= breaker.yBreak && choco.y <= breaker.yBreak + breaker.BREAK_HEIGHT && choco.x >= breaker.xBreak && choco.x <= breaker.xBreak + breaker.BREAK_WIDTH;
+    }
+
+    private boolean BallCollideBlock() {
+        return ball.yBall >= Block.getPaddingTop() - Ball.BALL_RADIUS && ball.yBall <= (Block.getHeight() * (game.level + 1)) + Block.getPaddingTop() - Ball.BALL_RADIUS;
+    }
+
     private boolean BallInBreakerZone() {
         return ball.yBall >= breaker.yBreak - Ball.BALL_RADIUS;
     }
@@ -59,7 +67,7 @@ public class CollisionManager {
     }
 
     public void checkBlockCollisions() {
-        if (ball.yBall >= Block.getPaddingTop() - Ball.BALL_RADIUS && ball.yBall <= (Block.getHeight() * (game.level + 1)) + Block.getPaddingTop() - Ball.BALL_RADIUS) {
+        if (BallCollideBlock()) {
             synchronized (manager.getBlocks()) {
                 for (Block block : manager.getBlocks()) {
                     int hitCode = block.checkHitToBlock(ball.xBall, ball.yBall, Ball.BALL_RADIUS);
@@ -126,7 +134,7 @@ public class CollisionManager {
     }
 
     public void checkBonusCollisions(Bonus choco) {
-        if (choco.y >= breaker.yBreak && choco.y <= breaker.yBreak + breaker.BREAK_HEIGHT && choco.x >= breaker.xBreak && choco.x <= breaker.xBreak + breaker.BREAK_WIDTH) {
+        if (BallCollideBonusDrop(choco)) {
             sound.playSound("Bonus Hit.mp3");
             System.out.println("Bonus Caught");
             bonuses.caught(choco);
