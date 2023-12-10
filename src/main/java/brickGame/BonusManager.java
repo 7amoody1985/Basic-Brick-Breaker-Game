@@ -36,7 +36,7 @@ public class BonusManager {
     public void caught(Bonus choco) {
         System.out.println("You Got it and +3 score for you");
         choco.taken = true;
-        choco.choco.setVisible(false);
+        Platform.runLater(() -> choco.choco.setVisible(false));
         game.score += 3;
         ui.show(choco.x, choco.y, "+3");
     }

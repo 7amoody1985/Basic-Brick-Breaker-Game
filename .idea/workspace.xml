@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- Decreased level amount due to screen being full at high levels&#10;- Fixed error in int ball location calculation">
-      <change afterPath="$PROJECT_DIR$/src/test/java/brickGame/GameTest.java" afterDir="false" />
+    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- Added Tests">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Sound.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Sound.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/UI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/BonusManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/BonusManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +47,20 @@
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "Application.Main.executor": "Run",
+    "JUnit.BallTest.executor": "Run",
+    "JUnit.BlockManagerTest.executor": "Run",
+    "JUnit.BlockSerializableTest.executor": "Run",
+    "JUnit.BlockTest.executor": "Run",
+    "JUnit.BlockTest.shouldHitLeftWhenBallIsLeftOfBlock.executor": "Run",
+    "JUnit.BonusManagerTest.executor": "Run",
+    "JUnit.BonusTest.executor": "Run",
+    "JUnit.BreakerTest.executor": "Run",
+    "JUnit.CollisionManagerTest.executor": "Run",
+    "JUnit.GameEngineTest.executor": "Run",
     "JUnit.GameTest.executor": "Run",
+    "JUnit.MainTest.executor": "Run",
+    "JUnit.ScoreTest.executor": "Run",
+    "Maven.CWGame [dependency:purge-local-repository].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -77,20 +87,7 @@
       <recent name="brickGame" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.GameTest">
-    <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.cwgame.HelloApplication" />
-      <module name="CWGame" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.cwgame.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="brickGame.Main" />
       <module name="CWGame" />
@@ -104,7 +101,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GameTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BreakerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CWGame" />
       <extension name="coverage">
         <pattern>
@@ -113,19 +110,71 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="brickGame" />
-      <option name="MAIN_CLASS_NAME" value="brickGame.GameTest" />
+      <option name="MAIN_CLASS_NAME" value="brickGame.BreakerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="CollisionManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CWGame" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="brickGame.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="brickGame" />
+      <option name="MAIN_CLASS_NAME" value="brickGame.CollisionManagerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GameEngineTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CWGame" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="brickGame.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="brickGame" />
+      <option name="MAIN_CLASS_NAME" value="brickGame.GameEngineTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ScoreTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CWGame" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="brickGame.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="brickGame" />
+      <option name="MAIN_CLASS_NAME" value="brickGame.ScoreTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="JUnit.BreakerTest" />
+      <item itemvalue="JUnit.CollisionManagerTest" />
+      <item itemvalue="JUnit.GameEngineTest" />
+      <item itemvalue="JUnit.ScoreTest" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.GameTest" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.HelloApplication" />
-        <item itemvalue="Application.Main" />
-        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.ScoreTest" />
+        <item itemvalue="JUnit.GameEngineTest" />
+        <item itemvalue="JUnit.CollisionManagerTest" />
+        <item itemvalue="JUnit.BreakerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -190,23 +239,8 @@
       <workItem from="1702033664060" duration="656000" />
       <workItem from="1702034329151" duration="18856000" />
       <workItem from="1702056076107" duration="3502000" />
-      <workItem from="1702101585991" duration="46142000" />
-    </task>
-    <task id="LOCAL-00016" summary="- Ball now spawns in the middle of the screen going straight down even after each level">
-      <option name="closed" value="true" />
-      <created>1701162562097</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1701162562097</updated>
-    </task>
-    <task id="LOCAL-00017" summary="- Adjusted angle when ball hits either side of breaker&#10;- Code clean up">
-      <option name="closed" value="true" />
-      <created>1701261959586</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1701261959586</updated>
+      <workItem from="1702101585991" duration="46237000" />
+      <workItem from="1702219512384" duration="8928000" />
     </task>
     <task id="LOCAL-00018" summary="- Refactoring">
       <option name="closed" value="true" />
@@ -584,7 +618,23 @@
       <option name="project" value="LOCAL" />
       <updated>1702213180588</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="- Fixed program not always exiting when closing window&#10;- Added sound in JavaFX thread">
+      <option name="closed" value="true" />
+      <created>1702219490957</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1702219490957</updated>
+    </task>
+    <task id="LOCAL-00066" summary="- Added Tests">
+      <option name="closed" value="true" />
+      <created>1702228055713</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1702228055713</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -603,8 +653,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="UI Improvements&#10;- Applied background from existing but forgotten image&#10;- Added new background when gold ball is active&#10;- Added new start menu&#10;- Changed existing buttons styling&#10;- Added new effect when losing or gaining hearts&#10;- Added new effect when hitting bonus (choco) block&#10;- Added new effect when hitting gold (start) block&#10;- Changed global font&#10;- Changed level label position&#10;- Changed old effects speed&#10;- Modified breaker image" />
-    <MESSAGE value="- Code formatting" />
     <MESSAGE value="- Fixed ball visible on top left corner before game starts" />
     <MESSAGE value="- Added new application icon" />
     <MESSAGE value="- Imported new font&#10;- Changed font&#10;- Added settings button&#10;- Changed menu shadow color&#10;- Changed button shadow color&#10;- Working on settings menu" />
@@ -628,7 +676,9 @@
     <MESSAGE value="- Refactoring" />
     <MESSAGE value="- Changed save game location to user's documents folder" />
     <MESSAGE value="- Decreased level amount due to screen being full at high levels&#10;- Fixed error in int ball location calculation" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Decreased level amount due to screen being full at high levels&#10;- Fixed error in int ball location calculation" />
+    <MESSAGE value="- Fixed program not always exiting when closing window&#10;- Added sound in JavaFX thread" />
+    <MESSAGE value="- Added Tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Added Tests" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
