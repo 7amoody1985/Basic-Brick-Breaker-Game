@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- Refactoring">
+    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- Changed save game location to user's documents folder">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/SaveGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/SaveGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Ball.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Game.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,15 +169,7 @@
       <workItem from="1702033664060" duration="656000" />
       <workItem from="1702034329151" duration="18856000" />
       <workItem from="1702056076107" duration="3502000" />
-      <workItem from="1702101585991" duration="41811000" />
-    </task>
-    <task id="LOCAL-00014" summary="- Fixed inconsistent breaker bounce speed fix&#10;- Changed ball speed level increment">
-      <option name="closed" value="true" />
-      <created>1700994793771</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1700994793771</updated>
+      <workItem from="1702101585991" duration="42850000" />
     </task>
     <task id="LOCAL-00015" summary="- Break now is initialized in the middle of the screen&#10;- Fixed breaker and ball collision edge detection">
       <option name="closed" value="true" />
@@ -562,7 +555,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702208451769</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="- Changed save game location to user's documents folder">
+      <option name="closed" value="true" />
+      <created>1702209267803</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1702209267803</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -581,7 +582,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="- Clean up&#10;- Code reformatting&#10;- Noted 1 more bug" />
     <MESSAGE value="- Changed gold ball background color to gold" />
     <MESSAGE value="UI Improvements&#10;- Applied background from existing but forgotten image&#10;- Added new background when gold ball is active&#10;- Added new start menu&#10;- Changed existing buttons styling&#10;- Added new effect when losing or gaining hearts&#10;- Added new effect when hitting bonus (choco) block&#10;- Added new effect when hitting gold (start) block&#10;- Changed global font&#10;- Changed level label position&#10;- Changed old effects speed&#10;- Modified breaker image" />
     <MESSAGE value="- Code formatting" />
@@ -606,7 +606,8 @@
     <MESSAGE value="- Fully fixed load game" />
     <MESSAGE value="- Clean up&#10;- Refactor" />
     <MESSAGE value="- Refactoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Refactoring" />
+    <MESSAGE value="- Changed save game location to user's documents folder" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Changed save game location to user's documents folder" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

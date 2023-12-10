@@ -19,7 +19,7 @@ public class Ball {
 
     public Ball(Game game) {
         xBall = (double) UI.SCENE_WIDTH / 2;
-        yBall = (double) UI.SCENE_WIDTH / 2 + ((game.level + 1) + (Block.getHeight() * ((double) game.level / 2)) + Block.getPaddingTop());
+        yBall = (double) UI.SCENE_HEIGHT / 2 + ((game.level + 1) + (Block.getHeight() * ((double) game.level / 2)) + Block.getPaddingTop());
         ball = new Circle();
         ball.setRadius(BALL_RADIUS);
         setBallImagePattern("ball.png");
