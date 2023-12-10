@@ -53,11 +53,11 @@ public class Game implements GameEngine.OnAction {
             manager = new BlockManager(this, ui, horizontalGridSize);
             setBallSpeed();
             ui.setupButtons();
+
+            bonuses = new BonusManager(this, Ball, ui);
+            collision = new CollisionManager(this, Ball, breaker, manager, ui, sound);
         }
 
-        bonuses = new BonusManager(this, Ball, ui);
-
-        collision = new CollisionManager(this, Ball, breaker, manager, ui, sound);
         collision.setBonuses(bonuses);
         bonuses.setCollision(collision);
 

@@ -57,6 +57,13 @@ public class LoadSave {
                 manager.clearBlocks();
                 bonuses.chocos.clear();
 
+                if (bonuses.isGoldStatus) {
+                    Platform.runLater(() -> {
+                        ball.setBallImagePattern("goldBall.png");
+                        ui.root.getStyleClass().add("goldRoot");
+                    });
+                }
+
                 ArrayList<BlockSerializable> blockSerializable;
                 try {
                     //noinspection unchecked

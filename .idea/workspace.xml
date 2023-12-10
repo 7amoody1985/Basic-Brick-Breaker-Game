@@ -4,16 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- Changed brick hit sound">
+    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- Fixed load game (2 bugs left)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bugs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bugs.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Breaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Breaker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/GameEngine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/LoadSave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/LoadSave.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/SaveGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/SaveGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Score.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Score.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/UI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,15 +170,7 @@
       <workItem from="1702033664060" duration="656000" />
       <workItem from="1702034329151" duration="18856000" />
       <workItem from="1702056076107" duration="3502000" />
-      <workItem from="1702101585991" duration="36301000" />
-    </task>
-    <task id="LOCAL-00010" summary="- Fixed crash when 2+ blocks get destroyed at once&#10;- Fixed glitches with &quot;+1&quot; score graphics (sometimes gets stuck on screen)">
-      <option name="closed" value="true" />
-      <created>1700918651657</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1700918651657</updated>
+      <workItem from="1702101585991" duration="40201000" />
     </task>
     <task id="LOCAL-00011" summary="- Optimized scene thread further for better reliability">
       <option name="closed" value="true" />
@@ -569,7 +556,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702137942056</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="- Fixed load game (2 bugs left)">
+      <option name="closed" value="true" />
+      <created>1702203239735</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1702203239735</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -588,7 +583,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Everything working except showWin (fix commented)" />
     <MESSAGE value="- Clean up&#10;- Reformatting" />
     <MESSAGE value="Moved Save and load game methods to a new class" />
     <MESSAGE value="- Save and load game now working&#10;- Noted bugs need to be fixed" />
@@ -613,7 +607,8 @@
     <MESSAGE value="- Added breaker speed control" />
     <MESSAGE value="- Added controls help" />
     <MESSAGE value="- Changed brick hit sound" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Changed brick hit sound" />
+    <MESSAGE value="- Fixed load game (2 bugs left)" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Fixed load game (2 bugs left)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
