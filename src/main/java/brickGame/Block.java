@@ -1,6 +1,5 @@
 package brickGame;
 
-
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
@@ -86,17 +85,33 @@ public class Block implements Serializable {
         Rectangle2D ballBounds = new Rectangle2D(xBall - ballRadius, yBall - ballRadius, 2 * ballRadius, 2 * ballRadius);
 
         if (blockBounds.intersects(ballBounds)) {
-            if (xBall + ballRadius >= x + WIDTH && xBall - ballRadius <= x + WIDTH) {
+            if (blockRightSideHit(xBall, ballRadius)) {
                 return HitDirection.RIGHT.ordinal();
-            } else if (xBall - ballRadius <= x && xBall + ballRadius >= x) {
+            } else if (blockLeftSideHit(xBall, ballRadius)) {
                 return HitDirection.LEFT.ordinal();
-            } else if (yBall + ballRadius >= y + HEIGHT && yBall - ballRadius <= y + HEIGHT) {
+            } else if (blockBottomHit(yBall, ballRadius)) {
                 return HitDirection.BOTTOM.ordinal();
-            } else if (yBall - ballRadius <= y && yBall + ballRadius >= y) {
+            } else if (blockTopHit(yBall, ballRadius)) {
                 return HitDirection.TOP.ordinal();
             }
         }
         return HitDirection.NO_HIT.ordinal();
+    }
+
+    private boolean blockTopHit(double yBall, double ballRadius) {
+        return yBall - ballRadius <= y && yBall + ballRadius >= y;
+    }
+
+    private boolean blockBottomHit(double yBall, double ballRadius) {
+        return yBall + ballRadius >= y + HEIGHT && yBall - ballRadius <= y + HEIGHT;
+    }
+
+    private boolean blockLeftSideHit(double xBall, double ballRadius) {
+        return xBall - ballRadius <= x && xBall + ballRadius >= x;
+    }
+
+    private boolean blockRightSideHit(double xBall, double ballRadius) {
+        return xBall + ballRadius >= x + WIDTH && xBall - ballRadius <= x + WIDTH;
     }
 
     public enum HitDirection {
