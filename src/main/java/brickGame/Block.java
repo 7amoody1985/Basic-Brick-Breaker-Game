@@ -60,7 +60,6 @@ public class Block implements Serializable {
         rect.setX(x);
         rect.setY(y);
 
-        // EnumMap
         EnumMap<Type, String> typeToImageFile = new EnumMap<>(Type.class);
         typeToImageFile.put(Type.CHOCO, "choco.jpg");
         typeToImageFile.put(Type.HEART, "heart.jpg");
@@ -87,7 +86,6 @@ public class Block implements Serializable {
         Rectangle2D ballBounds = new Rectangle2D(xBall - ballRadius, yBall - ballRadius, 2 * ballRadius, 2 * ballRadius);
 
         if (blockBounds.intersects(ballBounds)) {
-            // Check for specific direction of collision
             if (xBall + ballRadius >= x + WIDTH && xBall - ballRadius <= x + WIDTH) {
                 return HitDirection.RIGHT.ordinal();
             } else if (xBall - ballRadius <= x && xBall + ballRadius >= x) {

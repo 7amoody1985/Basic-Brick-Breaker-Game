@@ -29,6 +29,10 @@ public class CollisionManager {
         return ball.yBall >= UI.SCENE_HEIGHT - Ball.BALL_RADIUS;
     }
 
+    private boolean BallCollideLeftWall() { return ball.xBall <= Ball.BALL_RADIUS; }
+
+    private boolean BallCollideRightWall() { return ball.xBall >= UI.SCENE_WIDTH - Ball.BALL_RADIUS; }
+
     private boolean BallInBreakerZone() {
         return ball.yBall >= breaker.yBreak - Ball.BALL_RADIUS;
     }
@@ -174,11 +178,11 @@ public class CollisionManager {
                 }
             }
         }
-        if (ball.xBall >= UI.SCENE_WIDTH - Ball.BALL_RADIUS) { // right wall
+        if (BallCollideRightWall()) {
             ball.ballBounce(BounceDirection.LEFT);
         }
 
-        if (ball.xBall <= Ball.BALL_RADIUS) { // left wall
+        if (BallCollideLeftWall()) {
             ball.ballBounce(BounceDirection.RIGHT);
         }
     }

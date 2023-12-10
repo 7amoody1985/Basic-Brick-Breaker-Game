@@ -101,15 +101,10 @@ public class Game implements GameEngine.OnAction {
                 Ball.ball.setVisible(true);
             });
         } else {
-//            engine = createGameEngine();  // Look here ??
             engine.start();
             Ball.ball.setVisible(true);
             loadFromSave = false;
         }
-    }
-
-    public void printBallSpeed() {
-        System.out.println("Ball speed: " + Ball.speed);
     }
 
     private void setBallSpeed() {

@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- Fixed load game (2 bugs left)">
+    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- Fully fixed load game">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bugs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bugs.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/CollisionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/CollisionManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/LoadSave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/LoadSave.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/UI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,15 +171,7 @@
       <workItem from="1702033664060" duration="656000" />
       <workItem from="1702034329151" duration="18856000" />
       <workItem from="1702056076107" duration="3502000" />
-      <workItem from="1702101585991" duration="40201000" />
-    </task>
-    <task id="LOCAL-00011" summary="- Optimized scene thread further for better reliability">
-      <option name="closed" value="true" />
-      <created>1700919635598</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1700919635598</updated>
+      <workItem from="1702101585991" duration="40681000" />
     </task>
     <task id="LOCAL-00012" summary="- Fixed heart counter position&#10;- Changed window title&#10;- Made ball always spawn in the middle of the screen instead of randomly&#10;- Reworked ball physics, now ball always has the same speed no matter than angle after hitting breaker&#10;- Added speed variable to easily adjust starting ball speed">
       <option name="closed" value="true" />
@@ -564,7 +557,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702203239735</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="- Fully fixed load game">
+      <option name="closed" value="true" />
+      <created>1702207730777</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1702207730777</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -583,7 +584,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="- Clean up&#10;- Reformatting" />
     <MESSAGE value="Moved Save and load game methods to a new class" />
     <MESSAGE value="- Save and load game now working&#10;- Noted bugs need to be fixed" />
     <MESSAGE value="- Clean up&#10;- Code reformatting&#10;- Noted 1 more bug" />
@@ -608,7 +608,8 @@
     <MESSAGE value="- Added controls help" />
     <MESSAGE value="- Changed brick hit sound" />
     <MESSAGE value="- Fixed load game (2 bugs left)" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Fixed load game (2 bugs left)" />
+    <MESSAGE value="- Fully fixed load game" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Fully fixed load game" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

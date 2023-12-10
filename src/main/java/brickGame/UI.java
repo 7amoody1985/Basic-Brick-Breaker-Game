@@ -310,7 +310,6 @@ public class UI {
         resume.setOnAction(event -> {
             buttonClickSound();
             game.unPause();
-            game.printBallSpeed();                          // for debugging TODO REMOVE
         });
 
         save.setOnAction(event -> {
