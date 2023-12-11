@@ -1,5 +1,13 @@
-package brickGame;
+package managers;
 
+import game.Game;
+import ui.Sound;
+import ui.UI;
+import entities.Ball;
+import entities.Block;
+import entities.Bonus;
+import entities.Breaker;
+import enums.BounceDirection;
 import javafx.application.Platform;
 import javafx.scene.image.Image;
 

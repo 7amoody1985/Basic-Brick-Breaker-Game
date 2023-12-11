@@ -1,8 +1,18 @@
-package brickGame;
+package game;
 
+import entities.Ball;
+import entities.Breaker;
+import enums.BounceDirection;
+import io.LoadSave;
+import io.SaveGame;
 import javafx.application.Platform;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import managers.BlockManager;
+import managers.BonusManager;
+import managers.CollisionManager;
+import ui.Sound;
+import ui.UI;
 
 /**
  * The Game class represents the main game logic.
@@ -22,7 +32,7 @@ public class Game implements GameEngine.OnAction {
     private boolean isLeftPressed = false;
     private boolean isRightPressed = false;
     private boolean isSpacePressed = false;
-    private Ball Ball;
+    private entities.Ball Ball;
     private Breaker breaker;
     private CollisionManager collision;
     private BlockManager manager;

@@ -1,5 +1,8 @@
-package brickGame;
+package entities;
 
+import game.Game;
+import game.GameEngine;
+import ui.UI;
 import javafx.application.Platform;
 import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;

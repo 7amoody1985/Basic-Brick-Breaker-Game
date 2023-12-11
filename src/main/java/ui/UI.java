@@ -1,5 +1,11 @@
-package brickGame;
+package ui;
 
+import entities.Ball;
+import entities.Block;
+import entities.Bonus;
+import entities.Breaker;
+import game.Game;
+import game.GameEngine;
 import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -10,6 +16,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import managers.BlockManager;
+import managers.BonusManager;
 
 /**
  * The UI class is responsible for managing the user interface of the game.
@@ -40,7 +48,7 @@ public class UI {
     public ToggleButton fpsCounter;
     public ToggleButton soundButton;
     public ToggleButton musicButton;
-    VBox buttonBox = new VBox();
+    public VBox buttonBox = new VBox();
     private boolean isPauseMenu = false;
     private Label scoreLabel;
     private Label heartLabel;

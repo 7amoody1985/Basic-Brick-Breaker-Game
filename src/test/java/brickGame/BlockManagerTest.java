@@ -1,7 +1,13 @@
 package brickGame;
 
+import entities.Block;
+import game.Game;
+import game.GameEngine;
 import javafx.stage.Stage;
+import managers.BlockManager;
 import org.junit.jupiter.api.Test;
+import ui.Sound;
+import ui.UI;
 
 import static org.junit.jupiter.api.Assertions.*;
 

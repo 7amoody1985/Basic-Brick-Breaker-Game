@@ -1,5 +1,6 @@
-package brickGame;
+package game;
 
+import ui.UI;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;

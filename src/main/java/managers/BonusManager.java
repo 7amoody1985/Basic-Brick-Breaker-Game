@@ -1,5 +1,9 @@
-package brickGame;
+package managers;
 
+import game.Game;
+import ui.UI;
+import entities.Ball;
+import entities.Bonus;
 import javafx.application.Platform;
 
 import java.util.ArrayList;

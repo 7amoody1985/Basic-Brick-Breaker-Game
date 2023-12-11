@@ -1,5 +1,7 @@
 package brickGame;
 
+import entities.Block;
+import entities.Bonus;
 import javafx.scene.paint.ImagePattern;
 import org.junit.jupiter.api.Test;
 

@@ -1,4 +1,4 @@
-package brickGame;
+package io;
 
 import java.io.Serializable;
 

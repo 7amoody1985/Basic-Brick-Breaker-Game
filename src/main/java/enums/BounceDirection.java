@@ -1,4 +1,4 @@
-package brickGame;
+package enums;
 
 /**
  * The BounceDirection enum represents the possible directions that the ball can bounce in the game.

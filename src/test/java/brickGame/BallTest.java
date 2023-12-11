@@ -1,5 +1,8 @@
 package brickGame;
 
+import entities.Ball;
+import enums.BounceDirection;
+import game.Game;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;

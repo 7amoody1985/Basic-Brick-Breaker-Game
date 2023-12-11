@@ -1,7 +1,12 @@
 package brickGame;
 
+import entities.Breaker;
+import game.Game;
+import game.GameEngine;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;
+import ui.Sound;
+import ui.UI;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;

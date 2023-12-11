@@ -1,5 +1,9 @@
-package brickGame;
+package managers;
 
+import game.Game;
+import game.GameEngine;
+import ui.UI;
+import entities.Block;
 import javafx.scene.paint.Color;
 
 import java.util.ArrayList;

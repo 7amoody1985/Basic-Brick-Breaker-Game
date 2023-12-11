@@ -1,4 +1,4 @@
-package brickGame;
+package ui;
 
 import javafx.application.Platform;
 import javafx.scene.media.Media;

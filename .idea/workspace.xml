@@ -1,28 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="ANALYZE_TEST_SOURCES" value="false" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- Refactoring">
+    <list default="true" id="eb89127b-5efd-4e83-8d26-724ea4c03153" name="Changes" comment="- Added JavaDocs comments">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Ball.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Block.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/BlockManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/BlockManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/BlockSerializable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/BlockSerializable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Bonus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Bonus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/BonusManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/BonusManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/BounceDirection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/BounceDirection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Breaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Breaker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/CollisionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/CollisionManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/GameEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/LoadSave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/LoadSave.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/SaveGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/SaveGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Score.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Score.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Sound.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/Sound.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/brickGame/UI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Ball.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/BlockManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/managers/BlockManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/BlockSerializable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/BlockSerializable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Bonus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Bonus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/BonusManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/managers/BonusManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/BounceDirection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/enums/BounceDirection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Breaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Breaker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/CollisionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/managers/CollisionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/GameEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/LoadSave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/LoadSave.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/SaveGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/SaveGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Score.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/Score.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/Sound.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/Sound.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/UI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/brickGame/sample.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cwgame/HelloApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cwgame/HelloController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/brickGame/BallTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/brickGame/BallTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/brickGame/BlockManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/brickGame/BlockManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/brickGame/BlockSerializableTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/brickGame/BlockSerializableTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/brickGame/BlockTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/brickGame/BlockTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/brickGame/BonusManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/brickGame/BonusManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/brickGame/BonusTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/brickGame/BonusTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/brickGame/BreakerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/brickGame/BreakerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/brickGame/CollisionManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/brickGame/CollisionManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/brickGame/GameEngineTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/brickGame/GameEngineTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/brickGame/GameTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/brickGame/GameTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/brickGame/ScoreTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/brickGame/ScoreTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/brickGame/UITest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/brickGame/UITest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,57 +79,65 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.BallTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.BlockManagerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.BlockSerializableTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.BlockTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.BlockTest.shouldHitLeftWhenBallIsLeftOfBlock.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.BonusManagerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.BonusTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.BreakerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CollisionManagerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.GameEngineTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.GameTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.MainTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ScoreTest.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.CWGame [dependency:purge-local-repository].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;ClassES__UI__SL__UI&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/moham/IdeaProjects/CWGame&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.Main.executor": "Run",
+    "Application.game.Main.executor": "Run",
+    "JUnit.BallTest.executor": "Run",
+    "JUnit.BlockManagerTest.executor": "Run",
+    "JUnit.BlockSerializableTest.executor": "Run",
+    "JUnit.BlockTest.executor": "Run",
+    "JUnit.BlockTest.shouldHitLeftWhenBallIsLeftOfBlock.executor": "Run",
+    "JUnit.BonusManagerTest.executor": "Run",
+    "JUnit.BonusTest.executor": "Run",
+    "JUnit.BreakerTest.executor": "Run",
+    "JUnit.CollisionManagerTest.executor": "Run",
+    "JUnit.GameEngineTest.executor": "Run",
+    "JUnit.GameTest.executor": "Run",
+    "JUnit.MainTest.executor": "Run",
+    "JUnit.ScoreTest.executor": "Run",
+    "Maven.CWGame [dependency:purge-local-repository].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "extract.method.default.visibility": "private",
+    "git-widget-placeholder": "ClassES__UI__SL__UI",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/moham/IdeaProjects/CWGame",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="ui" />
+      <recent name="io" />
+      <recent name="game" />
+      <recent name="managers" />
+      <recent name="entities" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="brickGame" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="brickGame.Main" />
+      <option name="MAIN_CLASS_NAME" value="game.Main" />
       <module name="CWGame" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="brickGame.*" />
+          <option name="PATTERN" value="game.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -117,17 +145,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BreakerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="game.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="game.Main" />
       <module name="CWGame" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="brickGame.*" />
+          <option name="PATTERN" value="game.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="brickGame" />
-      <option name="MAIN_CLASS_NAME" value="brickGame.BreakerTest" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -136,7 +162,7 @@
       <module name="CWGame" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="brickGame.*" />
+          <option name="PATTERN" value="game.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -151,7 +177,7 @@
       <module name="CWGame" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="brickGame.*" />
+          <option name="PATTERN" value="game.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -166,7 +192,7 @@
       <module name="CWGame" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="brickGame.*" />
+          <option name="PATTERN" value="game.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -178,8 +204,8 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.game.Main" />
       <item itemvalue="Application.Main" />
-      <item itemvalue="JUnit.BreakerTest" />
       <item itemvalue="JUnit.CollisionManagerTest" />
       <item itemvalue="JUnit.GameEngineTest" />
       <item itemvalue="JUnit.ScoreTest" />
@@ -187,10 +213,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.game.Main" />
         <item itemvalue="JUnit.ScoreTest" />
         <item itemvalue="JUnit.GameEngineTest" />
         <item itemvalue="JUnit.CollisionManagerTest" />
-        <item itemvalue="JUnit.BreakerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -257,15 +283,8 @@
       <workItem from="1702056076107" duration="3502000" />
       <workItem from="1702101585991" duration="46237000" />
       <workItem from="1702219512384" duration="10864000" />
-      <workItem from="1702232966920" duration="6934000" />
-    </task>
-    <task id="LOCAL-00020" summary="Idk this thing randomly appeared">
-      <option name="closed" value="true" />
-      <created>1701269548799</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1701269548799</updated>
+      <workItem from="1702232966920" duration="6978000" />
+      <workItem from="1702277261883" duration="4510000" />
     </task>
     <task id="LOCAL-00021" summary="- Fixed breaker zones not equal&#10;- Refactoring">
       <option name="closed" value="true" />
@@ -651,7 +670,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702232709447</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="- Added JavaDocs comments">
+      <option name="closed" value="true" />
+      <created>1702240126880</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1702240126881</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -670,7 +697,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="- Added new application icon" />
     <MESSAGE value="- Imported new font&#10;- Changed font&#10;- Added settings button&#10;- Changed menu shadow color&#10;- Changed button shadow color&#10;- Working on settings menu" />
     <MESSAGE value="- Added fps counter&#10;- Added exit button&#10;- Added fully functional settings menu" />
     <MESSAGE value="- Added more settings&#10;- Added sound toggle button&#10;- Added music toggle button&#10;- Added background music&#10;- Added button click sound&#10;- More sounds to be added..." />
@@ -695,7 +721,8 @@
     <MESSAGE value="- Added Tests" />
     <MESSAGE value="- Fixed possible crash when collecting 2 bonuses at once" />
     <MESSAGE value="- Refactoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Refactoring" />
+    <MESSAGE value="- Added JavaDocs comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Added JavaDocs comments" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

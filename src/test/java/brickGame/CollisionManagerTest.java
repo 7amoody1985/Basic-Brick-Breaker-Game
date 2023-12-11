@@ -1,7 +1,15 @@
 package brickGame;
 
+import entities.Ball;
+import entities.Breaker;
+import game.Game;
+import game.GameEngine;
 import javafx.stage.Stage;
+import managers.BlockManager;
+import managers.CollisionManager;
 import org.junit.jupiter.api.Test;
+import ui.Sound;
+import ui.UI;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 

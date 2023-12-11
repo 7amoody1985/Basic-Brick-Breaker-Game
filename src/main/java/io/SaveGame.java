@@ -1,4 +1,12 @@
-package brickGame;
+package io;
+
+import ui.UI;
+import entities.Ball;
+import entities.Block;
+import entities.Breaker;
+import game.Game;
+import managers.BlockManager;
+import managers.BonusManager;
 
 import java.io.File;
 import java.io.FileOutputStream;

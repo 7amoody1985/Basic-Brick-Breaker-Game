@@ -1,5 +1,8 @@
-package brickGame;
+package entities;
 
+import enums.BounceDirection;
+import game.Game;
+import ui.UI;
 import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
@@ -19,7 +22,7 @@ public class Ball {
     public boolean goUpBall = false;
     public boolean goRightBall = false;
     public boolean goLeftBall = false;
-    Circle ball;
+    public Circle ball;
 
     /**
      * Constructs a new Ball object.
