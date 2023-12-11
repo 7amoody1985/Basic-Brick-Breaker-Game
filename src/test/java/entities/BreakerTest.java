@@ -1,6 +1,5 @@
-package brickGame;
+package entities;
 
-import entities.Breaker;
 import game.Game;
 import game.GameEngine;
 import javafx.stage.Stage;

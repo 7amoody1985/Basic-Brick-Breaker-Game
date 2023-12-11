@@ -1,4 +1,4 @@
-package brickGame;
+package ui;
 
 import game.Game;
 import javafx.scene.control.Label;
@@ -6,9 +6,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;
-import ui.Score;
-import ui.Sound;
-import ui.UI;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

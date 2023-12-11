@@ -1,7 +1,5 @@
-package brickGame;
+package game;
 
-import game.Game;
-import game.GameEngine;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;
 import ui.Sound;

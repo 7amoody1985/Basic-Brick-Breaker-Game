@@ -1,6 +1,5 @@
-package brickGame;
+package entities;
 
-import entities.Ball;
 import enums.BounceDirection;
 import game.Game;
 import org.junit.jupiter.api.Test;

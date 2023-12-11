@@ -1,10 +1,8 @@
-package brickGame;
+package ui;
 
 import game.Game;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;
-import ui.Sound;
-import ui.UI;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

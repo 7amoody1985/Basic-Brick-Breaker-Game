@@ -1,10 +1,9 @@
-package brickGame;
+package managers;
 
 import entities.Block;
 import game.Game;
 import game.GameEngine;
 import javafx.stage.Stage;
-import managers.BlockManager;
 import org.junit.jupiter.api.Test;
 import ui.Sound;
 import ui.UI;

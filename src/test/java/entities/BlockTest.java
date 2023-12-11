@@ -1,6 +1,5 @@
-package brickGame;
+package entities;
 
-import entities.Block;
 import javafx.scene.paint.Color;
 import org.junit.jupiter.api.Test;
 
