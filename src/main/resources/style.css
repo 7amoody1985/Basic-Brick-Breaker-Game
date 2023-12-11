@@ -1,13 +1,65 @@
+@font-face {
+    font-family: 'Press Start 2P';
+    src: url('PressStart2P-Regular.ttf');
+}
+
 .root {
-    -fx-background-color: #1d1d1d;
+    -fx-background-image: url("bg.jpg");
+    -fx-background-size: cover;
 }
 
 .goldRoot {
-    -fx-background-color: #4b4a08;
+    -fx-background-image: url("bgGold.jpg");
 }
 
 .label {
     -fx-text-fill: #FFF;
     -fx-label-padding: 8px;
-    -fx-font-size: 15px;
+    -fx-font-size: 10px;
+    -fx-font-family: "Press Start 2P";
+}
+
+.controlsLabel {
+    -fx-text-fill: rgba(255, 255, 255, 0.5);
+    -fx-line-spacing: 5px;
+    -fx-font-size: 5px;
+}
+
+.buttonBox {
+    -fx-background-color: rgba(150, 150, 150, 0.4);
+    -fx-background-radius: 20;
+    -fx-border-color: #ffffff;
+    -fx-border-width: 2;
+    -fx-border-radius: 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 255, 0.6), 15, 0, 0, 8);
+}
+
+.button, .toggle-button {
+    -fx-background-color: rgba(60, 60, 60, 0.4);
+    -fx-background-radius: 20;
+    -fx-border-color: #ffffff;
+    -fx-border-width: 2;
+    -fx-border-radius: 20;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 10px;
+    -fx-padding: 14px;
+    -fx-font-family: "Press Start 2P";
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 255, 0.6), 15, 0, 0, 0);
+}
+
+.button:hover, .toggle-button:hover {
+    -fx-background-color: rgba(150, 150, 150, 0.4);
+    -fx-background-radius: 20;
+    -fx-border-color: #ff00ff;
+    -fx-border-width: 2;
+    -fx-border-radius: 20;
+    -fx-text-fill: #000000;
+    -fx-font-size: 10px;
+    -fx-padding: 14px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 255, 0.6), 15, 0, 0, 8);
+    -fx-cursor: hand;
+}
+
+.plusScore {
+    -fx-text-fill: #00ff00;
 }

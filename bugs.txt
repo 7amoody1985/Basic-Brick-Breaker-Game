@@ -1,2 +1,0 @@
-BUGS FOUND:
-- Ball sometimes freezes on screen but game engine still reports collisions and sometimes when nextLevel (hard to reproduce)

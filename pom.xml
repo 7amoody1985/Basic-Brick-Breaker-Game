@@ -106,6 +106,12 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>eu.hansolo.fx</groupId>
+            <artifactId>countries</artifactId>
+            <version>17.0.8</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
