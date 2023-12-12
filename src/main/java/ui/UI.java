@@ -270,6 +270,7 @@ public class UI {
         box.setPrefSize(320, 190);
 
         root.getChildren().add(box);
+        root.toFront();
 
         box.layoutBoundsProperty().addListener((observable, oldValue, newValue) -> box.setTranslateX((SCENE_WIDTH - newValue.getWidth()) / 2));
         box.layoutBoundsProperty().addListener((observable, oldValue, newValue) -> box.setTranslateY((SCENE_HEIGHT - newValue.getHeight()) / 2));
