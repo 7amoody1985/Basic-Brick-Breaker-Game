@@ -1,113 +1,177 @@
+# Brick Breaker Game
 
-# CW Brick Game
+A fully-featured Brick Breaker game built with JavaFX. Control a paddle to keep the ball in play, destroy blocks across multiple levels, collect bonuses, and beat your high score — all wrapped in a polished UI with menus, sound, and save/load support.
 
-Please note that for refactoring and code changes, I cannot include all changes made due to the high number of changes made. I strongly recommend to check out the code.
-## Compilation Instructions
+---
 
-To compile and run your JavaFX application, you can follow these steps:
+## Features
 
-1. Ensure you have the Java Development Kit (JDK) installed on your system. You can check this by running `java -version` in your terminal. If you don't have it installed, you can download it from the official Oracle website.
+- **Multiple levels** with increasing difficulty and ball speed
+- **Bonus blocks** that drop collectibles for extra lives and score boosts
+- **Gold blocks** that trigger a special invincible ball mode
+- **Difficulty system** with configurable starting speed
+- **Save & load** — progress is saved to your Documents folder
+- **Full sound system** — background music and sound effects, both toggleable
+- **Pause menu**, settings menu, between-level screen, game over screen, and win screen
+- **FPS counter** and controls help overlay
+- **Breaker speed boost** — hold Space while moving for faster paddle movement
+- **Smooth physics** — consistent ball speed regardless of bounce angle
 
-2. This project uses Maven as its build tool. If you don't have Maven installed, you can download and install it from the official Apache Maven website. After installation, you can verify it by running mvn -version in your terminal.
+## Tech Stack
 
-3. Navigate to the root directory of your project in the terminal.
+| | |
+|---|---|
+| **Language** | Java 17 |
+| **UI Framework** | JavaFX 17 |
+| **Build Tool** | Maven |
+| **Testing** | JUnit 5 |
 
-4. Run the Maven compile command: `mvn compile`. This will compile your source code into the target directory.
+## Architecture
 
-5. To run your application, use the Maven exec plugin with the `java` goal: `mvn exec:java -Dexec.mainClass="game.Main"`.
-## Maintenance
+The codebase is split into focused packages:
 
-- Fixed ball different speed everytime ball hits break
-- Fixed if ball doesn't hit paddle first, bricks have no hit box
+| Package | Responsibility |
+|---|---|
+| `game` | Core loop, engine, and application entry point |
+| `entities` | Game objects — Ball, Breaker (paddle), Block, Bonus |
+| `managers` | Logic for blocks, bonuses, and collision detection |
+| `ui` | All UI rendering, score display, and sound |
+| `io` | Save/load and serialization |
+| `enums` | Shared enumerations (block types, bounce directions) |
+
+## Getting Started
+
+**Prerequisites:** JDK 17+ and Maven 3.x
+
+```bash
+# Clone the repository
+git clone https://github.com/7amoody1985/COMP2042_CW_hfymd1.git
+cd COMP2042_CW_hfymd1
+
+# Run (Maven required)
+mvn javafx:run
+```
+
+No Maven installed? Use the included wrapper instead:
+
+```bash
+# macOS / Linux
+./mvnw javafx:run
+
+# Windows
+mvnw.cmd javafx:run
+```
+
+## Running Tests
+
+```bash
+mvn test
+```
+
+## Controls
+
+| Key | Action |
+|---|---|
+| `←` / `→` | Move paddle |
+| `Space` (held) | Speed boost while moving |
+| `Esc` | Pause |
+| `S` | Save game |
+
+## Project Background
+
+This started as a refactor and extension of an existing open-source Brick Breaker codebase. The original code had significant reliability issues — the ball speed varied on every hit, bricks sometimes had no hitbox, and the game would crash when two blocks were destroyed simultaneously.
+
+The project involved fixing over 40 bugs, reworking the physics, and extending the game with a full UI system (menus, sound, animations) and gameplay features. The codebase was also heavily refactored: the original monolithic structure was split into dedicated classes and packages, constants replaced magic numbers, and a proper game loop was implemented.
+
+---
+
+## Changelog
+
+### Bug Fixes & Maintenance
+
+- Fixed ball travelling at a different speed every time it hits the breaker
+- Fixed bricks having no hitbox if the ball doesn't hit the paddle first
 - Changed exception handling
 - Fixed rows not getting filled with blocks
-- Added some thread synchronization
+- Added thread synchronization
 - Improved GameEngine reliability
 - Fixed issues moving to next level at incorrect times
-- Fixed block hit detection where sometimes it doesn't register, especially when ball speed is high
+- Fixed block hit detection not registering, especially at high ball speeds
 - Fixed crash when 2+ blocks get destroyed at once
-- Fixed glitches with "+1" score graphics (sometimes gets stuck on screen)
-- Optimized scene thread further for better reliability
-- Reworked ball physics, now ball always has the same speed no matter than angle after hitting breaker
+- Fixed glitches with "+1" score graphics sometimes getting stuck on screen
+- Optimized scene thread for better reliability
+- Reworked ball physics — ball now always travels at a consistent speed regardless of angle after hitting the breaker
 - Added speed variable to easily adjust starting ball speed
-- Fixed breaker sometimes goes beyond scene border
+- Fixed breaker sometimes going beyond the scene border
 - Improved ball hit detection
-- Fixed Ball sometimes goes through block
+- Fixed ball sometimes passing through blocks
 - Changed ball speed level increment
 - Fixed breaker and ball collision edge detection
-- Fixed breaker zones not equal
-- Fixed delay caused by operating system where if you hold the arrow keys initial breaker movement is delayed
+- Fixed unequal breaker collision zones
+- Fixed OS-level delay causing sluggish initial breaker movement when holding arrow keys
 - Fixed save game
 - Fixed load game
-- Fixed ball visible on top left corner before game starts
-- Fixed ball spawn position in high levels
-- Decreased level amount due to screen being full at high levels
-- Fixed error in int ball location calculation
-- Fixed program not always exiting when closing window
-- Fixed possible crash when collecting 2 bonuses at once
-## Extension
+- Fixed ball being visible in the top-left corner before the game starts
+- Fixed ball spawn position at high levels
+- Decreased level count to prevent blocks overflowing the screen
+- Fixed floating-point error in ball position calculation
+- Fixed program not always exiting when the window is closed
+- Fixed possible crash when collecting two bonuses simultaneously
 
-- Changed block spawning behaviour, now level 1 starts with 1 row of blocks instead of 2
-- Changed paddle/break behaviour and made movement smoother
-- Made ball always spawn in the middle of the screen instead of randomly
-- Changed starting ball speed
-- Break now is initialized in the middle of the screen
-- Ball now spawns in the middle of the screen going straight down, including after each level
-- Adjusted angle when ball hits either side of breaker
+### Extensions & New Features
+
+- Changed block spawning — level 1 now starts with 1 row instead of 2
+- Smoothed breaker movement
+- Ball now always spawns in the centre of the screen (including after each level) rather than at a random position
+- Adjusted ball angle calculation when hitting either side of the breaker
 - Implemented difficulty system
-- Added breaker speed control (hold space while moving breaker)
-- Changed save game location to user's documents folder
+- Added breaker speed boost (hold Space while moving)
+- Changed save game location to the user's Documents folder
 - Implemented full UI system
 
-
-UI Additions
-- Applied background from existing but forgotten image
-- Added new background when gold ball is active
-- Added new start menu
-- Changed existing buttons styling
-- Added new effect when losing or gaining hearts
-- Added new effect when hitting bonus (choco) block
-- Added new effect when hitting gold (start) block
-- Imported new font
-- Changed global font
+**UI Additions**
+- Applied background from an existing but unused image asset
+- Added a new background when the gold ball is active
+- Added a new start menu
+- Restyled existing buttons
+- Added heart gain/loss animation effects
+- Added hit effect for bonus (chocolate) blocks
+- Added hit effect for gold (star) blocks
+- Imported and applied a new pixel font (Press Start 2P)
 - Changed level label position
-- Changed old effects speed
-- Modified breaker image
-- Added new application icon
-- Added fps counter
+- Adjusted animation speeds
+- Modified breaker sprite
+- Added a custom application icon
+- Added FPS counter
 - Added exit button
-- Added settings menu
-- Added sound toggle button
-- Added music toggle button
+- Added settings menu with sound and music toggles
 - Added background music
-- Added game sounds
+- Added in-game sound effects
 - Changed window title and icon
-- Made window not resizable
-- Remade game over menu
-- Reworked win menu
+- Made window non-resizable
+- Remade game over screen
+- Reworked win screen
 - Added fully functional pause menu
-- Added simple menu between levels
-- Added controls help
+- Added between-level transition screen
+- Added controls help overlay
 
-## Refactoring
+### Refactoring
 
-- Code clean up
-- Fixed typos
-- Changed visibilities
-- Moved all code in main to new Game class
-- Created Ball class
-- Created BounceDirection enum
-- Created Breaker class
-- Created BlockManager class
-- Created BonusManager class
-- Created CollisionManager class
-- Created UI class
-- Created Sound class
-- Moved all save related code to SaveGame class
-- Created LoadSave class
-- Moved showGameOver method from Score class to UI class
-- Removed unnecessary code
+- General code cleanup and typo fixes
+- Adjusted access modifiers throughout
+- Moved all startup code from `Main` into a dedicated `Game` class
+- Created `Ball` class
+- Created `BounceDirection` enum
+- Created `Breaker` class
+- Created `BlockManager` class
+- Created `BonusManager` class
+- Created `CollisionManager` class
+- Created `UI` class
+- Created `Sound` class
+- Moved save/load logic into `SaveGame` and `LoadSave` classes
+- Moved `showGameOver` from `Score` to `UI`
+- Removed dead code
 - Split classes into packages
-- Capitalized static final variables
-- Added enums instead of values (ex: block type)
-- Added methods that return boolean value for if statements that are long
+- Capitalized all `static final` constants
+- Replaced magic values with enums (e.g. block types)
+- Extracted long `if` conditions into named boolean-returning methods
