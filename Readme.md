@@ -79,7 +79,7 @@ mvn test
 
 ## Project Background
 
-This started as a refactor and extension of an existing open-source Brick Breaker codebase. The original code had significant reliability issues — the ball speed varied on every hit, bricks sometimes had no hitbox, and the game would crash when two blocks were destroyed simultaneously.
+This started as a refactor and extension of a given Brick Breaker codebase. The original code had significant reliability issues — the ball speed varied on every hit, bricks sometimes had no hitbox, and the game would crash when two blocks were destroyed simultaneously.
 
 The project involved fixing over 40 bugs, reworking the physics, and extending the game with a full UI system (menus, sound, animations) and gameplay features. The codebase was also heavily refactored: the original monolithic structure was split into dedicated classes and packages, constants replaced magic numbers, and a proper game loop was implemented.
 
